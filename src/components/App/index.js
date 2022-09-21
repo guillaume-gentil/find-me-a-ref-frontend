@@ -1,8 +1,11 @@
-// == Import
+// Imports :
 import reactLogo from './react-logo.svg';
 import './styles.css';
 
-// == Composant
+// Component imports :
+import Footer from '../Footer/Footer';
+
+// Component :
 function App() {
   return (
     <div className="app">
