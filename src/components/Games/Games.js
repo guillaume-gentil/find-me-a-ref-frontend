@@ -1,5 +1,6 @@
-// import :
+// imports :
 import './styles.scss';
+import Game from './Game/Game';
 
 // component :
 function Games() {
