@@ -1,0 +1,25 @@
+.topPartHeader{
+  // appearance :
+  font-family: 'Black Ops One', cursive;
+  background-image: url(../../assets/img/headerReferees1.jpg);
+  background-size: cover;
+  color : white;
+  height: max-content;
+
+  //position :
+  position : relative;
+}
+h1{
+  font-size: 5rem;
+}
+h2{
+  font-size: 2rem;
+}
+.topPartHeader--headerTitle{
+  background-color: rgba(0,0,0,.3); ;
+  max-width: 50%;
+}
+.topPartHeader--ffLogo{
+  position: absolute;
+  right: 0;
+}
