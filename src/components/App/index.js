@@ -1,18 +1,16 @@
-// == Import
-
+// import :
+import Navbar from 'src/components/Navbar/Navbar';
 import Filters from '../Filters/Filters';
 import Header from '../Header/Header';
-import './styles.scss';
-
-// Component imports :
 import Footer from '../Footer/Footer';
+import './styles.scss';
 
 // Component :
 function App() {
   return (
     <div className="app">
-      <Filters />
       <Header />
+      <Navbar />
       <Filters />
       <Footer />
     </div>
