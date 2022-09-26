@@ -1,0 +1,51 @@
+.navbar{
+  color: white;
+
+  &__button{
+    width: fit-content;
+    border: 1px solid white;
+    border-radius: 0.15rem;
+    background-color: rgba($color: white, $alpha: 0.3);
+    color: white;
+  }
+
+  &__list{
+    font-family:'Black Ops One', cursive;
+    font-size: 1.4rem;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    height: 0vh;
+    z-index: -1;
+    transition: height 0.25s ease-in-out;
+    background-color: grey;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 0;
+    &.open{
+      border-bottom: 1px solid lightgrey;
+      height: 25%;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .navbar{
+    &__button{
+      display: none;
+    }
+    &__list{
+      flex-direction: row;
+      height: initial;
+      width: initial;
+      background-color: rgba($color: black, $alpha: 0.3);
+      border-radius: 0.35rem;
+      box-shadow: 1px 1px 5px black;
+    }
+    &__item{
+      margin: 1rem 1.3rem;
+    }
+  }
+}
