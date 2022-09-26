@@ -1,0 +1,40 @@
+.login{
+  
+  background-color: rgba($color: white, $alpha: 0.2);
+  border: 1px solid #888;
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+    
+  &__button{
+    background-color: black;
+    border: solid 4px white;
+    color: white;
+    font-size: 2.2rem;
+    padding: 0.5rem;
+    font-family: "Black Ops One", cursive;
+  }
+
+  &__form{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+
+  &__label{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    &>input{
+      border-radius: 0.2rem;
+      border: 0;
+      box-shadow: 1px 1px 3px rgb(65, 65, 65);
+    }
+  }
+
+  &__submit{
+    border: 0;
+    border-radius: 0.2rem;
+  }
+}
