@@ -9,11 +9,13 @@ function Header() {
   return (
     <section className="topPartHeader">
       <div className="topPartHeader__headerTitle">
-        <h1>FIND ME A REF !</h1>
+        <h1>Find Me A Ref</h1>
         <h2>Solution d'arbitrage</h2>
       </div>
-      {/* <Navbar />
-      <Login /> */}
+      <div className="topPartHeader__buttons">
+        <button className="topPartHeader__menu">Menu</button>
+        <button className="topPartHeader__login">Connexion</button>
+      </div>
       <img className="topPartHeader__ffLogo" src={whiteLogo} alt="" />
     </section>
   );
