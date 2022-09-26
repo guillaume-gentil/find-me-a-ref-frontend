@@ -1,0 +1,32 @@
+a{
+  // appearance :
+  margin-top: 20px;
+}
+.footer{
+  // appearance :
+  font-family: 'Black Ops One', cursive;
+  color: white;
+  text-align: center;
+  background-color: #344040;
+  border: solid 1px white;
+  margin:5px;
+  font-size: medium;
+
+  //position :
+  display: flex;
+  flex-direction: column;
+
+  &__copyright{
+    // appearance :
+    margin-top: 40px;
+    font-size: small;
+
+  }
+}
+@media screen and (min-width: 768px){
+.footer{
+  width:15rem;
+}
+
+}
+
