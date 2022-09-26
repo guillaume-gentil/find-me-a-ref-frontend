@@ -3,8 +3,10 @@
 
 body {
   font-family: sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: black;
 }
-
 /* 
   // or you can import your own font
   @font-face {
