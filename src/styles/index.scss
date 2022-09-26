@@ -2,9 +2,12 @@
 @use 'vars';
 
 body {
-  font-family: sans-serif;
+  font-family: 'Saira', sans-serif;
+  font-family: 'Black Ops One', cursive;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: black;
 }
-
 /* 
   // or you can import your own font
   @font-face {
