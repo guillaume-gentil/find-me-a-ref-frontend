@@ -1,0 +1,104 @@
+// component Games
+.games{
+  // appearance :
+  font-family: 'Saira', sans-serif;
+  color: white;
+  padding: 30px;
+  margin: 5px;
+  background-color: #344141;
+  text-align: center;
+  font-size: large;
+
+  // position :
+  display: flex;
+  flex-direction: column;
+
+  &__more{
+    background-color: #666F6F;
+    font-family: 'Saira', sans-serif;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    font-size: large;
+    border: none;
+  }
+  
+}
+
+// component Game
+.game{
+  font-family: 'Saira', sans-serif;
+  padding: 10px;
+  margin: 15px;
+  background-color: black;
+  border: 2px solid rgb(0, 255, 0);
+  text-align: left;
+
+  // position :
+  position: relative;
+
+  &__item{
+    margin: 10px;
+  }
+  &__noregistered{
+    // appearance
+    font-family: 'Black Ops One', cursive;
+    color: rgb(255, 0, 0);
+    // Position :
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+  }
+  &__oneregistered{
+    // appearance
+    font-family: 'Black Ops One', cursive;
+    color: rgb(255, 123, 0);
+    // Position :
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+  }
+  &__fullregistered{
+    // appearance
+    font-family: 'Black Ops One', cursive;
+    color: rgb(0, 255, 0);
+    // Position :
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+  }
+  &__registering{
+    // appearance :
+    width: 10rem;
+
+    // position :
+    position: absolute;
+    bottom: -27px;
+    right: -33px;
+  }
+}
+h2{
+  font-size: larger;
+  font-family: 'Black Ops One', cursive;
+}
+
+
+@media screen and (min-width:768px){
+  .games{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: 1000px;
+
+    &__text{
+      display: none;
+    }
+    &__more{
+      display: none;
+    }
+  }
+  .game{
+
+    max-width: 20rem;
+  }
+}
