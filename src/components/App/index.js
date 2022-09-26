@@ -1,4 +1,7 @@
-// Imports :
+// == Import
+
+import Filters from '../Filters/Filters';
+import Header from '../Header/Header';
 import './styles.scss';
 
 // Component imports :
@@ -8,6 +11,9 @@ import Footer from '../Footer/Footer';
 function App() {
   return (
     <div className="app">
+      <Filters />
+      <Header />
+      <Filters />
       <Footer />
     </div>
   );
