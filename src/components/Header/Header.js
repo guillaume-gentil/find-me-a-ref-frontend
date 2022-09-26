@@ -8,13 +8,13 @@ import whiteLogo from '../../assets/img/logo-ffrs-blanc.png';
 function Header() {
   return (
     <section className="topPartHeader">
-      <div className="topPartHeader--headerTitle">
+      <div className="topPartHeader__headerTitle">
         <h1>FIND ME A REF !</h1>
         <h2>Solution d'arbitrage</h2>
       </div>
       {/* <Navbar />
       <Login /> */}
-      <img className="topPartHeader--ffLogo" src={whiteLogo} alt="" />
+      <img className="topPartHeader__ffLogo" src={whiteLogo} alt="" />
     </section>
   );
 }
