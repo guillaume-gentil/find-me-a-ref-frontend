@@ -1,0 +1,39 @@
+.legals,.partners{
+    // appearance :
+    font-family: 'Saira', sans-serif;
+    color: white;
+    padding: 20px;
+    margin: 5px;
+    background-color: #344141;
+    font-size: large;
+    border: solid 1px white;
+}
+.legals{
+  text-align: justify;
+  &__title{
+    text-align: center;
+    font-size: x-large;
+    margin: 30px;
+  }
+}
+.partners{
+  display: flex;
+  flex-direction: column;
+  &__title{
+    text-align: center;
+    font-size: x-large;
+    margin: 30px;
+  }
+}
+a{
+  margin: 10px;
+}
+@media screen and (min-width:768px) {
+  .partners{
+    max-width:15rem;
+    padding: 5px;
+    &__title{
+      margin: 15px;
+    }
+  }
+}

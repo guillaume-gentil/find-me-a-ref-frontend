@@ -5,8 +5,8 @@ import './styles.scss';
 function Legals() {
   return (
     <>
-      <section>
-        <h1>Mentions Légales</h1>
+      <section className="legals">
+        <h1 className="legals__title">Mentions Légales</h1>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet consequatur commodi
           voluptates iste quidem, esse corporis minus velit laboriosam assumenda excepturi id
@@ -18,12 +18,10 @@ function Legals() {
           aspernatur sint distinctio esse quaerat quis in itaqe. Nam ad oloribus voluptatem impedit.
         </p>
       </section>
-      <section>
-        <div>
-          <h1>Nos partenaires</h1>
-          <a href="">lien 1</a>
-          <a href="">lien 2</a>
-        </div>
+      <section className="partners">
+        <h1 className="partners__title">Nos partenaires</h1>
+        <a href="">lien 1</a>
+        <a href="">lien 2</a>
       </section>
     </>
   );
