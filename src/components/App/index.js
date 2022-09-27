@@ -1,12 +1,23 @@
+
 // == Import
 import Contact from 'src/components/Contact/Contact';
-import './styles.css';
+import Navbar from 'src/components/Navbar/Navbar';
+import Filters from '../Filters/Filters';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Login from '../Login/Login';
+import './styles.scss';
 
-// == Composant
+// Component :
 function App() {
   return (
     <div className="app">
+      <Header />
+      <Login />
+      <Navbar />
+      <Filters />
       <Contact />
+      <Footer />
     </div>
   );
 }
