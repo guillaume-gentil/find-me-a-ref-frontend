@@ -43,6 +43,8 @@
       background-color: rgba($color: black, $alpha: 0.3);
       border-radius: 0.35rem;
       box-shadow: 1px 1px 5px black;
+      z-index: 0;
+      top: auto;
       &.open{
         border-bottom: initial;
         height: initial;
