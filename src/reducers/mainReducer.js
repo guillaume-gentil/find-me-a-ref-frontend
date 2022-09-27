@@ -1,6 +1,7 @@
 const initialState = {
   isMobile: false,
   isLoginOpen: false,
+  isRegistration: false,
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -15,6 +16,12 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLoginOpen: !state.isLoginOpen,
+      };
+
+    case 'CHANGE_TO_REGISTRATION':
+      return {
+        ...state,
+        isRegistration: true,
       };
 
     default:
