@@ -1,4 +1,7 @@
 const initialState = {
+  isMobile: false,
+  isLoginOpen: false,
+  isRegistration: false,
   isNavOpen: false,
 };
 
@@ -8,6 +11,23 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isNavOpen: !state.isNavOpen,
+      };
+    case 'TOGGLE_MOBILE':
+      return {
+        ...state,
+        isMobile: action.mobile,
+      };
+
+    case 'TOGGLE_LOGIN_BUTTON':
+      return {
+        ...state,
+        isLoginOpen: !state.isLoginOpen,
+      };
+
+    case 'CHANGE_TO_REGISTRATION':
+      return {
+        ...state,
+        isRegistration: true,
       };
     default:
       return state;

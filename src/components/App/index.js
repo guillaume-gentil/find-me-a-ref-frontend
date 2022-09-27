@@ -3,6 +3,7 @@ import Navbar from 'src/components/Navbar/Navbar';
 import Filters from '../Filters/Filters';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Login from '../Login/Login';
 import './styles.scss';
 
 // Component :
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className="app">
       <Header />
+      <Login />
       <Navbar />
       <Filters />
       <Footer />
