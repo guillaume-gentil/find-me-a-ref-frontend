@@ -1,13 +1,12 @@
 // == Import
-import reactLogo from './react-logo.svg';
+import Contact from 'src/components/Contact/Contact';
 import './styles.css';
 
 // == Composant
 function App() {
   return (
     <div className="app">
-      <img src={reactLogo} alt="react logo" />
-      <h1>Composant : App</h1>
+      <Contact />
     </div>
   );
 }

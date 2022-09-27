@@ -1,23 +1,27 @@
 // import :
 import './styles.scss';
+import Arnaud from 'src/assets/img/Arnaud.jpg';
+import Guillaume from 'src/assets/img/Guillaume.jpg';
+import Loic from 'src/assets/img/Loic.jpg';
+import Tomas from 'src/assets/img/Tomas.jpg';
 
 // component :
 function Contact() {
   return (
-    <section>
-      <div>
-        <h1>Contact</h1>
+    <section className="contact">
+      <div className="contact__main">
+        <h1 className="contact__title">Contact</h1>
         <p>En cas de problème, merci de bien vouloir contacter l'administrateur du site :
           Administrateur.du.site@lesite.fr
         </p>
       </div>
-      <div>
-        <h1>Notre Equipe :</h1>
+      <div className="contact__team">
+        <h1 className="contact__title">Notre Equipe :</h1>
         <ul>
-          <li>Product Owner : Arnaud J</li>
-          <li>Scrum Master : Loïc G</li>
-          <li>Tech-Lead Back et GitMaster : Guillaume G</li>
-          <li>Tech-Lead Front : Tomas C</li>
+          <li>Product Owner <br /><strong>Arnaud J</strong> <img src={Arnaud} alt="Arnaud" className="contact__img" /></li>
+          <li>Scrum Master <br /><strong>Loïc G</strong> <img src={Loic} alt="Loic" className="contact__img" /></li>
+          <li>Tech-Lead Back et GitMaster <br /><strong>Guillaume G</strong> <img src={Guillaume} alt="Guillaume" className="contact__img" /></li>
+          <li>Tech-Lead Front <br /><strong>Tomas C</strong> <img src={Tomas} alt="Tomas" className="contact__img" /></li>
         </ul>
       </div>
     </section>
