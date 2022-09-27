@@ -1,4 +1,6 @@
-// import :
+
+// == Import
+import Contact from 'src/components/Contact/Contact';
 import Navbar from 'src/components/Navbar/Navbar';
 import Filters from '../Filters/Filters';
 import Header from '../Header/Header';
@@ -14,6 +16,7 @@ function App() {
       <Login />
       <Navbar />
       <Filters />
+      <Contact />
       <Footer />
     </div>
   );
