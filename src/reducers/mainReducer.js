@@ -2,10 +2,16 @@ const initialState = {
   isMobile: false,
   isLoginOpen: false,
   isRegistration: false,
+  isNavOpen: false,
 };
 
 const mainReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case 'OPEN_NAVBAR':
+      return {
+        ...state,
+        isNavOpen: !state.isNavOpen,
+      };
     case 'TOGGLE_MOBILE':
       return {
         ...state,
@@ -23,7 +29,6 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         isRegistration: true,
       };
-
     default:
       return state;
   }
