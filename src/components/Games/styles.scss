@@ -8,6 +8,7 @@
   background-color: #344141;
   text-align: center;
   font-size: large;
+  border: solid 1px white;
 
   // position :
   display: flex;
@@ -26,12 +27,32 @@
 }
 
 // component Game
+.noregistered{
+  // appearance
+  color: rgb(255, 0, 0);
+  border: 2px solid rgb(255, 0, 0);
+
+}
+.oneregistered{
+  // appearance
+  color: rgb(255, 123, 0);
+  border: 2px solid  rgb(255, 123, 0);
+}
+.fullregistered{
+  // appearance
+  color: rgb(0, 255, 0);
+  border: 2px solid rgb(0, 255, 0);
+
+  .game__registering{
+    display: none;
+  }
+
+}
 .game{
   font-family: 'Saira', sans-serif;
   padding: 10px;
   margin: 15px;
   background-color: black;
-  border: 2px solid rgb(0, 255, 0);
   text-align: left;
 
   // position :
@@ -39,34 +60,18 @@
 
   &__item{
     margin: 10px;
+    color: white;
   }
-  &__noregistered{
+  &__counter{
     // appearance
     font-family: 'Black Ops One', cursive;
-    color: rgb(255, 0, 0);
     // Position :
     position: absolute;
     bottom: 25px;
     right: 20px;
+
   }
-  &__oneregistered{
-    // appearance
-    font-family: 'Black Ops One', cursive;
-    color: rgb(255, 123, 0);
-    // Position :
-    position: absolute;
-    bottom: 25px;
-    right: 20px;
-  }
-  &__fullregistered{
-    // appearance
-    font-family: 'Black Ops One', cursive;
-    color: rgb(0, 255, 0);
-    // Position :
-    position: absolute;
-    bottom: 25px;
-    right: 20px;
-  }
+
   &__registering{
     // appearance :
     width: 10rem;
@@ -77,6 +82,7 @@
     right: -33px;
   }
 }
+
 h2{
   font-size: larger;
   font-family: 'Black Ops One', cursive;
