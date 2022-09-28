@@ -1,11 +1,12 @@
 // import :
+import { Link } from 'react-router-dom';
 import '../styles.scss';
 import registering from 'src/assets/img/registering.png';
 
 // component :
 function Game() {
   let gameState = 'game';
-  const gameReferee = 2;
+  const gameReferee = 1;
 
   const gamecolorOne = ' noregistered';
   const gameColorTwo = ' oneregistered';
@@ -27,7 +28,7 @@ function Game() {
       <p className="game__item">Gymnase du coin de la rue</p>
       <p className="game__item">categorie : U12</p>
       <p className="game__counter">{gameReferee}/2</p>
-      <a href=""><img className="game__registering" src={registering} alt="registering button" /></a>
+      <Link to="/engagement"><img className="game__registering" src={registering} alt="registering button" /></Link>
     </section>
   );
 }

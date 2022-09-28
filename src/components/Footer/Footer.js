@@ -1,4 +1,5 @@
 // imports :
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 // component :
@@ -6,9 +7,9 @@ import './styles.scss';
 function Footer() {
   return (
     <section className="footer">
-      <a className="footer__link" href="">Informations</a>
-      <a className="footer__link" href="">Contact</a>
-      <p className="footer__copyright">Copytight Studio Cacahouète &#xA9;</p>
+      <Link className="footer__link" to="/mentions-legales">Informations</Link>
+      <Link className="footer__link" to="/contact">Contact</Link>
+      <p className="footer__copyright">Copyright Studio Cacahouète &#xA9;</p>
     </section>
   );
 }
