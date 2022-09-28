@@ -9,7 +9,7 @@ function Navbar() {
   const dispatch = useDispatch();
   const isNavOpen = useSelector((state) => state.isNavOpen);
   return (
-    <nav className="navbar">
+    <nav className="navbar topPartHeader__menu">
       <button type="button" className="navbar__button" onClick={() => dispatch(openNavbar())}>
         <Menu size={40} />
       </button>

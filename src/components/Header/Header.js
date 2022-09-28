@@ -1,4 +1,5 @@
 // import :
+import Navbar from 'src/components/Navbar/Navbar';
 import './styles.scss';
 import whiteLogo from '../../assets/img/logo-ffrs-blanc.png';
 
@@ -13,8 +14,7 @@ function Header() {
         <h2>Solution d'arbitrage</h2>
       </div>
       <div className="topPartHeader__buttons">
-        <button className="topPartHeader__menu">Menu</button>
-        <button className="topPartHeader__login">Connexion</button>
+        <Navbar />
       </div>
       <img className="topPartHeader__ffLogo" src={whiteLogo} alt="" />
     </section>
