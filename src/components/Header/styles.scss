@@ -14,7 +14,8 @@
 
   &__headerTitle{
     // appearance :
-    background-color: rgba(0,0,0,.3); ;
+    background-color: rgba($color: black, $alpha: 0.2);
+    border: solid 1px grey;
     width: 100%;
     padding: 0.5rem;
   }
@@ -63,13 +64,7 @@
       // position : 
       position: absolute;
       bottom: 0;
-      left: 2rem;
-    }
-    &__login{
-      // position :
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
+      left: 0;
     }
     h1{
       font-size: 4rem;
@@ -80,8 +75,7 @@
     &__ffLogo{
       // appearance :
       width: 15rem;
-      bottom: 50%;
-      transform: translateY(50%);
+      top:0;
     }
   }
 }

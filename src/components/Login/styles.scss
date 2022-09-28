@@ -2,10 +2,9 @@
   
   background-color: rgba($color: white, $alpha: 0.2);
   border: 1px solid #888;
-  border-radius: 0.2rem;
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 5px;
   padding: 1rem;
   box-sizing: border-box;
     
@@ -13,7 +12,7 @@
     background-color: black;
     border: solid 4px white;
     color: white;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-family: "Black Ops One", cursive;
   }
 
@@ -26,7 +25,7 @@
   &__label{
     display: flex;
     flex-direction: column;
-    margin: 0.4rem;
+    margin: 0.4rem 0;
     &>input{
       border-radius: 0.2rem;
       border: 0;
@@ -36,7 +35,7 @@
   }
 
   &__submit, &__signup{
-    margin: 0.4rem;
+    margin: 0.4rem 0;
     border: 0;
     border-radius: 0.2rem;
     padding: 0.3rem;
@@ -56,20 +55,25 @@
 @media screen and (min-width: 768px) {
   .login{
     background-color: initial;
+    height : 416px;
     border: 0;
     margin: 0 auto;
+    padding: 0;
+    justify-content:space-evenly;
     &__section{
-      border-radius: 0.2rem;
       display: flex;
       flex-direction: column;
-      margin: 1rem;
+      margin: 0rem;
       padding: 1rem;
       box-sizing: border-box;
       &.open{
-        max-width: 250px;
-        background-color: rgba($color: white, $alpha: 0.2);
+        max-width: 216px;
+        background-color:rgba($color: white, $alpha: 0.2);
         border: 1px solid #888;
+      }
     }
-    }
+  }
+  .absolute{
+    top:100px;
   }
 }

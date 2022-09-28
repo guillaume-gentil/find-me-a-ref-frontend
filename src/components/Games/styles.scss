@@ -3,16 +3,18 @@
   // appearance :
   font-family: 'Saira', sans-serif;
   color: white;
-  padding: 30px;
+  padding: 5px;
   margin: 5px;
-  background-color: #344141;
+  background-color: rgba($color: white, $alpha: 0.2);
+//  background-color: #344141;
   text-align: center;
   font-size: large;
-  border: solid 1px white;
+  border: 1px solid #888;
 
   // position :
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   &__more{
     background-color: #666F6F;
@@ -50,7 +52,7 @@
 }
 .game{
   font-family: 'Saira', sans-serif;
-  padding: 10px;
+  padding: 5px;
   margin: 15px;
   background-color: black;
   text-align: left;
@@ -91,10 +93,14 @@ h2{
 
 @media screen and (min-width:768px){
   .games{
+    margin: 1rem 0px;
+    margin-right:1rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    max-width: 1000px;
+    max-width: calc(100% - 237px);
+    max-height: 460px;
+    overflow-y: auto;
 
     &__text{
       display: none;
