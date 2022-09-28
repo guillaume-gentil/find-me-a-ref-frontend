@@ -1,7 +1,15 @@
 // import :
 import { useEffect } from 'react';
+import { Cpu } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMobile, toggleLoginButton, changeToRegistration } from '../../actions/login';
+import {
+  toggleMobile,
+  toggleLoginButton,
+  changeToRegistration,
+  changeUsernameInput,
+  changePasswordInput,
+  sendAuthCredentials,
+} from '../../actions/login';
 import './styles.scss';
 
 // component :
@@ -35,6 +43,15 @@ function Login() {
   }
   else {
     classSection += ' absolute';
+  }
+
+  function handleLoginSubmit(e) {
+    e.preventDefault();
+    const usernameValue = e.target.querySelector('#email').value;
+    const passValue = e.target.querySelector('#password').value;
+    const logObject = { username: usernameValue, password: passValue };
+    console.log(logObject);
+    dispatch(sendAuthCredentials(logObject));
   }
 
   return (
@@ -75,14 +92,14 @@ function Login() {
       )}
       {isLoginOpen && !isRegistration && (
       <section className="login">
-        <form action="" className="login__form">
+        <form action="" method="POST" className="login__form" onSubmit={handleLoginSubmit}>
           <label htmlFor="email" className="login__label">Adresse Mail
-            <input type="email" id="email" name="email" autoComplete="username" />
+            <input type="email" id="email" name="email" autoComplete="username" onChange={(e) => dispatch(changeUsernameInput(e.target.value))} />
           </label>
           <label htmlFor="password" className="login__label">Mot de passe
-            <input type="password" id="password" name="password" autoComplete="current-password" />
+            <input type="password" id="password" name="password" autoComplete="current-password" onChange={(e) => dispatch(changePasswordInput(e.target.value))} />
           </label>
-          <button type="button" className="login__submit">Se connecter</button>
+          <button type="submit" className="login__submit">Se connecter</button>
         </form>
         <button
           type="button"

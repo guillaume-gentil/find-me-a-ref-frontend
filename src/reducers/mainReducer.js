@@ -3,6 +3,9 @@ const initialState = {
   isLoginOpen: false,
   isRegistration: false,
   isNavOpen: false,
+  loginInputMail: '',
+  loginInputPass: '',
+  jwtToken: '',
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -30,6 +33,25 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         isRegistration: true,
       };
+
+    case 'CHANGE_USERNAME_INPUT':
+      return {
+        ...state,
+        loginInputMail: action.newInput,
+      };
+
+    case 'CHANGE_PASS_INPUT':
+      return {
+        ...state,
+        loginInputPass: action.newInput,
+      };
+
+    case 'SAVE_JWT_TOKEN':
+      return {
+        ...state,
+        jwtToken: action.token,
+      };
+
     default:
       return state;
   }
