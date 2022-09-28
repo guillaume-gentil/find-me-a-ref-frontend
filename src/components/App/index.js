@@ -2,6 +2,7 @@
 import Games from 'src/components/Games/Games';
 import Contact from 'src/components/Contact/Contact';
 import Navbar from 'src/components/Navbar/Navbar';
+import Commitment from 'src/components/Commitment/Commitment';
 import Filters from '../Filters/Filters';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -16,6 +17,7 @@ function App() {
       <Header />
       <Login />
       <Navbar />
+      <Commitment />
       <Filters />
       <Contact />
       <Footer />
