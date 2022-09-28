@@ -99,6 +99,8 @@ h2{
     flex-wrap: wrap;
     flex-direction: row;
     max-width: calc(100% - 237px);
+    max-height: 460px;
+    overflow-y: auto;
 
     &__text{
       display: none;

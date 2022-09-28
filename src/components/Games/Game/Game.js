@@ -5,7 +5,7 @@ import registering from 'src/assets/img/registering.png';
 // component :
 function Game() {
   let gameState = 'game';
-  const gameReferee = 0;
+  const gameReferee = 2;
 
   const gamecolorOne = ' noregistered';
   const gameColorTwo = ' oneregistered';

@@ -1,4 +1,6 @@
 // == Import
+import { useSelector } from 'react-redux';
+
 import Games from 'src/components/Games/Games';
 import Contact from 'src/components/Contact/Contact';
 import Commitment from 'src/components/Commitment/Commitment';
@@ -11,11 +13,12 @@ import './styles.scss';
 
 // Component :
 function App() {
+  const hideFilters = useSelector((state) => state.isLoginOpen);
   return (
     <div className="app">
       <Header />
+      {!hideFilters && (<Filters />)}
       <Login />
-      <Filters />
       <Games />
       <Footer />
     </div>
