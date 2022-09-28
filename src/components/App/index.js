@@ -1,5 +1,6 @@
 // == Import
 import { useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 
 import Games from 'src/components/Games/Games';
 import Contact from 'src/components/Contact/Contact';
@@ -17,9 +18,38 @@ function App() {
   return (
     <div className="app">
       <Header />
-      {!hideFilters && (<Filters />)}
+      <Routes>
+        <Route
+          path="/"
+          element={hideFilters ? (
+            <Games />
+          ) : (
+            <>
+              <Filters />
+              <Games />
+            </>
+          )}
+        />
+        <Route
+          path="/contact"
+          element={
+            <Contact />
+            }
+        />
+        <Route
+          path="/mentions-legales"
+          element={
+            <Legals />
+          }
+        />
+        <Route
+          path="/engagement"
+          element={
+            <Commitment />
+          }
+        />
+      </Routes>
       <Login />
-      <Games />
       <Footer />
     </div>
   );
