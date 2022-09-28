@@ -26,6 +26,7 @@
     padding: 1rem;
     .vs{
       font-size: 3rem;
+      padding: 0.5rem;
     }
   }
   &__address{
@@ -68,12 +69,33 @@
 }
 @media screen and (min-width: 768px) {
   .commitment{
+    &>*{
+      padding-top: 2rem;
+    }
     &__wrapper{
       position: relative;
       display: flex;
     }
     &__teams{
       flex-direction: row;
+      .vs{
+        padding: 0 0.5rem;
+      }
+    }
+    &__game-specs{
+      justify-content: flex-start;
+      &>*{
+        padding: 0 3rem;
+      }
+    }
+    &__ref-section{
+      padding-top: 5rem;
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
+    &__button{
+      margin-left: 20rem;
     }
   }
   .map__container{
@@ -81,5 +103,6 @@
     left: 50%;
     padding-left: 1rem;
     width: 45%;
+    height: 25rem;
   }
 }
