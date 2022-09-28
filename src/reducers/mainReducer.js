@@ -22,6 +22,7 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLoginOpen: !state.isLoginOpen,
+        isRegistration: false,
       };
 
     case 'CHANGE_TO_REGISTRATION':
