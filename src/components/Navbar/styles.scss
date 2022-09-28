@@ -7,7 +7,7 @@
     width: fit-content;
     border: 1px solid white;
     border-radius: 0.15rem;
-    background-color: rgba($color: white, $alpha: 0.3);
+    background-color: rgba($color: black, $alpha: 0.2);
     color: white;
   }
 
@@ -44,9 +44,8 @@
       flex-direction: row;
       height: initial;
       width: initial;
-      background-color: rgba($color: black, $alpha: 0.3);
-      border-radius: 0.35rem;
-      box-shadow: 1px 1px 5px black;
+      background-color:rgba($color: black, $alpha: 0.2);
+      border: 1px solid #888;
       z-index: 0;
       top: auto;
       &.open{
