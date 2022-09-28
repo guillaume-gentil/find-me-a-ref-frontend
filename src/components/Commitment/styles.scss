@@ -1,0 +1,108 @@
+.map__container{
+  width: 100%;
+  height: 30rem;
+  box-shadow:
+  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.056),
+  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.081),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.1),
+  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.119),
+  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.144),
+  100px 100px 80px rgba(0, 0, 0, 0.2)
+  ;
+}
+
+#map { height: 100% ; width: 100%;}
+
+.commitment{
+  margin-bottom: 5rem;
+  &__date{
+    font-size: 3rem;
+  }
+  &__teams{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    padding: 1rem;
+    .vs{
+      font-size: 3rem;
+      padding: 0.5rem;
+    }
+  }
+  &__address{
+    padding: 1rem 0;
+  }
+  &__game-specs{
+    display: flex;
+    justify-content: space-around;
+  }
+  &__contact{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    strong{
+      padding:0.2rem 1rem;
+    }
+  }
+  &__ref-section{
+    p{
+      padding: 0.5rem 0;
+    }
+  }
+  &__button{
+    border: 0;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+    margin: 1rem;
+  }
+  &__wrapper{
+    font-family: 'Saira', sans-serif;
+    color: white;
+    padding: 30px;
+    margin: 5px;
+    background-color: #344141;
+    font-size: large;
+    border: solid 1px white;
+    margin: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .commitment{
+    &>*{
+      padding-top: 2rem;
+    }
+    &__wrapper{
+      position: relative;
+      display: flex;
+    }
+    &__teams{
+      flex-direction: row;
+      .vs{
+        padding: 0 0.5rem;
+      }
+    }
+    &__game-specs{
+      justify-content: flex-start;
+      &>*{
+        padding: 0 3rem;
+      }
+    }
+    &__ref-section{
+      padding-top: 5rem;
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
+    &__button{
+      margin-left: 20rem;
+    }
+  }
+  .map__container{
+    position: absolute;
+    left: 50%;
+    padding-left: 1rem;
+    width: 45%;
+    height: 25rem;
+  }
+}

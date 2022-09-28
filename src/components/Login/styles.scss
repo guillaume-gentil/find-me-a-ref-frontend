@@ -1,0 +1,75 @@
+.login{
+  
+  background-color: rgba($color: white, $alpha: 0.2);
+  border: 1px solid #888;
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+    
+  &__button{
+    background-color: black;
+    border: solid 4px white;
+    color: white;
+    font-size: 2.2rem;
+    font-family: "Black Ops One", cursive;
+  }
+
+  &__form{
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+
+  &__label{
+    display: flex;
+    flex-direction: column;
+    margin: 0.4rem;
+    &>input{
+      border-radius: 0.2rem;
+      border: 0;
+      box-shadow: 1px 1px 3px rgb(65, 65, 65);
+      padding: 0.3rem;
+    }
+  }
+
+  &__submit, &__signup{
+    margin: 0.4rem;
+    border: 0;
+    border-radius: 0.2rem;
+    padding: 0.3rem;
+  }
+
+  &__forgot{
+    color: white;
+    text-decoration: underline;
+  }
+}
+.absolute{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .login{
+    background-color: initial;
+    border: 0;
+    margin: 0 auto;
+    &__section{
+      border-radius: 0.2rem;
+      display: flex;
+      flex-direction: column;
+      margin: 1rem;
+      padding: 1rem;
+      box-sizing: border-box;
+      &.open{
+        max-width: 250px;
+        background-color: rgba($color: white, $alpha: 0.2);
+        border: 1px solid #888;
+    }
+    }
+  }
+}
