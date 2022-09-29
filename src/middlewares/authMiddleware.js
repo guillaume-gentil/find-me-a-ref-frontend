@@ -7,10 +7,8 @@ const authMiddleware = (store) => (next) => (action) => {
       axios.post('http://localhost/React/01-find-me-a-ref-back/public/api/v1/login_check', action.credentials)
         .then((response) => {
           // TODO : replace this value by api json web token
-          console.log(response);
-          const token = 'fake_token';
+          const { token } = response.data;
           store.dispatch(saveJwtToken(token));
-          sessionStorage.setItem('jwtToken', token);
         })
         .catch((error) => {
           console.log(error);

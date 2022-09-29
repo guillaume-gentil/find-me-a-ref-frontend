@@ -1,6 +1,6 @@
 // == Import
 import { useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Games from 'src/components/Games/Games';
 import Contact from 'src/components/Contact/Contact';
@@ -15,6 +15,7 @@ import './styles.scss';
 // Component :
 function App() {
   const hideFilters = useSelector((state) => state.isLoginOpen);
+  const isLogged = useSelector((state) => state.isLogged);
   return (
     <div className="app">
       <Header />
@@ -45,7 +46,9 @@ function App() {
         <Route
           path="/engagement"
           element={
-            <Commitment />
+            isLogged
+              ? <Commitment />
+              : <Navigate to="/" replace /> // TODO create 404/403
           }
         />
       </Routes>

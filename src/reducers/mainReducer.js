@@ -3,6 +3,7 @@ const initialState = {
   isLoginOpen: false,
   isRegistration: false,
   isNavOpen: false,
+  isLogged: false,
   loginInputMail: '',
   loginInputPass: '',
   jwtToken: '',
@@ -47,9 +48,12 @@ const mainReducer = (state = initialState, action = {}) => {
       };
 
     case 'SAVE_JWT_TOKEN':
+      sessionStorage.setItem('jwtToken', action.token);
       return {
         ...state,
         jwtToken: action.token,
+        isLogged: true,
+        isLoginOpen: false,
       };
 
     default:

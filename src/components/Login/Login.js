@@ -1,6 +1,5 @@
 // import :
 import { useEffect } from 'react';
-import { Cpu } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleMobile,
@@ -35,6 +34,8 @@ function Login() {
   const mobile = useSelector((state) => state.isMobile);
   const isLoginOpen = useSelector((state) => state.isLoginOpen);
   const isRegistration = useSelector((state) => state.isRegistration);
+  const isLogged = useSelector((state) => state.isLogged);
+
   if (isLoginOpen) {
     classSection += ' open';
   }
@@ -50,9 +51,10 @@ function Login() {
     const usernameValue = e.target.querySelector('#email').value;
     const passValue = e.target.querySelector('#password').value;
     const logObject = { username: usernameValue, password: passValue };
-    console.log(logObject);
     dispatch(sendAuthCredentials(logObject));
   }
+
+  const textButton = isLogged ? 'Déconnexion' : 'Connexion';
 
   return (
     <div className={classSection}>
@@ -60,9 +62,14 @@ function Login() {
         type="button"
         className={classButton}
         onClick={() => {
-          dispatch(toggleLoginButton());
+          if (!isLogged) {
+            dispatch(toggleLoginButton());
+          }
+          else {
+            console.log('déco');
+          }
         }}
-      >Connexion
+      >{textButton}
       </button>
       {isLoginOpen
       && isRegistration && (
