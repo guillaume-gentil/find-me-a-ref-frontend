@@ -29,7 +29,7 @@ function App() {
     // dispatching the action :
     dispatch(fetchGames());
   }, []);
-
+  // verify user token :
   useEffect(() => {
     const token = sessionStorage.getItem('jwtToken');
     try {
