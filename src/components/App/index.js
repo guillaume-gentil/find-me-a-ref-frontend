@@ -1,4 +1,6 @@
 // == Import
+
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 // eslint-disable-next-line camelcase
@@ -17,10 +19,11 @@ import Legals from '../Legals/Legals';
 import './styles.scss';
 import { removeLoading } from '../../actions/ui_actions';
 
+// import actions :
+import { fetchGames } from '../../actions/games';
+
 // Component :
 function App() {
-  const dispatch = useDispatch();
-
   useEffect(() => {
     const token = sessionStorage.getItem('jwtToken');
     try {
@@ -38,8 +41,18 @@ function App() {
   }, []);
 
   const isLoading = useSelector((state) => state.isLoading);
-  const hideFilters = useSelector((state) => state.isLoginOpen);
   const isLogged = useSelector((state) => state.isLogged);
+  
+  // allow the filters to hide when login/registration is open :
+  const hideFilters = useSelector((state) => state.isLoginOpen);
+
+  // fetch games from api :
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // dispatching the action :
+    dispatch(fetchGames());
+  }, []);
+
 
   return (
     <div className="app">

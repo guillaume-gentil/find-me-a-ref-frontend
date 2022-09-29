@@ -8,6 +8,8 @@ const initialState = {
   loginInputMail: '',
   loginInputPass: '',
   jwtToken: '',
+  isGamesLoaded: false,
+  games: [],
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -69,6 +71,13 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLoading: false,
+
+      // saving games from API :
+    case 'SAVE_GAMES':
+      return {
+        ...state,
+        isGamesLoaded: true,
+        games: action.games,
       };
 
     default:

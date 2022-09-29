@@ -1,23 +1,21 @@
 // imports :
+import { useSelector } from 'react-redux';
 import './styles.scss';
 import Game from './Game/Game';
 
 // component :
 function Games() {
+  // const isGamesLoaded = useSelector((state) => state.isGamesLoaded);
+
+  const games = useSelector((state) => state.games);
+  console.log(games);
+
   return (
     <section className="games">
       <p className="games__text">Les prochains matchs :</p>
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-      <Game />
+      {games.map(
+        (game) => <Game key={game.id} {...game} />,
+      )}
       <button type="button" className="games__more"> Voir plus</button>
     </section>
   );
