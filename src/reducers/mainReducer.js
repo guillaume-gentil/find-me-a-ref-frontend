@@ -3,109 +3,13 @@ const initialState = {
   isLoginOpen: false,
   isRegistration: false,
   isNavOpen: false,
-  games: [
-    {
-      id: '1',
-      date: '2022-10-11T07:48:34+02:00',
-      arena: {
-        id: '14',
-        name: 'Lopez',
-        address: '127, rue Pottier\n17 607 Michaud',
-        zipCode: 64399,
-      },
-      type: {
-        id: '4',
-        name: 'demi finale',
-      },
-      teams: [
-        {
-          id: '1',
-          name: 'Les Alligators N3',
-          club: {
-            name: 'Les Alligators',
-          },
-          category: {
-            id: '6',
-            name: 'N3',
-          },
-        },
-        {
-          id: '11',
-          name: 'Krokos U9',
-          club: {
-            name: 'Krokos',
-          },
-          category: {
-            id: '3',
-            name: 'U9',
-          },
-        },
-      ],
-      users: [
-        {
-          id: '11',
-          firstname: 'Alexandrie',
-          lastname: 'Gillet',
-          email: 'salmo.raymond@club-internet.fr',
-          level: 'D3',
-        },
-        {
-          id: '12',
-          firstname: 'Alexandrie',
-          lastname: 'Gillet',
-          email: 'salon.raymond@club-internet.fr',
-          level: 'D3',
-        },
-      ],
-    },
-    {
-      id: '2',
-      date: '2022-10-23T03:28:57+02:00',
-      arena: {
-        id: 1,
-        name: 'Guillon',
-        address: '3, chemin Morel\n84534 Verdier',
-        zipCode: 27309,
-      },
-      type: {
-        id: '1',
-        name: 'quart de finale',
-      },
-      teams: [
-        {
-          id: '1',
-          name: 'Les Alligators N3',
-          club: {
-            name: 'Les Alligators',
-          },
-          category: {
-            id: '6',
-            name: 'N3',
-          },
-        },
-        {
-          id: '8',
-          name: "Les Yeti's U17",
-          club: {
-            name: "Les Yeti's",
-          },
-          category: {
-            id: '4',
-            name: 'U17',
-          },
-        },
-      ],
-      users: [
-        {
-          id: '11',
-          firstname: 'Alexandrie',
-          lastname: 'Gillet',
-          email: 'salmon.raymond@club-internet.fr',
-          level: 'D3',
-        },
-      ],
-    },
-  ],
+  isLoading: true,
+  isLogged: false,
+  loginInputMail: '',
+  loginInputPass: '',
+  jwtToken: '',
+  isGamesLoaded: false,
+  games: [],
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -133,6 +37,49 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         isRegistration: true,
       };
+
+    case 'CHANGE_USERNAME_INPUT':
+      return {
+        ...state,
+        loginInputMail: action.newInput,
+      };
+
+    case 'CHANGE_PASS_INPUT':
+      return {
+        ...state,
+        loginInputPass: action.newInput,
+      };
+
+    case 'SAVE_JWT_TOKEN':
+      sessionStorage.setItem('jwtToken', action.token);
+      return {
+        ...state,
+        jwtToken: action.token,
+        isLogged: true,
+        isLoginOpen: false,
+      };
+
+    case 'DISCONNECT_USER':
+      sessionStorage.removeItem('jwtToken');
+      return {
+        ...state,
+        jwtToken: '',
+        isLogged: false,
+      };
+
+    case 'REMOVE_LOADING':
+      return {
+        ...state,
+        isLoading: false,
+
+      // saving games from API :
+    case 'SAVE_GAMES':
+      return {
+        ...state,
+        isGamesLoaded: true,
+        games: action.games,
+      };
+
     default:
       return state;
   }
