@@ -3,6 +3,8 @@ const initialState = {
   isLoginOpen: false,
   isRegistration: false,
   isNavOpen: false,
+  isGamesLoaded: false,
+  games: [],
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -30,6 +32,15 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         isRegistration: true,
       };
+
+      // saving games from API :
+    case 'SAVE_GAMES':
+      return {
+        ...state,
+        isGamesLoaded: true,
+        games: action.games,
+      };
+
     default:
       return state;
   }
