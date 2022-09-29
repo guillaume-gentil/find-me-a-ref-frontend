@@ -1,23 +1,48 @@
 // == Import
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
+// eslint-disable-next-line camelcase
+import jwt_decode from 'jwt-decode';
 
 import Games from 'src/components/Games/Games';
 import Contact from 'src/components/Contact/Contact';
 import Commitment from 'src/components/Commitment/Commitment';
+import { useEffect } from 'react';
+import { saveJwtToken } from '../../actions/login';
 import Filters from '../Filters/Filters';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
 import Legals from '../Legals/Legals';
 import './styles.scss';
+import { removeLoading } from '../../actions/ui_actions';
 
 // import actions :
 import { fetchGames } from '../../actions/games';
 
 // Component :
 function App() {
+  useEffect(() => {
+    const token = sessionStorage.getItem('jwtToken');
+    try {
+      const decoded = jwt_decode(token);
+      if (decoded.exp * 1000 > Date.now()) {
+        dispatch(saveJwtToken(token));
+      }
+    }
+    catch {
+      sessionStorage.removeItem('jwtToken');
+    }
+    finally {
+      dispatch(removeLoading());
+    }
+  }, []);
+
+  const isLoading = useSelector((state) => state.isLoading);
+  const isLogged = useSelector((state) => state.isLogged);
+  
   // allow the filters to hide when login/registration is open :
   const hideFilters = useSelector((state) => state.isLoginOpen);
 
@@ -28,43 +53,51 @@ function App() {
     dispatch(fetchGames());
   }, []);
 
+
   return (
     <div className="app">
       <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={hideFilters ? (
-            <Games />
-          ) : (
-            <>
-              <Filters />
+      {!isLoading && (
+      <>
+        <Routes>
+          <Route
+            path="/"
+            element={hideFilters ? (
               <Games />
-            </>
-          )}
-        />
-        <Route
-          path="/contact"
-          element={
-            <Contact />
-            }
-        />
-        <Route
-          path="/mentions-legales"
-          element={
-            <Legals />
+            ) : (
+              <>
+                <Filters />
+                <Games />
+              </>
+            )}
+          />
+          <Route
+            path="/contact"
+            element={
+              <Contact />
           }
-        />
-        <Route
-          path="/engagement"
-          element={
-            <Commitment />
+          />
+          <Route
+            path="/mentions-legales"
+            element={
+              <Legals />
           }
-        />
-      </Routes>
-      <Login />
-      <Footer />
+          />
+          <Route
+            path="/engagement"
+            element={
+            isLogged
+              ? <Commitment />
+              : <Navigate to="/" replace /> // TODO create 404/403
+          }
+          />
+        </Routes>
+        <Login />
+        <Footer />
+      </>
+      )}
     </div>
+
   );
 }
 

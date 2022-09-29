@@ -1,7 +1,15 @@
 // import :
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMobile, toggleLoginButton, changeToRegistration } from '../../actions/login';
+import {
+  toggleMobile,
+  toggleLoginButton,
+  changeToRegistration,
+  changeUsernameInput,
+  changePasswordInput,
+  sendAuthCredentials,
+  disconnectUser,
+} from '../../actions/login';
 import './styles.scss';
 
 // component :
@@ -27,6 +35,8 @@ function Login() {
   const mobile = useSelector((state) => state.isMobile);
   const isLoginOpen = useSelector((state) => state.isLoginOpen);
   const isRegistration = useSelector((state) => state.isRegistration);
+  const isLogged = useSelector((state) => state.isLogged);
+
   if (isLoginOpen) {
     classSection += ' open';
   }
@@ -37,20 +47,39 @@ function Login() {
     classSection += ' absolute';
   }
 
+  function handleLoginSubmit(e) {
+    e.preventDefault();
+    const usernameValue = e.target.querySelector('#email').value;
+    const passValue = e.target.querySelector('#password').value;
+    const logObject = { username: usernameValue, password: passValue };
+    dispatch(sendAuthCredentials(logObject));
+  }
+
+  function handleRegistrationSubmit(e) {
+    e.preventDefault();
+  }
+
+  const textButton = isLogged ? 'Déconnexion' : 'Connexion';
+
   return (
     <div className={classSection}>
       <button
         type="button"
         className={classButton}
         onClick={() => {
-          dispatch(toggleLoginButton());
+          if (!isLogged) {
+            dispatch(toggleLoginButton());
+          }
+          else {
+            dispatch(disconnectUser());
+          }
         }}
-      >Connexion
+      >{textButton}
       </button>
       {isLoginOpen
       && isRegistration && (
         <section className="login">
-          <form action="" method="POST" className="login__form">
+          <form action="" method="POST" className="login__form" onSubmit={handleRegistrationSubmit}>
             <label htmlFor="lastname" className="login__label">Nom
               <input type="text" id="name" placeholder="ex : Ateur" />
             </label>
@@ -75,14 +104,14 @@ function Login() {
       )}
       {isLoginOpen && !isRegistration && (
       <section className="login">
-        <form action="" className="login__form">
+        <form action="" method="POST" className="login__form" onSubmit={handleLoginSubmit}>
           <label htmlFor="email" className="login__label">Adresse Mail
-            <input type="email" id="email" name="email" autoComplete="username" />
+            <input type="email" id="email" name="email" autoComplete="username" onChange={(e) => dispatch(changeUsernameInput(e.target.value))} />
           </label>
           <label htmlFor="password" className="login__label">Mot de passe
-            <input type="password" id="password" name="password" autoComplete="current-password" />
+            <input type="password" id="password" name="password" autoComplete="current-password" onChange={(e) => dispatch(changePasswordInput(e.target.value))} />
           </label>
-          <button type="button" className="login__submit">Se connecter</button>
+          <button type="submit" className="login__submit">Se connecter</button>
         </form>
         <button
           type="button"

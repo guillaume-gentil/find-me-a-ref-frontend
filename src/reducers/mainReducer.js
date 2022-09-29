@@ -3,6 +3,11 @@ const initialState = {
   isLoginOpen: false,
   isRegistration: false,
   isNavOpen: false,
+  isLoading: true,
+  isLogged: false,
+  loginInputMail: '',
+  loginInputPass: '',
+  jwtToken: '',
   isGamesLoaded: false,
   games: [],
 };
@@ -32,6 +37,40 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         isRegistration: true,
       };
+
+    case 'CHANGE_USERNAME_INPUT':
+      return {
+        ...state,
+        loginInputMail: action.newInput,
+      };
+
+    case 'CHANGE_PASS_INPUT':
+      return {
+        ...state,
+        loginInputPass: action.newInput,
+      };
+
+    case 'SAVE_JWT_TOKEN':
+      sessionStorage.setItem('jwtToken', action.token);
+      return {
+        ...state,
+        jwtToken: action.token,
+        isLogged: true,
+        isLoginOpen: false,
+      };
+
+    case 'DISCONNECT_USER':
+      sessionStorage.removeItem('jwtToken');
+      return {
+        ...state,
+        jwtToken: '',
+        isLogged: false,
+      };
+
+    case 'REMOVE_LOADING':
+      return {
+        ...state,
+        isLoading: false,
 
       // saving games from API :
     case 'SAVE_GAMES':
