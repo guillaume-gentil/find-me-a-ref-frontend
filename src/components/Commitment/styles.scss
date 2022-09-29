@@ -61,9 +61,9 @@
     color: white;
     padding: 30px;
     margin: 5px;
-    background-color: #344141;
+    background-color:rgba($color: white, $alpha: 0.2);
+    border: 1px solid #888;
     font-size: large;
-    border: solid 1px white;
     margin: 1rem;
   }
 }
@@ -75,6 +75,9 @@
     &__wrapper{
       position: relative;
       display: flex;
+      max-width: calc(100% - 237px);
+      margin: 1rem 0px;
+      margin-right:1rem;
     }
     &__teams{
       flex-direction: row;
@@ -89,7 +92,7 @@
       }
     }
     &__ref-section{
-      padding-top: 5rem;
+      padding-top: 2.5rem;
       display: flex;
       width: 100%;
       justify-content: space-around;
@@ -100,7 +103,7 @@
   }
   .map__container{
     position: absolute;
-    left: 50%;
+    left: 75%;
     padding-left: 1rem;
     width: 45%;
     height: 25rem;
