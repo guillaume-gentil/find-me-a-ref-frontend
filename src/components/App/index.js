@@ -43,7 +43,7 @@ function App() {
           }
         />
         <Route
-          path="/engagement"
+          path="/engagement/:id"
           element={
             <Commitment />
           }

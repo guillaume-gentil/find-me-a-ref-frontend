@@ -17,25 +17,33 @@ import { TileLayer } from 'react-leaflet/TileLayer';
 import { Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './styles.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+import { findGame } from 'src/selectors/findGame';
 
 // component :
 function Commitment() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const game = useSelector((state) => findGame(state.games, id));
+
   return (
     <div className="commitment__wrapper">
       <section className="commitment">
-        <p className="commitment__date">DATE</p>
-        <h1 className="commitment__teams">EQUIPE 1 <span className="vs">VS</span> EQUIPE 2</h1>
-        <p className="commitment__address">Lieu : 5, rue des lilas, Casablanca</p>
+        <p className="commitment__date">{game.date}</p>
+        <h1 className="commitment__teams">{game.teams[0].name} <span className="vs">VS</span> {game.teams[1].name}</h1>
+        <p className="commitment__address">{game.arena.address}, {game.arena.zipCode}</p>
         <div className="commitment__game-specs">
-          <p className="commitment__category">Catégorie</p>
-          <p className="commitment__type">Type</p>
+          <p className="commitment__category">{game.teams[0].category.name}</p>
+          <p className="commitment__type">{game.type.name}</p>
         </div>
         <p className="commitment__contact">Contact du match : <strong>Jean LeChef : 06 01 02 03 04</strong></p>
         <div className="commitment__ref-section">
           <div>
-            <p className="commitment__counter">ARBITRES INSCRITS SUR CETTE RENCONTRE : 2/2</p>
-            <p className="commitment__ref">Roger Deschamps</p>
-            <p className="commitment__ref">Manuel Fiorini</p>
+            <p className="commitment__counter">ARBITRES INSCRITS SUR CETTE RENCONTRE : {game.users.length}/2</p>
+            { game.users.length > 0
+                && game.users.map((user) => <p className="commitment__ref" key={user.id}>{`${user.firstname} ${user.lastname}`}</p>)}
           </div>
           <button type="button" className="commitment__button">J'arbitre !</button>
         </div>

@@ -28,7 +28,7 @@ function Game() {
       <p className="game__item">Gymnase du coin de la rue</p>
       <p className="game__item">categorie : U12</p>
       <p className="game__counter">{gameReferee}/2</p>
-      <Link to="/engagement"><img className="game__registering" src={registering} alt="registering button" /></Link>
+      <Link to="/engagement/1"><img className="game__registering" src={registering} alt="registering button" /></Link>
     </section>
   );
 }
