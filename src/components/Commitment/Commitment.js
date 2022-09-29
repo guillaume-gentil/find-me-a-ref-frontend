@@ -45,7 +45,7 @@ function Commitment() {
             { game.users.length > 0
                 && game.users.map((user) => <p className="commitment__ref" key={user.id}>{`${user.firstname} ${user.lastname}`}</p>)}
           </div>
-          <button type="button" className="commitment__button">J'arbitre !</button>
+          { game.users.length < 2 && <button type="button" className="commitment__button">J'arbitre !</button>}
         </div>
       </section>
       <section className="map__container">

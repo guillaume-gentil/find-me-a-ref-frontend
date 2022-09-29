@@ -41,7 +41,22 @@ const initialState = {
           },
         },
       ],
-      users: [],
+      users: [
+        {
+          id: '11',
+          firstname: 'Alexandrie',
+          lastname: 'Gillet',
+          email: 'salmo.raymond@club-internet.fr',
+          level: 'D3',
+        },
+        {
+          id: '12',
+          firstname: 'Alexandrie',
+          lastname: 'Gillet',
+          email: 'salon.raymond@club-internet.fr',
+          level: 'D3',
+        },
+      ],
     },
     {
       id: '2',
