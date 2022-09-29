@@ -76,7 +76,7 @@ function App() {
             element={
               <Contact />
           }
-          />
+        />
           <Route
             path="/mentions-legales"
             element={
@@ -84,7 +84,7 @@ function App() {
           }
           />
           <Route
-            path="/engagement"
+            path="/engagement/:id"
             element={
             isLogged
               ? <Commitment />
