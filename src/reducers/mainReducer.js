@@ -71,7 +71,7 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLoading: false,
-
+      };
       // saving games from API :
     case 'SAVE_GAMES':
       return {
