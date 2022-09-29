@@ -21,12 +21,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { findGame } from 'src/selectors/findGame';
+import { addRefToGame } from '../../actions/commitment';
 
 // component :
 function Commitment() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const game = useSelector((state) => findGame(state.games, id));
+
+  function handleCommitButton() {
+    const gameId = game.id;
+    const userMail = findUserMail();
+    // Todo when token in state
+    // dispatch(addRefToGame());
+  }
 
   return (
     <div className="commitment__wrapper">
@@ -45,7 +53,7 @@ function Commitment() {
             { game.users.length > 0
                 && game.users.map((user) => <p className="commitment__ref" key={user.id}>{`${user.firstname} ${user.lastname}`}</p>)}
           </div>
-          { game.users.length < 2 && <button type="button" className="commitment__button">J'arbitre !</button>}
+          { game.users.length < 2 && <button type="button" className="commitment__button" onClick={handleCommitButton}>J'arbitre !</button>}
         </div>
       </section>
       <section className="map__container">
