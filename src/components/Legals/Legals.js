@@ -4,7 +4,7 @@ import './styles.scss';
 // component :
 function Legals() {
   return (
-    <>
+    <div className="informations">
       <section className="legals">
         <h1 className="legals__title">Mentions Légales</h1>
         <p>
@@ -23,7 +23,7 @@ function Legals() {
         <a href="">lien 1</a>
         <a href="">lien 2</a>
       </section>
-    </>
+    </div>
   );
 }
 
