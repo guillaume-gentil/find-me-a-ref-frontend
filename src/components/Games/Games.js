@@ -5,12 +5,10 @@ import Game from './Game/Game';
 
 // component :
 function Games() {
-  const isGamesLoaded = useSelector((state) => state.isGamesLoaded);
+  // const isGamesLoaded = useSelector((state) => state.isGamesLoaded);
 
   const games = useSelector((state) => state.games);
-  if (isGamesLoaded) {
-    console.log(games);
-  }
+  console.log(games);
 
   return (
     <section className="games">
