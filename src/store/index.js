@@ -9,6 +9,7 @@ const enhancers = composeWithDevTools(
   applyMiddleware(
     testMiddleware,
     authMiddleware,
+    gamesMiddleware,
   ),
 );
 

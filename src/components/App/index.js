@@ -1,29 +1,35 @@
-// == Import
-
+// Import
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 
+// Import components :
 import Games from 'src/components/Games/Games';
 import Contact from 'src/components/Contact/Contact';
 import Commitment from 'src/components/Commitment/Commitment';
-import { useEffect } from 'react';
-import { saveJwtToken } from '../../actions/login';
-import Filters from '../Filters/Filters';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Login from '../Login/Login';
-import Legals from '../Legals/Legals';
+import Filters from 'src/components/Filters/Filters';
+import Header from 'src/components/Header/Header';
+import Footer from 'src/components/Footer/Footer';
+import Login from 'src/components/Login/Login';
+import Legals from 'src/components/Legals/Legals';
 import './styles.scss';
-import { removeLoading } from '../../actions/ui_actions';
 
-// import actions :
+// Import actions :
 import { fetchGames } from '../../actions/games';
+import { removeLoading } from '../../actions/ui_actions';
+import { saveJwtToken } from '../../actions/login';
 
 // Component :
 function App() {
+  const dispatch = useDispatch();
+  // fetch games from api :
+  useEffect(() => {
+    // dispatching the action :
+    dispatch(fetchGames());
+  }, []);
+
   useEffect(() => {
     const token = sessionStorage.getItem('jwtToken');
     try {
@@ -40,19 +46,10 @@ function App() {
     }
   }, []);
 
+  // Allow the filters to hide when login/registration is open :
+  const hideFilters = useSelector((state) => state.isLoginOpen);
   const isLoading = useSelector((state) => state.isLoading);
   const isLogged = useSelector((state) => state.isLogged);
-  
-  // allow the filters to hide when login/registration is open :
-  const hideFilters = useSelector((state) => state.isLoginOpen);
-
-  // fetch games from api :
-  const dispatch = useDispatch();
-  useEffect(() => {
-    // dispatching the action :
-    dispatch(fetchGames());
-  }, []);
-
 
   return (
     <div className="app">
@@ -101,5 +98,5 @@ function App() {
   );
 }
 
-// == Export
+// Export
 export default App;
