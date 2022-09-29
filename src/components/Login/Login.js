@@ -8,6 +8,7 @@ import {
   changeUsernameInput,
   changePasswordInput,
   sendAuthCredentials,
+  disconnectUser,
 } from '../../actions/login';
 import './styles.scss';
 
@@ -54,6 +55,10 @@ function Login() {
     dispatch(sendAuthCredentials(logObject));
   }
 
+  function handleRegistrationSubmit(e) {
+    e.preventDefault();
+  }
+
   const textButton = isLogged ? 'Déconnexion' : 'Connexion';
 
   return (
@@ -66,7 +71,7 @@ function Login() {
             dispatch(toggleLoginButton());
           }
           else {
-            console.log('déco');
+            dispatch(disconnectUser());
           }
         }}
       >{textButton}
@@ -74,7 +79,7 @@ function Login() {
       {isLoginOpen
       && isRegistration && (
         <section className="login">
-          <form action="" method="POST" className="login__form">
+          <form action="" method="POST" className="login__form" onSubmit={handleRegistrationSubmit}>
             <label htmlFor="lastname" className="login__label">Nom
               <input type="text" id="name" placeholder="ex : Ateur" />
             </label>

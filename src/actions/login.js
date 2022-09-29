@@ -5,6 +5,7 @@ export const CHANGE_USERNAME_INPUT = 'CHANGE_USERNAME_INPUT';
 export const CHANGE_PASS_INPUT = 'CHANGE_PASS_INPUT';
 export const SEND_AUTH_CREDENTIALS = 'SEND_AUTH_CREDENTIALS';
 export const SAVE_JWT_TOKEN = 'SAVE_JWT_TOKEN';
+export const DISCONNECT_USER = 'DISCONNECT_USER';
 
 export const toggleMobile = (mobile) => ({
   type: 'TOGGLE_MOBILE',
@@ -31,4 +32,10 @@ export const sendAuthCredentials = (logObject) => ({
 export const saveJwtToken = (token) => ({
   type: 'SAVE_JWT_TOKEN',
   token: token,
+});
+export const disconnectUser = () => ({
+  type: 'DISCONNECT_USER',
+});
+export const checkLogState = () => ({
+  type: 'CHECK_LOG_STATE',
 });

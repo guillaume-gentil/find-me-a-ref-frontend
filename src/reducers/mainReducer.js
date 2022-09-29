@@ -3,6 +3,7 @@ const initialState = {
   isLoginOpen: false,
   isRegistration: false,
   isNavOpen: false,
+  isLoading: true,
   isLogged: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -54,6 +55,20 @@ const mainReducer = (state = initialState, action = {}) => {
         jwtToken: action.token,
         isLogged: true,
         isLoginOpen: false,
+      };
+
+    case 'DISCONNECT_USER':
+      sessionStorage.removeItem('jwtToken');
+      return {
+        ...state,
+        jwtToken: '',
+        isLogged: false,
+      };
+
+    case 'REMOVE_LOADING':
+      return {
+        ...state,
+        isLoading: false,
       };
 
     default:
