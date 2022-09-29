@@ -4,9 +4,9 @@
     color: white;
     padding: 20px;
     margin: 5px;
-    background-color: #344141;
+    background-color:rgba($color: white, $alpha: 0.2);
+    border: 1px solid #888;
     font-size: large;
-    border: solid 1px white;
 }
 .legals{
   text-align: justify;
@@ -29,7 +29,25 @@ a{
   margin: 10px;
 }
 @media screen and (min-width:768px) {
+  .informations{
+    display: flex;
+  }
+  .legals{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 0px;
+    margin-bottom: 0;
+    margin-right:1rem;
+    max-width: calc(100% - 237px);
+    min-height: 400px;
+    max-height: 460px;
+  }
   .partners{
+    margin: 1rem 0px;
+    margin-bottom: 0;
+    position : absolute;
+    right : 0;
     max-width:15rem;
     padding: 5px;
     &__title{
