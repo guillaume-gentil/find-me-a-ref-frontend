@@ -2,13 +2,12 @@
   &__main, &__team{
     font-family: 'Saira', sans-serif;
     color: white;
-    padding: 30px;
+    padding: 1.5rem;
     margin: 5px;
-    background-color: #344141;
+    background-color:rgba($color: white, $alpha: 0.2);
+    border: 1px solid #888;
     font-size: large;
-    border: solid 1px white;
     line-height: 1.3rem;
-    margin: 1rem;
   }
   &__title{
     font-size: 2rem;
@@ -36,15 +35,20 @@
 }
 @media screen and (min-width: 768px) {
   .contact{
+    &__team{
+      max-width: calc(100% - 237px);
+    }
     &__main,&__team{
-      padding: 5rem;
-      line-height: 1.6rem;
+      margin: 1rem 0px;
+      margin-right:1rem;
+      line-height: 1.4rem;
     }
     &__team ul{
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       img{
-        max-width: 150px;
+        max-width: 100px;
         border-radius: 50%;
         &:hover{
           filter: brightness(1.25);
