@@ -1,8 +1,56 @@
 // import :
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchCategories,
+  fetchTeams,
+  fetchClubs,
+  fetchArenas,
+  fetchTypes,
+} from '../../actions/filters';
+import store from '../../store';
 import './styles.scss';
 
 // component :
 function Filters() {
+  // create a const dispatch for easier useDispatch use :
+  const dispatch = useDispatch();
+
+  // fetch CATEGORIES from API :
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
+  // fetching the data from state :
+  const categories = useSelector((state) => state.categories);
+
+  // fetch TEAMS from API :
+  useEffect(() => {
+    dispatch(fetchTeams());
+  }, []);
+  // fetching the data from state :
+  const teams = useSelector((state) => state.teams);
+
+  // fetch CLUBS from API :
+  useEffect(() => {
+    dispatch(fetchClubs());
+  }, []);
+  // fetching the data from state :
+  const clubs = useSelector((state) => state.clubs);
+
+  // fetch ARENAS from API :
+  useEffect(() => {
+    dispatch(fetchArenas());
+  }, []);
+  // fetching the data from state :
+  const arenas = useSelector((state) => state.arenas);
+
+  // fetch TYPES from API :
+  useEffect(() => {
+    dispatch(fetchTypes());
+  }, []);
+  // fetching the data from state :
+  const types = useSelector((state) => state.types);
+
   return (
     <section className="filters">
       <button type="button" className="filters__emergencies">Voir les urgences</button>
@@ -13,38 +61,39 @@ function Filters() {
         </label>
         <select name="categories" id="" className="filters__list--items">
           <option value="">Catégories</option>
-          <option value="category1">categorie 1</option>
-          <option value="category2">categorie 2</option>
-          <option value="category3">categorie 3</option>
-          <option value="category4">categorie 4</option>
+          {categories.map(
+            (categorie) => (
+              <option key={categorie.id} value={categorie.name}>{categorie.name}
+              </option>
+            ),
+          )}
         </select>
         <select name="teams" id="" className="filters__list--items">
           <option value="">Equipes</option>
-          <option value="team1">Equipe 1</option>
-          <option value="team2">Equipe 2</option>
-          <option value="team3">Equipe 3</option>
-          <option value="team4">Equipe 4</option>
+          {teams.map(
+            (team) => (
+              <option key={team.id} value={team.name}>{team.name}
+              </option>
+            ),
+          )}
         </select>
         <select name="clubs" id="" className="filters__list--items">
           <option value="">Clubs</option>
-          <option value="club1">Club 1</option>
-          <option value="club2">Club 2</option>
-          <option value="club3">Club 3</option>
-          <option value="club4">Club 4</option>
+          {clubs.map(
+            (club) => <option key={club.id} value={club.name}>{club.name}</option>,
+          )}
         </select>
         <select name="arena" id="" className="filters__list--items">
           <option value="">Gymnases</option>
-          <option value="arena1">Gymnase 1</option>
-          <option value="arena2">Gymnase 2</option>
-          <option value="arena3">Gymnase 3</option>
-          <option value="arena4">Gymnase 4</option>
+          {arenas.map(
+            (arena) => <option key={arena.id} value={arena.name}>{arena.name}</option>,
+          )}
         </select>
         <select name="types" id="" className="filters__list--items">
           <option value="">Types de rencontres</option>
-          <option value="type1">type de rencontre 1</option>
-          <option value="type2">type de rencontre 2</option>
-          <option value="type3">type de rencontre 3</option>
-          <option value="type4">type de rencontre 4</option>
+          {types.map(
+            (type) => <option key={type.id} value={type.name}>{type.name}</option>,
+          )}
         </select>
       </div>
     </section>

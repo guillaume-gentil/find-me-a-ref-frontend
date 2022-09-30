@@ -4,12 +4,14 @@ import reducer from 'src/reducers/mainReducer';
 import testMiddleware from 'src/middlewares/testMiddleware';
 import authMiddleware from 'src/middlewares/authMiddleware';
 import gamesMiddleware from 'src/middlewares/gamesMiddleware';
+import filtersMiddleware from 'src/middlewares/filtersMiddleware';
 
 const enhancers = composeWithDevTools(
   applyMiddleware(
     testMiddleware,
     authMiddleware,
     gamesMiddleware,
+    filtersMiddleware,
   ),
 );
 

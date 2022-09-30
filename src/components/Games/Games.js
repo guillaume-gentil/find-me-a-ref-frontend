@@ -8,7 +8,7 @@ function Games() {
   // const isGamesLoaded = useSelector((state) => state.isGamesLoaded);
 
   const games = useSelector((state) => state.games);
-  console.log(games);
+  // console.log(games);
 
   return (
     <section className="games">
