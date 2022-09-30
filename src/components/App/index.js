@@ -18,18 +18,12 @@ import './styles.scss';
 
 // Import actions :
 import { fetchGames } from '../../actions/games';
-import { removeLoading } from '../../actions/ui_actions';
 import { saveJwtToken } from '../../actions/login';
 
 // Component :
 function App() {
   const dispatch = useDispatch();
-  // fetch games from api :
-  useEffect(() => {
-    // dispatching the action :
-    dispatch(fetchGames());
-  }, []);
-  // verify user token :
+
   useEffect(() => {
     const token = sessionStorage.getItem('jwtToken');
     try {
@@ -42,19 +36,19 @@ function App() {
       sessionStorage.removeItem('jwtToken');
     }
     finally {
-      dispatch(removeLoading());
+      dispatch(fetchGames());
     }
   }, []);
 
   // Allow the filters to hide when login/registration is open :
   const hideFilters = useSelector((state) => state.isLoginOpen);
-  const isLoading = useSelector((state) => state.isLoading);
+  const isGamesLoaded = useSelector((state) => state.isGamesLoaded);
   const isLogged = useSelector((state) => state.isLogged);
 
   return (
     <div className="app">
       <Header />
-      {!isLoading && (
+      {isGamesLoaded && (
       <>
         <Routes>
           <Route
@@ -73,7 +67,7 @@ function App() {
             element={
               <Contact />
           }
-        />
+          />
           <Route
             path="/mentions-legales"
             element={

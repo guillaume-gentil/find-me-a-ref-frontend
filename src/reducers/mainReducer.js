@@ -80,6 +80,19 @@ const mainReducer = (state = initialState, action = {}) => {
         games: action.games,
       };
 
+    case 'CHANGE_GAME_DATA':
+    {
+      console.log(action);
+      const gamesCopy = state.games;
+      const newGames = gamesCopy.filter((game) => game.id !== action.gameData.id);
+      newGames.push(action.gameData);
+
+      return {
+        ...state,
+        games: newGames,
+      };
+    }
+
     default:
       return state;
   }

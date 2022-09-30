@@ -1,13 +1,18 @@
 import axios from 'axios';
+import { changeGameData } from '../actions/commitment';
 
-const testMiddleware = (store) => (next) => (action) => {
+const commitMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case 'TEST_LINK':
-      axios.patch(
-        'http://localhost:8000/api/v1/games/id',
-      )
+    case 'ADD_REF_TO_GAME':
+      axios.patch(`http://localhost:8000/api/v1/games/${action.gameId}`, { user_email: action.userMail }, {
+        headers: {
+          Authorization: `Bearer ${action.token}`,
+        },
+      })
         .then((response) => {
-          console.log(response);
+          const gameData = response.data;
+          console.log(gameData);
+          store.dispatch(changeGameData(gameData));
         })
         .catch((error) => {
           console.log(error);
@@ -18,4 +23,4 @@ const testMiddleware = (store) => (next) => (action) => {
   // on passe l'action au suivant (middleware suivant ou reducer)
   next(action);
 };
-export default testMiddleware;
+export default commitMiddleware;
