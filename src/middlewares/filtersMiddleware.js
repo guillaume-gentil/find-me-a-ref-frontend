@@ -11,6 +11,9 @@ import {
   saveArenas,
   FETCH_TYPES,
   saveTypes,
+  ORDER_GAMES_BY_TEAM,
+  ORDER_GAMES_BY_ARENA,
+  ORDER_GAMES_BY_TYPE,
 } from 'src/actions/filters';
 
 import { saveGames } from '../actions/games';
@@ -97,6 +100,48 @@ const filtersMiddleware = (store) => (next) => (action) => {
 
           // saving datas in the state
           store.dispatch(saveTypes(response.data.types));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case ORDER_GAMES_BY_TEAM:
+      axios.get(
+        `http://localhost:8000/api/v1/teams/${action.teamId}/games`,
+      )
+        .then((response) => {
+          console.log(response.data);
+
+          // saving datas in the state
+          // store.dispatch(saveGames(response.data.games));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case ORDER_GAMES_BY_ARENA:
+      axios.get(
+        `http://localhost:8000/api/v1/arenas/${action.arenaId}/games`,
+      )
+        .then((response) => {
+          console.log(response.data);
+
+          // saving datas in the state
+          // store.dispatch(saveGames(response.data.games));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case ORDER_GAMES_BY_TYPE:
+      axios.get(
+        `http://localhost:8000/api/v1/types/${action.typeId}/games`,
+      )
+        .then((response) => {
+          console.log(response.data);
+
+          // saving datas in the state
+          store.dispatch(saveGames(response.data.games));
         })
         .catch((error) => {
           console.log(error);

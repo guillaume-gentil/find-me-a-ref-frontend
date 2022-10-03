@@ -9,6 +9,9 @@ import {
   fetchTypes,
   fetchUncommitedGames,
   changeGamesToUncommitedGames,
+  orderGamesByTeam,
+  orderGamesByArena,
+  orderGamesByType,
 } from '../../actions/filters';
 import { fetchGames } from '../../actions/games';
 import store from '../../store';
@@ -62,9 +65,22 @@ function Filters() {
   }, []);
   // fetching the data from state :
   const types = useSelector((state) => state.types);
-  const toggleEmergencies = useSelector((state) => state.uncommited);
 
+  // create a toggle for emergencies (games without referee)
+  const toggleEmergencies = useSelector((state) => state.uncommited);
   const emergencyAction = toggleEmergencies ? fetchGames : fetchUncommitedGames;
+
+  function handleTeamChange(e) {
+    dispatch(orderGamesByTeam(e.target.options[e.target.selectedIndex].id));
+  }
+
+  function handleArenaChange(e) {
+    dispatch(orderGamesByArena(e.target.options[e.target.selectedIndex].id));
+  }
+
+  function handleTypeChange(e) {
+    dispatch(orderGamesByType(e.target.options[e.target.selectedIndex].id));
+  }
 
   return (
     <section className="filters">
@@ -80,7 +96,11 @@ function Filters() {
         <label htmlFor="date">
           <input type="date" name="date" id="date" className="filters__list--items" />
         </label>
-        <select name="categories" id="" className="filters__list--items">
+        <select
+          name="categories"
+          id=""
+          className="filters__list--items"
+        >
           <option value="">Catégories</option>
           {categories.map(
             (categorie) => (
@@ -89,11 +109,16 @@ function Filters() {
             ),
           )}
         </select>
-        <select name="teams" id="" className="filters__list--items">
+        <select
+          name="teams"
+          id=""
+          className="filters__list--items"
+          onChange={handleTeamChange}
+        >
           <option value="">Equipes</option>
           {teams.map(
             (team) => (
-              <option key={team.id} value={team.name}>{team.name}
+              <option key={team.id} id={team.id} value={team.name}>{team.name}
               </option>
             ),
           )}
@@ -104,16 +129,34 @@ function Filters() {
             (club) => <option key={club.id} value={club.name}>{club.name}</option>,
           )}
         </select>
-        <select name="arena" id="" className="filters__list--items">
+        <select
+          name="arena"
+          id=""
+          className="filters__list--items"
+          onChange={handleArenaChange}
+        >
           <option value="">Gymnases</option>
           {arenas.map(
-            (arena) => <option key={arena.id} value={arena.name}>{arena.name}</option>,
+            (arena) => (
+              <option
+                key={arena.id}
+                id={arena.id}
+                value={arena.name}
+              >
+                {arena.name}
+              </option>
+            ),
           )}
         </select>
-        <select name="types" id="" className="filters__list--items">
+        <select
+          name="types"
+          id=""
+          className="filters__list--items"
+          onChange={handleTypeChange}
+        >
           <option value="">Types de rencontres</option>
           {types.map(
-            (type) => <option key={type.id} value={type.name}>{type.name}</option>,
+            (type) => <option key={type.id} id={type.id} value={type.name}>{type.name}</option>,
           )}
         </select>
       </div>
