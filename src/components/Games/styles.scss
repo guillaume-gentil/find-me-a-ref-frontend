@@ -44,11 +44,16 @@
   // appearance
   color: rgb(0, 255, 0);
   border: 2px solid rgb(0, 255, 0);
-
+  
   .game__registering{
     display: none;
   }
-
+  
+}
+.isregistered{
+  // appearance
+  color: rgb(0, 140, 255);
+  border: 2px solid  rgb(0, 217, 255);
 }
 .game{
   font-family: 'Saira', sans-serif;

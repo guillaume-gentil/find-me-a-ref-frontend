@@ -4,7 +4,7 @@ import { saveJwtToken, sendAuthCredentials } from '../actions/login';
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case 'SEND_AUTH_CREDENTIALS':
-      axios.post('http://localhost/React/01-find-me-a-ref-back/public/api/v1/login_check', action.credentials)
+      axios.post('http://localhost:8000/api/v1/login_check', action.credentials)
         .then((response) => {
           // TODO : replace this value by api json web token
           const { token } = response.data;
