@@ -113,7 +113,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
           console.log(response.data);
 
           // saving datas in the state
-          // store.dispatch(saveGames(response.data.games));
+          store.dispatch(saveGames(response.data));
         })
         .catch((error) => {
           console.log(error);
@@ -141,7 +141,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
           console.log(response.data);
 
           // saving datas in the state
-          store.dispatch(saveGames(response.data.games));
+          store.dispatch(saveGames(response.data));
         })
         .catch((error) => {
           console.log(error);
