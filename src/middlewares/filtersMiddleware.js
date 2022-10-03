@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+  FETCH_UNCOMMITED_GAMES,
   FETCH_CATEGORIES,
   saveCategories,
   FETCH_TEAMS,
@@ -10,10 +11,25 @@ import {
   saveArenas,
   FETCH_TYPES,
   saveTypes,
+  saveUncommitedGames,
 } from 'src/actions/filters';
 
 const filtersMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
+    case FETCH_UNCOMMITED_GAMES:
+      axios.get(
+        'http://localhost:8000/api/v1/games-by-users',
+      )
+        .then((response) => {
+          // console.log(response);
+
+          // saving datas in the state
+          store.dispatch(saveUncommitedGames(response.data.games));
+        })
+        .catch((error) => {
+        // console.log(error);
+        });
+      break;
     case FETCH_CATEGORIES:
       axios.get(
         'http://localhost:8000/api/v1/categories',
@@ -21,7 +37,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response);
 
-          // saving datas in the store
+          // saving datas in the state
           store.dispatch(saveCategories(response.data.categories));
         })
         .catch((error) => {
@@ -33,9 +49,9 @@ const filtersMiddleware = (store) => (next) => (action) => {
         'http://localhost:8000/api/v1/teams',
       )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
 
-          // saving datas in the store
+          // saving datas in the state
           store.dispatch(saveTeams(response.data.teams));
         })
         .catch((error) => {
@@ -47,9 +63,9 @@ const filtersMiddleware = (store) => (next) => (action) => {
         'http://localhost:8000/api/v1/clubs',
       )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
 
-          // saving datas in the store
+          // saving datas in the state
           store.dispatch(saveClubs(response.data.clubs));
         })
         .catch((error) => {
@@ -63,7 +79,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response);
 
-          // saving datas in the store
+          // saving datas in the state
           store.dispatch(saveArenas(response.data.arenas));
         })
         .catch((error) => {
@@ -77,7 +93,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response);
 
-          // saving datas in the store
+          // saving datas in the state
           store.dispatch(saveTypes(response.data.types));
         })
         .catch((error) => {

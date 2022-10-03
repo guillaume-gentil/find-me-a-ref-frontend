@@ -10,6 +10,7 @@ const initialState = {
   jwtToken: '',
   isGamesLoaded: false,
   games: [],
+  uncommited: [],
   categories: [],
   teams: [],
   clubs: [],
@@ -85,6 +86,12 @@ const mainReducer = (state = initialState, action = {}) => {
         games: action.games,
       };
       // saving categories from API :
+    case 'SAVE_UNCOMMITED_GAMES':
+      return {
+        ...state,
+        uncommited: action.uncommited,
+      };
+      // saving categories from API :
     case 'SAVE_CATEGORIES':
       return {
         ...state,
@@ -100,7 +107,7 @@ const mainReducer = (state = initialState, action = {}) => {
     case 'SAVE_CLUBS':
       return {
         ...state,
-        clubs: action.categories,
+        clubs: action.clubs,
       };
       // saving arenas from API :
     case 'SAVE_ARENAS':
@@ -113,6 +120,11 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         types: action.types,
+      };
+    case 'CHANGE_GAMES_TO_UNCOMMITED_GAMES':
+      return {
+        ...state,
+        games: state.uncommited,
       };
     default:
       return state;

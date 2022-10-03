@@ -7,6 +7,8 @@ import {
   fetchClubs,
   fetchArenas,
   fetchTypes,
+  fetchUncommitedGames,
+  changeGamesToUncommitedGames,
 } from '../../actions/filters';
 import store from '../../store';
 import './styles.scss';
@@ -15,6 +17,15 @@ import './styles.scss';
 function Filters() {
   // create a const dispatch for easier useDispatch use :
   const dispatch = useDispatch();
+  const games = useSelector((state) => state.games);
+
+  //! uncommited games
+  // fetch uncommited games from API :
+  // useEffect(() => {
+  //   dispatch(fetchUncommitedGames());
+  // }, []);
+  // fetching the data from state :
+  // const uncommitedGames = useSelector((state) => state.uncommitedGames);
 
   // fetch CATEGORIES from API :
   useEffect(() => {
@@ -53,7 +64,13 @@ function Filters() {
 
   return (
     <section className="filters">
-      <button type="button" className="filters__emergencies">Voir les urgences</button>
+      //TODO filtre uncommited games
+      <button
+        type="button"
+        className="filters__emergencies"
+        // nouvelle route ou filter ?
+      >Voir les urgences
+      </button>
       <div className="filters__list">
         <button type="button" className="filters__list--items filters__button">Filtrer par :</button>
         <label htmlFor="date">
