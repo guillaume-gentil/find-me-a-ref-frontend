@@ -9,7 +9,7 @@
  */
 export function findGame(games, searchedId) {
   const game = games.find((testedGame) => {
-    return testedGame.id === searchedId;
+    return testedGame.id === parseInt(searchedId, 10);
   });
   return game;
 }
