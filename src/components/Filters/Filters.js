@@ -10,6 +10,7 @@ import {
   fetchUncommitedGames,
   changeGamesToUncommitedGames,
 } from '../../actions/filters';
+import { fetchGames } from '../../actions/games';
 import store from '../../store';
 import './styles.scss';
 
@@ -61,13 +62,16 @@ function Filters() {
   }, []);
   // fetching the data from state :
   const types = useSelector((state) => state.types);
+  const toggleEmergencies = useSelector((state) => state.uncommited);
+
+  const emergencyAction = toggleEmergencies ? fetchGames : fetchUncommitedGames;
 
   return (
     <section className="filters">
-      //TODO filtre uncommited games
       <button
         type="button"
         className="filters__emergencies"
+        onClick={() => dispatch(emergencyAction())}
         // nouvelle route ou filter ?
       >Voir les urgences
       </button>

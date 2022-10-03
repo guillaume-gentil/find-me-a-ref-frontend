@@ -10,7 +10,7 @@ const initialState = {
   jwtToken: '',
   isGamesLoaded: false,
   games: [],
-  uncommited: [],
+  uncommited: false,
   categories: [],
   teams: [],
   clubs: [],
@@ -125,6 +125,11 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         games: state.uncommited,
+      };
+    case 'SET_EMERGENCY':
+      return {
+        ...state,
+        uncommited: action.emergencyState,
       };
     default:
       return state;

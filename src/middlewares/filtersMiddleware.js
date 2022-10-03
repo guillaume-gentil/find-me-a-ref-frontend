@@ -11,8 +11,10 @@ import {
   saveArenas,
   FETCH_TYPES,
   saveTypes,
-  saveUncommitedGames,
 } from 'src/actions/filters';
+
+import { saveGames } from '../actions/games';
+import { setEmergency } from '../actions/ui_actions';
 
 const filtersMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -22,9 +24,9 @@ const filtersMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           // console.log(response);
-
           // saving datas in the state
-          store.dispatch(saveUncommitedGames(response.data.games));
+          store.dispatch(setEmergency(true));
+          store.dispatch(saveGames(response.data.games));
         })
         .catch((error) => {
         // console.log(error);

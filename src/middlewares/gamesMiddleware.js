@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FETCH_GAMES, saveGames } from '../actions/games';
+import { setEmergency } from '../actions/ui_actions';
 
 const gamesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -10,6 +11,7 @@ const gamesMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response);
           // saving datas in the store
+          store.dispatch(setEmergency(false));
           store.dispatch(saveGames(response.data.games));
         })
         .catch((error) => {
