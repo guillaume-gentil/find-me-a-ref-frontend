@@ -9,6 +9,7 @@ import {
   fetchTypes,
   fetchUncommitedGames,
   changeGamesToUncommitedGames,
+  orderGamesByDates,
   orderGamesByTeam,
   orderGamesByArena,
   orderGamesByType,
@@ -22,14 +23,6 @@ function Filters() {
   // create a const dispatch for easier useDispatch use :
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
-
-  //! uncommited games
-  // fetch uncommited games from API :
-  // useEffect(() => {
-  //   dispatch(fetchUncommitedGames());
-  // }, []);
-  // fetching the data from state :
-  // const uncommitedGames = useSelector((state) => state.uncommitedGames);
 
   // fetch CATEGORIES from API :
   useEffect(() => {
@@ -70,6 +63,10 @@ function Filters() {
   const toggleEmergencies = useSelector((state) => state.uncommited);
   const emergencyAction = toggleEmergencies ? fetchGames : fetchUncommitedGames;
 
+  function handleDateChange(e) {
+    dispatch(orderGamesByDates());
+  }
+
   function handleTeamChange(e) {
     dispatch(orderGamesByTeam(e.target.options[e.target.selectedIndex].id));
   }
@@ -93,9 +90,12 @@ function Filters() {
       </button>
       <div className="filters__list">
         <button type="button" className="filters__list--items filters__button">Filtrer par :</button>
-        <label htmlFor="date">
-          <input type="date" name="date" id="date" className="filters__list--items" />
-        </label>
+        <button
+          type="button"
+          className="filters__list--items"
+          onClick={handleDateChange}
+        >Trier par date
+        </button>
         <select
           name="categories"
           id=""

@@ -12,6 +12,7 @@ export const SAVE_CLUBS = 'SAVE_CLUBS';
 export const SAVE_ARENAS = 'SAVE_ARENAS';
 export const SAVE_TYPES = 'SAVE_TYPES';
 export const CHANGE_GAMES_TO_UNCOMMITED_GAMES = 'CHANGE_GAMES_TO_UNCOMMITED_GAMES';
+export const ORDER_GAMES_BY_DATES = 'ORDER_GAMES_BY_DATES';
 export const ORDER_GAMES_BY_TEAM = 'ORDER_GAMES_BY_TEAM';
 export const ORDER_GAMES_BY_ARENA = 'ORDER_GAMES_BY_ARENA';
 export const ORDER_GAMES_BY_TYPE = 'ORDER_GAMES_BY_TYPE';
@@ -61,6 +62,9 @@ export const fetchTypes = () => ({
 export const saveTypes = (types) => ({
   type: 'SAVE_TYPES',
   types: types,
+});
+export const orderGamesByDates = () => ({
+  type: 'FETCH_GAMES',
 });
 export const orderGamesByTeam = (teamId) => ({
   type: 'ORDER_GAMES_BY_TEAM',
