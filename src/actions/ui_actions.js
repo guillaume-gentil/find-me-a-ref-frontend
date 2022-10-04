@@ -12,6 +12,7 @@ export const removeLoading = () => ({
 export const setEmergency = (emergencyState) => ({
   type: 'SET_EMERGENCY',
   emergencyState: emergencyState,
+});
 export const openLogin = () => ({
   type: 'OPEN_LOGIN',
 });
