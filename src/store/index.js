@@ -4,6 +4,7 @@ import reducer from 'src/reducers/mainReducer';
 import testMiddleware from 'src/middlewares/testMiddleware';
 import authMiddleware from 'src/middlewares/authMiddleware';
 import gamesMiddleware from 'src/middlewares/gamesMiddleware';
+import filtersMiddleware from 'src/middlewares/filtersMiddleware';
 import commitMiddleware from '../middlewares/commitMiddleware';
 
 const enhancers = composeWithDevTools(
@@ -11,6 +12,7 @@ const enhancers = composeWithDevTools(
     testMiddleware,
     authMiddleware,
     gamesMiddleware,
+    filtersMiddleware,
     commitMiddleware,
   ),
 );
