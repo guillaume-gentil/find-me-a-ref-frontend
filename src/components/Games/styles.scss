@@ -50,11 +50,7 @@
   }
   
 }
-.isregistered{
-  // appearance
-  color: rgb(0, 140, 255);
-  border: 2px solid  rgb(0, 217, 255);
-}
+
 .game{
   font-family: 'Saira', sans-serif;
   padding: 5px;
@@ -89,7 +85,11 @@
     right: -33px;
   }
 }
-
+.isregistered{
+  // appearance
+  color: rgb(0, 140, 255);
+  border: 2px solid  rgb(0, 217, 255);
+}
 h2{
   font-size: larger;
   font-family: 'Black Ops One', cursive;

@@ -14,6 +14,7 @@ import Header from 'src/components/Header/Header';
 import Footer from 'src/components/Footer/Footer';
 import Login from 'src/components/Login/Login';
 import Legals from 'src/components/Legals/Legals';
+import FourOhFour from 'src/components/FourOhFour/FourOhFour';
 import './styles.scss';
 
 // Import actions :
@@ -79,8 +80,14 @@ function App() {
             element={
             isLogged
               ? <Commitment />
-              : <Navigate to="/" replace /> // TODO create 404/403
+              : <Navigate to="/" replace />
           }
+          />
+          <Route
+            path="*"
+            element={
+              <FourOhFour />
+                      }
           />
         </Routes>
         <Login />
