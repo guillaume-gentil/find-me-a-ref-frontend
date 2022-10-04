@@ -63,7 +63,7 @@ function Game({
           <p className="game__item">{arena.address}</p>
           <p className="game__item">{type.name}</p>
           <p className="game__counter">Arbitres : {gameReferee}/2</p>
-          <img className="game__registering" src={registering} alt="registering button" />
+          <img className="game__registering" src={isRegistered ? registering /* <- Mettre image registered */ : registering} alt="registering button" />
         </section>
       </Link>
     );
