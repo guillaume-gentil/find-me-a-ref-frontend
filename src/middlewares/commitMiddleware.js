@@ -11,8 +11,8 @@ const commitMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           const gameData = response.data;
-          console.log(gameData);
-          store.dispatch(changeGameData(gameData));
+          console.log(gameData[0]);
+          store.dispatch(changeGameData(gameData[0]));
         })
         .catch((error) => {
           console.log(error);
