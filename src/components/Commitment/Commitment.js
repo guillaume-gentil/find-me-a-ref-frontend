@@ -12,42 +12,77 @@
 // https://stackoverflow.com/questions/49441600/react-leaflet-marker-files-not-found
 
 // import :
+import Moment from 'moment';
 import { MapContainer } from 'react-leaflet/MapContainer';
 import { TileLayer } from 'react-leaflet/TileLayer';
-import { Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './styles.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+import { findGame } from 'src/selectors/findGame';
+import { findUserMail } from '../../selectors/findUserMail';
+import { addRefToGame } from '../../actions/commitment';
 
 // component :
 function Commitment() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const game = useSelector((state) => findGame(state.games, id));
+  const token = useSelector((state) => state.jwtToken);
+
+  // change date time format :
+  const formatDate = Moment(game.date).format('DD-MM-YYYY à HH:MM');
+
+  function checkCommited() {
+    const userMail = findUserMail(token);
+
+    const gameUsers = game.users.length < 2 ? [game.users] : game.users;
+    try {
+      for (const child of gameUsers) {
+        if (child.email === userMail) {
+          return true;
+        }
+      }
+    }
+    catch (error) {
+      return false;
+    }
+  }
+
+  function handleCommitButton() {
+    const gameId = game.id;
+    const userMail = findUserMail(token);
+    dispatch(addRefToGame({ userMail, gameId, token }));
+  }
+
   return (
     <div className="commitment__wrapper">
       <section className="commitment">
-        <p className="commitment__date">DATE</p>
-        <h1 className="commitment__teams">EQUIPE 1 <span className="vs">VS</span> EQUIPE 2</h1>
-        <p className="commitment__address">Lieu : 5, rue des lilas, Casablanca</p>
+        <p className="commitment__date">{formatDate}</p>
+        <h1 className="commitment__teams">{game.teams[0].name} <span className="vs">VS</span> {game.teams[1].name}</h1>
+        <p className="commitment__address">{game.arena.address}, {game.arena.zipCode}</p>
         <div className="commitment__game-specs">
-          <p className="commitment__category">Catégorie</p>
-          <p className="commitment__type">Type</p>
+          <p className="commitment__category">{game.teams[0].category.name}</p>
+          <p className="commitment__type">{game.type.name}</p>
         </div>
         <p className="commitment__contact">Contact du match : <strong>Jean LeChef : 06 01 02 03 04</strong></p>
         <div className="commitment__ref-section">
           <div>
-            <p className="commitment__counter">ARBITRES INSCRITS SUR CETTE RENCONTRE : 2/2</p>
-            <p className="commitment__ref">Roger Deschamps</p>
-            <p className="commitment__ref">Manuel Fiorini</p>
+            <p className="commitment__counter">ARBITRES INSCRITS SUR CETTE RENCONTRE : {game.users.length}/2</p>
+            { game.users.length > 0
+                && game.users.map((user) => <p className="commitment__ref" key={user.id}>{`${user.firstname}`}</p>)}
           </div>
-          <button type="button" className="commitment__button">J'arbitre !</button>
+          { (game.users.length < 2 || checkCommited()) && <button type="button" className="commitment__button" onClick={handleCommitButton}>{checkCommited() ? 'Se désengager' : 'J\'arbitre !'}</button>}
         </div>
       </section>
       <section className="map__container">
         {/* For documentation : first parameter is latitude and second parameter is longitude */}
-        <MapContainer id="map" center={[48.006571, -3.320242]} zoom={15} scrollWheelZoom={false}>
+        <MapContainer id="map" center={[game.arena.latitude, game.arena.longitude]} zoom={15} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[51.505, -0.09]} />
         </MapContainer>
       </section>
     </div>

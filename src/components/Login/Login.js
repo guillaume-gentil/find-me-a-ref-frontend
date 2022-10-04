@@ -10,11 +10,15 @@ import {
   sendAuthCredentials,
   disconnectUser,
 } from '../../actions/login';
+import { findUserMail } from '../../selectors/findUserMail';
 import './styles.scss';
 
 // component :
 function Login() {
   const dispatch = useDispatch();
+
+  const token = useSelector((state) => state.jwtToken);
+  const userMail = findUserMail(token);
 
   function handleResize() {
     if (parseInt(window.innerWidth, 10) < 768) {
@@ -76,6 +80,9 @@ function Login() {
         }}
       >{textButton}
       </button>
+      {isLogged && (
+        <p className="login__welcome">Bienvenue {userMail} </p>
+      )}
       {isLoginOpen
       && isRegistration && (
         <section className="login">

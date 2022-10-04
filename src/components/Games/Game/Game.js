@@ -4,6 +4,9 @@ import Moment from 'moment';
 import PropTypes from 'prop-types';
 import '../styles.scss';
 import registering from 'src/assets/img/registering.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { openLogin } from '../../../actions/ui_actions';
+import { findUserMail } from '../../../selectors/findUserMail';
 
 // component :
 function Game({
@@ -16,6 +19,14 @@ function Game({
 }) {
   // change date time format :
   const formatDate = Moment(date).format('DD-MM-YYYY à HH:MM');
+
+  const dispatch = useDispatch();
+
+  const token = useSelector((state) => state.jwtToken);
+
+  const userMail = findUserMail(token);
+
+  const isRegistered = users.find((user) => user.email === userMail);
 
   // colorizing the view :
   // find the number of referees
@@ -36,18 +47,44 @@ function Game({
     gameState += gameColorThree;
   }
 
+  if (isRegistered) {
+    gameState += ' isregistered';
+  }
+
+  const isLogged = useSelector((state) => state.isLogged);
+
+  if (isLogged) {
+    return (
+      <Link to={`/engagement/${id}`}>
+        <section className={gameState}>
+          <h2 className="game__item">{teams[0].name} VS </h2>
+          <h2 className="game__item">{teams[1].name}</h2>
+          <p className="game__item">{formatDate}</p>
+          <p className="game__item">{arena.address}</p>
+          <p className="game__item">{type.name}</p>
+          <p className="game__counter">Arbitres : {gameReferee}/2</p>
+          <img className="game__registering" src={registering} alt="registering button" />
+        </section>
+      </Link>
+    );
+  }
   return (
-    <Link to={`/engagement/${id}`}>
+    <a
+      href=""
+      onClick={(e) => {
+        e.preventDefault();
+        dispatch(openLogin());
+      }}
+    >
       <section className={gameState}>
         <h2 className="game__item">{teams[0].name} VS </h2>
         <h2 className="game__item">{teams[1].name}</h2>
         <p className="game__item">{formatDate}</p>
         <p className="game__item">{arena.address}</p>
         <p className="game__item">{type.name}</p>
-        <p className="game__counter">{gameReferee}/2</p>
-        <img className="game__registering" src={registering} alt="registering button" />
+        <p className="game__counter">Arbitres : {gameReferee}/2</p>
       </section>
-    </Link>
+    </a>
   );
 }
 

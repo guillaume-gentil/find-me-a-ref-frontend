@@ -25,6 +25,11 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         isNavOpen: !state.isNavOpen,
       };
+    case 'OPEN_LOGIN':
+      return {
+        ...state,
+        isLoginOpen: true,
+      };
     case 'TOGGLE_MOBILE':
       return {
         ...state,
@@ -131,6 +136,20 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         uncommited: action.emergencyState,
       };
+
+    case 'CHANGE_GAME_DATA':
+    {
+      console.log(action);
+      const gamesCopy = state.games;
+      const newGames = gamesCopy.filter((game) => game.id !== action.gameData.id);
+      newGames.push(action.gameData);
+
+      return {
+        ...state,
+        games: newGames,
+      };
+    }
+
     default:
       return state;
   }
