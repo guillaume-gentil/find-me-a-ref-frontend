@@ -8,9 +8,10 @@ import {
   fetchArenas,
   fetchTypes,
   fetchUncommitedGames,
-  changeGamesToUncommitedGames,
   orderGamesByDates,
+  orderGamesByCategory,
   orderGamesByTeam,
+  orderGamesByClub,
   orderGamesByArena,
   orderGamesByType,
 } from '../../actions/filters';
@@ -63,12 +64,18 @@ function Filters() {
   const toggleEmergencies = useSelector((state) => state.uncommited);
   const emergencyAction = toggleEmergencies ? fetchGames : fetchUncommitedGames;
 
+  // Handler for all filters :
   function handleDateChange(e) {
     dispatch(orderGamesByDates());
   }
-
+  function handleCategoryChange(e) {
+    dispatch(orderGamesByCategory(e.target.options[e.target.selectedIndex].id));
+  }
   function handleTeamChange(e) {
     dispatch(orderGamesByTeam(e.target.options[e.target.selectedIndex].id));
+  }
+  function handleClubChange(e) {
+    dispatch(orderGamesByClub(e.target.options[e.target.selectedIndex].id));
   }
 
   function handleArenaChange(e) {
@@ -100,11 +107,12 @@ function Filters() {
           name="categories"
           id=""
           className="filters__list--items"
+          onChange={handleCategoryChange}
         >
           <option value="">Catégories</option>
           {categories.map(
-            (categorie) => (
-              <option key={categorie.id} value={categorie.name}>{categorie.name}
+            (category) => (
+              <option key={category.id} id={category.id} value={category.name}>{category.name}
               </option>
             ),
           )}
@@ -123,10 +131,15 @@ function Filters() {
             ),
           )}
         </select>
-        <select name="clubs" id="" className="filters__list--items">
+        <select
+          name="clubs"
+          id=""
+          className="filters__list--items"
+          onChange={handleClubChange}
+        >
           <option value="">Clubs</option>
           {clubs.map(
-            (club) => <option key={club.id} value={club.name}>{club.name}</option>,
+            (club) => <option key={club.id} id={club.id} value={club.name}>{club.name}</option>,
           )}
         </select>
         <select

@@ -12,6 +12,8 @@ import {
   FETCH_TYPES,
   saveTypes,
   ORDER_GAMES_BY_TEAM,
+  ORDER_GAMES_BY_CATEGORY,
+  ORDER_GAMES_BY_CLUB,
   ORDER_GAMES_BY_ARENA,
   ORDER_GAMES_BY_TYPE,
 } from 'src/actions/filters';
@@ -105,15 +107,43 @@ const filtersMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
+    case ORDER_GAMES_BY_CATEGORY:
+      axios.get(
+        `http://localhost:8000/api/v1/categories/${action.categoryId}/games`,
+      )
+        .then((response) => {
+          // console.log(response.data);
+
+          // saving datas in the state
+          store.dispatch(saveGames(response.data.games));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
     case ORDER_GAMES_BY_TEAM:
       axios.get(
         `http://localhost:8000/api/v1/teams/${action.teamId}/games`,
       )
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
 
           // saving datas in the state
-          store.dispatch(saveGames(response.data));
+          store.dispatch(saveGames(response.data.games));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case ORDER_GAMES_BY_CLUB:
+      axios.get(
+        `http://localhost:8000/api/v1/clubs/${action.clubId}/games`,
+      )
+        .then((response) => {
+          // console.log(response.data);
+
+          // saving datas in the state
+          store.dispatch(saveGames(response.data.games));
         })
         .catch((error) => {
           console.log(error);
@@ -127,7 +157,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
           console.log(response.data);
 
           // saving datas in the state
-          // store.dispatch(saveGames(response.data.games));
+          store.dispatch(saveGames(response.data.games));
         })
         .catch((error) => {
           console.log(error);
