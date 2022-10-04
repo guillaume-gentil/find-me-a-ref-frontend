@@ -19,6 +19,11 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         isNavOpen: !state.isNavOpen,
       };
+    case 'OPEN_LOGIN':
+      return {
+        ...state,
+        isLoginOpen: true,
+      };
     case 'TOGGLE_MOBILE':
       return {
         ...state,
