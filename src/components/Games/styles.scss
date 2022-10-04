@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 
   &__more{
     background-color: #666F6F;
@@ -24,6 +25,35 @@
     color: white;
     font-size: large;
     border: none;
+  }
+  &__legend{
+    position: absolute;
+    padding: 0.1rem;
+    left: 0.5rem;
+    top: 0.5rem;
+    text-align: left;
+    width: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: black;
+    border: 1px solid #888;
+    transition: width 0.2s ease-in-out;
+    &--blue{
+      color: rgb(0, 140, 255);
+    }
+    &--green{
+      color:rgb(0, 255, 0)
+    }
+    &--orange{
+      color:rgb(255, 123, 0)
+    }
+    &--red{
+      color:rgb(255, 0, 0);
+    }
+    &:hover{
+      width: 250px;
+    }
   }
   
 }

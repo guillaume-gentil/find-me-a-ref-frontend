@@ -81,7 +81,7 @@ function Login() {
       >{textButton}
       </button>
       {isLogged && (
-        <p className="login__welcome">Bienvenue {userMail} </p>
+        <p className="login__welcome">Bienvenue {userMail.split('@')[0]} </p>
       )}
       {isLoginOpen
       && isRegistration && (

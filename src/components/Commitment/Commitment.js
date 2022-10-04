@@ -37,17 +37,11 @@ function Commitment() {
   function checkCommited() {
     const userMail = findUserMail(token);
 
-    const gameUsers = game.users.length < 2 ? [game.users] : game.users;
-    try {
-      for (const child of gameUsers) {
-        if (child.email === userMail) {
-          return true;
-        }
-      }
-    }
-    catch (error) {
-      return false;
-    }
+    const gameUsers = game.users;
+
+    const result = gameUsers.find((user) => user.email === userMail);
+
+    return result;
   }
 
   function handleCommitButton() {
