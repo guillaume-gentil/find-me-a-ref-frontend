@@ -105,6 +105,7 @@ h2{
     flex-direction: row;
     max-width: calc(100% - 237px);
     max-height: 460px;
+    min-height: 420px;
     overflow-y: auto;
 
     &__text{
