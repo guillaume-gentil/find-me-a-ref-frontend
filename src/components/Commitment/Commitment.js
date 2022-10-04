@@ -15,14 +15,25 @@
 import Moment from 'moment';
 import { MapContainer } from 'react-leaflet/MapContainer';
 import { TileLayer } from 'react-leaflet/TileLayer';
+import { Marker } from 'react-leaflet/Marker';
 import 'leaflet/dist/leaflet.css';
 import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import L from 'leaflet';
 
 import { findGame } from 'src/selectors/findGame';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import { findUserMail } from '../../selectors/findUserMail';
 import { addRefToGame } from '../../actions/commitment';
+
+const DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 // component :
 function Commitment() {
@@ -77,6 +88,7 @@ function Commitment() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <Marker position={[game.arena.latitude, game.arena.longitude]} />
         </MapContainer>
       </section>
     </div>
