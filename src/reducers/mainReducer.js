@@ -7,6 +7,7 @@ const initialState = {
   isLogged: false,
   isAdmin: true,
   adminNav: false,
+  isUserOpen: false,
   loginInputMail: '',
   loginInputPass: '',
   jwtToken: '',
@@ -18,6 +19,7 @@ const initialState = {
   clubs: [],
   arenas: [],
   types: [],
+  allUsers: [],
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -160,6 +162,12 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         adminNav: false,
+      };
+      // openable user details on usersmanagement :
+    case 'TOGGLE_USER_DETAILS':
+      return {
+        ...state,
+        isUserOpen: !state.isUserOpen,
       };
     default:
       return state;
