@@ -8,8 +8,8 @@ function UsersManagement() {
   return (
     <>
       <section>
-        <h2>Utilisateurs</h2>
-        <Link to="#">Créer un utilisateur</Link>
+        <h2 className="users__title">Utilisateurs</h2>
+        <Link className="users__createButton" to="#">Créer un utilisateur</Link>
         <div className="user">
           <span>
             <p>Nom</p>
