@@ -15,6 +15,7 @@ import Footer from 'src/components/Footer/Footer';
 import Login from 'src/components/Login/Login';
 import Legals from 'src/components/Legals/Legals';
 import FourOhFour from 'src/components/FourOhFour/FourOhFour';
+import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
 import './styles.scss';
 
 // Import actions :
@@ -45,54 +46,118 @@ function App() {
   const hideFilters = useSelector((state) => state.isLoginOpen);
   const isGamesLoaded = useSelector((state) => state.isGamesLoaded);
   const isLogged = useSelector((state) => state.isLogged);
+  const isAdmin = useSelector((state) => state.isAdmin);
 
   return (
     <div className="app">
       <Header />
+      <Login />
       {isGamesLoaded && (
-      <>
-        <Routes>
-          <Route
-            path="/"
-            element={hideFilters ? (
+      <Routes>
+        <Route
+          path="/"
+          element={hideFilters ? (
+            <>
               <Games />
-            ) : (
-              <>
-                <Filters />
-                <Games />
-              </>
-            )}
-          />
-          <Route
-            path="/contact"
-            element={
+              <Footer />
+            </>
+          ) : (
+            <>
+              <Filters />
+              <Games />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          path="/contact"
+          element={(
+            <>
               <Contact />
-          }
-          />
-          <Route
-            path="/mentions-legales"
-            element={
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          path="/mentions-legales"
+          element={(
+            <>
               <Legals />
-          }
-          />
-          <Route
-            path="/engagement/:id"
-            element={
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          path="/engagement/:id"
+          element={
             isLogged
-              ? <Commitment />
-              : <Navigate to="/" replace />
+              ? (
+                <>
+                  <Commitment />
+                  <Footer />
+                </>
+              )
+              : <Navigate to="/403" replace />
           }
-          />
-          <Route
-            path="*"
-            element={
+        />
+        <Route
+          path="/admin"
+          element={
+            isAdmin
+              ? <AdminRedirect />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            isAdmin
+              ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/games"
+          element={
+            isAdmin
+              ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/clubs"
+          element={
+            isAdmin
+              ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/teams"
+          element={
+            isAdmin
+              ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/arena"
+          element={
+            isAdmin
+              ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="*"
+          element={(
+            <>
               <FourOhFour />
-                      }
-          />
-        </Routes>
-        <Login />
-        <Footer />
-      </>
+              <Footer />
+            </>
+          )}
+        />
+      </Routes>
       )}
     </div>
 
