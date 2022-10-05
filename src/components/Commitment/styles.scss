@@ -69,15 +69,22 @@
 }
 @media screen and (min-width: 768px) {
   .commitment{
+    background-color:rgba($color: white, $alpha: 0.2);
+    border: 1px solid #888;
+    padding-left: 1rem;
+    margin: 1rem 0px;
+    margin-right:1rem;
+    max-width: calc(100% - 350px);
     &>*{
       padding-top: 2rem;
     }
     &__wrapper{
+      background-color: unset;
+      border: none;
       position: relative;
       display: flex;
-      max-width: calc(100% - 237px);
-      margin: 1rem 0px;
-      margin-right:1rem;
+      margin:0;
+      padding: 0;
     }
     &__teams{
       flex-direction: row;
@@ -103,11 +110,13 @@
     }
   }
   .map__container{
-    position: absolute;
-    left: 75%;
-    top: 0;
+    // position: absolute;
+    // left: 75%;
+    // top: 0;
     width: 45%;
     height: 25rem;
     border: 1px solid #888;
+    margin: 1rem 0px;
+
   }
 }
