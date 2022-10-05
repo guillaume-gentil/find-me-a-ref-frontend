@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import Moment from 'moment';
 import PropTypes from 'prop-types';
 import '../styles.scss';
-import registering from 'src/assets/img/registering.png';
+import registered from 'src/assets/img/engage2.png';
+import unregistered from 'src/assets/img/engage3.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { openLogin } from '../../../actions/ui_actions';
 import { findUserMail } from '../../../selectors/findUserMail';
@@ -63,7 +64,7 @@ function Game({
           <p className="game__item">{arena.address}</p>
           <p className="game__item">{type.name}</p>
           <p className="game__counter">Arbitres : {gameReferee}/2</p>
-          <img className="game__registering" src={isRegistered ? registering /* <- Mettre image registered */ : registering} alt="registering button" />
+          <img className="game__registering" src={isRegistered ? unregistered : registered} alt="registering button" />
         </section>
       </Link>
     );
