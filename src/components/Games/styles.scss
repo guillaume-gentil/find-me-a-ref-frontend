@@ -141,7 +141,7 @@ body{
 }
 .game__register--button:hover {
   color: rgba(255, 255, 255, 1);
-  box-shadow: 0 5px 15px white;
+  box-shadow: 0 0px 15px white;
 }
 .unregistering{
   // appearance :
@@ -156,7 +156,11 @@ body{
   bottom: -46px;
   right: -33px;
 }
-
+.game__unregister--button:hover {
+  color: rgb(188, 41, 41);
+  box-shadow: 0 0px 15px rgb(255, 0, 0);
+  border:2px solid  rgb(188, 41, 41);
+}
 
 @media screen and (min-width:768px){
   .games{
