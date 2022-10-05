@@ -107,12 +107,56 @@
 
   &__registering{
     // appearance :
-    width: 10rem;
+    //width: 10rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 0;
+    border-radius: 50%;
+    font-size: 2.4rem;
+    box-shadow: 0 0 0.7rem black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &>*{
+      filter: drop-shadow(1px 1px 2px black);
+    }
+    
 
     // position :
     position: absolute;
-    bottom: -27px;
-    right: -33px;
+    bottom: -20px;
+    right: -20px;
+
+    transition: transform 0.15s ease-in-out;
+
+    &.noregistered{
+      // appearance
+      background-color: rgb(255, 0, 0);
+      color: white;
+    
+    }
+    &.oneregistered{
+      // appearance
+      background-color: rgb(255, 123, 0);
+      color: white;
+    }
+    &.fullregistered{
+      // appearance
+      display: none;
+    }
+    &.isregistered{
+      // appearance
+      background-color: rgb(0, 217, 255);
+      color: white;
+      transform: rotate(45deg);
+    }
+    &:hover{
+      transform: scale(1.2);
+      &.isregistered{
+        transform: rotate(45deg) scale(1.2);
+      }
+    }
   }
 }
 .isregistered{
