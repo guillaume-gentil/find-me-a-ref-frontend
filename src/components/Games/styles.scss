@@ -108,6 +108,9 @@
   &__registering{
     // appearance :
     width: 10rem;
+    font-size: large;
+    border:2px solid white;
+    text-align: center;
 
     // position :
     position: absolute;
@@ -123,6 +126,35 @@
 h2{
   font-size: larger;
   font-family: 'Black Ops One', cursive;
+}
+body{
+  background: #000;
+}
+.game__register--button {
+  font-family: 'Black Ops One', cursive;
+  color:white;
+  padding: 10px;
+  background: black;
+  border-radius: 25px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+.game__register--button:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px white;
+}
+.unregistering{
+  // appearance :
+  width: 10rem;
+  color : grey;
+  font-size: large;
+  border:2px solid grey;
+  text-align: center;
+
+  // position :
+  position: absolute;
+  bottom: -46px;
+  right: -33px;
 }
 
 

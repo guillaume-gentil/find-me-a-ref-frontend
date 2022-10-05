@@ -64,7 +64,10 @@ function Game({
           <p className="game__item">{arena.address}</p>
           <p className="game__item">{type.name}</p>
           <p className="game__counter">Arbitres : {gameReferee}/2</p>
-          <img className="game__registering" src={isRegistered ? unregistered : registered} alt="registering button" />
+          {/* <img
+          className="game__registering"
+          src={isRegistered ? unregistered : registered} alt="registering button" /> */}
+          {!isRegistered ? <button className="game__register--button game__registering">J'arbitre !</button> : <button className="game__register--button unregistering">Je me désengage</button>}
         </section>
       </Link>
     );
