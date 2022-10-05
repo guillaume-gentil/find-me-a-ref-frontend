@@ -22,6 +22,7 @@ import './styles.scss';
 // Import actions :
 import { fetchGames } from '../../actions/games';
 import { saveJwtToken } from '../../actions/login';
+import UserForm from '../UsersManagement/UserForm/UserForm';
 
 // Component :
 function App() {
@@ -113,7 +114,7 @@ function App() {
           path="/admin/users"
           element={
             isAdmin
-              ? <div />
+              ? <UserForm />
               : <Navigate to="/403" replace />
             }
         />
