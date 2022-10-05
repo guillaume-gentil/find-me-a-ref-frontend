@@ -9,7 +9,7 @@ import './styles.scss';
 function Navbar() {
   const dispatch = useDispatch();
   const isNavOpen = useSelector((state) => state.isNavOpen);
-  const isAdmin = useSelector((state) => state.isAdmin);
+  const isAdmin = useSelector((state) => state.userRoles.includes('ROLE_ADMIN'));
   const adminNav = useSelector((state) => state.adminNav);
 
   if (adminNav) {
