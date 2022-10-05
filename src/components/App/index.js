@@ -21,7 +21,8 @@ import './styles.scss';
 
 // Import actions :
 import { fetchGames } from '../../actions/games';
-import { saveJwtToken } from '../../actions/login';
+import { saveJwtToken, setUserRoles } from '../../actions/login';
+import { fetchUserRole } from '../../selectors/fetchUserRole';
 
 // Component :
 function App() {
@@ -33,6 +34,7 @@ function App() {
       const decoded = jwt_decode(token);
       if (decoded.exp * 1000 > Date.now()) {
         dispatch(saveJwtToken(token));
+        dispatch(setUserRoles(fetchUserRole(token)));
       }
     }
     catch {
@@ -47,7 +49,7 @@ function App() {
   const hideFilters = useSelector((state) => state.isLoginOpen);
   const isGamesLoaded = useSelector((state) => state.isGamesLoaded);
   const isLogged = useSelector((state) => state.isLogged);
-  const isAdmin = useSelector((state) => state.isAdmin);
+  const isAdmin = useSelector((state) => state.userRoles.includes('ROLE_ADMIN'));
 
   return (
     <div className="app">

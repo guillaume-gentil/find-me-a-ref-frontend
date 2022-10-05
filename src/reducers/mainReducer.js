@@ -5,7 +5,6 @@ const initialState = {
   isNavOpen: false,
   isLoading: true,
   isLogged: false,
-  isAdmin: true,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -18,6 +17,7 @@ const initialState = {
   clubs: [],
   arenas: [],
   types: [],
+  userRoles: [],
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -78,6 +78,7 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         jwtToken: '',
         isLogged: false,
+        userRoles: [],
       };
 
     case 'REMOVE_LOADING':
@@ -160,6 +161,11 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         adminNav: false,
+      };
+    case 'SET_USER_ROLES':
+      return {
+        ...state,
+        userRoles: action.userRoles,
       };
     default:
       return state;
