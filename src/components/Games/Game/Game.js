@@ -64,7 +64,7 @@ function Game({
           <p className="game__item">{formatDate}</p>
           <p className="game__item">{arena.address}</p>
           <p className="game__item">{type.name}</p>
-          <p className="game__counter">Arbitres : {gameReferee}/2</p>
+          <p className="game__counter">{isRegistered ? 'Engagé' : `Arbitres : ${gameReferee} / 2` }</p>
           <button type="button" className={buttonClass}><Plus /></button>
         </section>
       </Link>

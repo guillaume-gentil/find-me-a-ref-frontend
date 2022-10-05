@@ -132,7 +132,7 @@
 
     &.noregistered{
       // appearance
-      background-color: rgb(255, 0, 0);
+      background-color:darken(rgb(255, 0, 0),20%);
       color: white;
     
     }
@@ -143,11 +143,16 @@
     }
     &.fullregistered{
       // appearance
+      background-color: darken(rgb(0, 255, 0),15%);
+      color: white;
       display: none;
+      &.isregistered{
+        display: block;
+      }
     }
     &.isregistered{
       // appearance
-      background-color: rgb(0, 217, 255);
+      //background-color: rgb(38, 50, 224);
       color: white;
       transform: rotate(45deg);
     }
@@ -161,8 +166,8 @@
 }
 .isregistered{
   // appearance
-  color: rgb(0, 140, 255);
-  border: 2px solid  rgb(0, 217, 255);
+  //color: rgb(0, 140, 255);
+  //border: 2px solid  rgb(0, 217, 255);
 }
 h2{
   font-size: larger;
