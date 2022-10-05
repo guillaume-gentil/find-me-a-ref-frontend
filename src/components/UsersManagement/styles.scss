@@ -1,0 +1,28 @@
+section{
+  // appearance : 
+  font-family: 'Saira', sans-serif;
+  background-color: white;
+  color : black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.users{
+  &__title{
+    margin: 15px;
+  }
+  &__createButton{
+    margin: 15px;
+  }
+}
+.user{
+  // appearance :
+  width: 100%;
+  // position :
+  display: flex;
+  justify-content:space-around;
+
+}
+
+@media screen and (min-width: 768px) {
+}

@@ -16,6 +16,7 @@ import Login from 'src/components/Login/Login';
 import Legals from 'src/components/Legals/Legals';
 import FourOhFour from 'src/components/FourOhFour/FourOhFour';
 import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
+import UsersManagement from '../UsersManagement/UsersManagement';
 import './styles.scss';
 
 // Import actions :
