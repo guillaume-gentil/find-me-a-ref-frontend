@@ -5,6 +5,8 @@ const initialState = {
   isNavOpen: false,
   isLoading: true,
   isLogged: false,
+  isAdmin: true,
+  adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
   jwtToken: '',
@@ -139,7 +141,6 @@ const mainReducer = (state = initialState, action = {}) => {
 
     case 'CHANGE_GAME_DATA':
     {
-      console.log(action);
       const gamesCopy = state.games;
       const newGames = gamesCopy.filter((game) => game.id !== action.gameData.id);
       newGames.push(action.gameData);
@@ -150,6 +151,16 @@ const mainReducer = (state = initialState, action = {}) => {
       };
     }
 
+    case 'SET_ADMIN_NAV':
+      return {
+        ...state,
+        adminNav: true,
+      };
+    case 'UNSET_ADMIN_NAV':
+      return {
+        ...state,
+        adminNav: false,
+      };
     default:
       return state;
   }
