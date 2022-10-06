@@ -27,6 +27,7 @@ const initialState = {
   userFormInputZipcode: '',
   userFormInputLicense: '',
   userFormInputLevel: '',
+  errorMessage: '',
 
 };
 
@@ -210,6 +211,11 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userFormInputLevel: action.newValue,
+      };
+    case 'SET_ERROR_MESSAGE':
+      return {
+        ...state,
+        errorMessage: action.message,
       };
     default:
       return state;

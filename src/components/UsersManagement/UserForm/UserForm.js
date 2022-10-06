@@ -1,5 +1,6 @@
 import { CornerUpLeft } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
+import { setErrorMessage } from '../../../actions/ui_actions';
 import {
   changeInputAddress,
   changeInputEmail,
@@ -16,6 +17,7 @@ function UserForm() {
   const dispatch = useDispatch();
 
   const token = useSelector((state) => state.jwtToken);
+  const error = useSelector((state) => state.errorMessage);
 
   function isEmptyOrSpaces(str) {
     return str === null || str.match(/^ *$/) !== null;
@@ -31,16 +33,17 @@ function UserForm() {
   function handleFormSubmit(e) {
     e.preventDefault();
     const requestObject = {
-      firstname: 'test',
-      lastname: 'api',
-      email: 'test@test.fr',
-      roles: ['ROLE_ADMIN'],
-      password: 'mdpfix',
+      firstname: e.target.querySelector('#firstname').value,
+      lastname: e.target.querySelector('#lastname').value,
+      email: e.target.querySelector('#email').value,
+      roles: [e.target.querySelector('#role').value],
+      password: e.target.querySelector('#password').value,
       token: token,
     };
     // eslint-disable-next-line max-len
     if (isEmptyOrSpaces(requestObject.firstname) || isEmptyOrSpaces(requestObject.lastname) || isEmptyOrSpaces(requestObject.email) || isEmptyOrSpaces(requestObject.password) || !checkRole(requestObject.roles)) {
-      console.log('error');
+      const message = 'Veuillez renseigner tous les champs.';
+      dispatch(setErrorMessage(message));
     }
     else {
       dispatch(sendUserForm(requestObject));
@@ -94,11 +97,12 @@ function UserForm() {
           <label htmlFor="role">
             Role
             <select name="role" id="role">
-              <option value="">Arbitre</option>
-              <option value="">Responsable d'equipe</option>
-              <option value="">Administrateur</option>
+              <option value="ROLE_REFEREE">Arbitre</option>
+              <option value="ROLE_TEAMHEAD">Responsable d'equipe</option>
+              <option value="ROLE_ADMIN">Administrateur</option>
             </select>
           </label>
+          {error && <p className="error_message">Erreur : Veuillez remplir tous les champs</p>}
           <button type="submit" className="user-form__submit">Valider</button>
         </fieldset>
       </form>

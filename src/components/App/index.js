@@ -114,6 +114,14 @@ function App() {
           path="/admin/users"
           element={
             isAdmin
+              ? <UsersManagement />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/users/create"
+          element={
+            isAdmin
               ? <UserForm />
               : <Navigate to="/403" replace />
             }

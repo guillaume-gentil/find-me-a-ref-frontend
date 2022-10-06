@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setErrorMessage } from '../actions/ui_actions';
 
 const usersMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -25,6 +26,8 @@ const usersMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          const message = 'Une erreur est survenue.';
+          store.dispatch(setErrorMessage(message));
         });
       break;
     default:

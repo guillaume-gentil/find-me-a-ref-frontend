@@ -71,7 +71,17 @@ section{
       font-size: 1.2rem;
     }
   }
-
+  
+}
+.error_message{
+  background-color: brown;
+  color: white;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: 1px solid indianred;
+  font-size: 0.9rem;
+  font-family: 'Saira', sans-serif;
 }
 
 @media screen and (min-width: 768px) {
