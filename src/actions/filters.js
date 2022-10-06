@@ -1,4 +1,5 @@
 // ACTIONS DICTIONNARY
+
 export const FETCH_UNCOMMITED_GAMES = 'FETCH_UNCOMMITED_GAMES';
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 export const FETCH_TEAMS = 'FETCH_TEAMS';
@@ -20,6 +21,7 @@ export const ORDER_GAMES_BY_ARENA = 'ORDER_GAMES_BY_ARENA';
 export const ORDER_GAMES_BY_TYPE = 'ORDER_GAMES_BY_TYPE';
 
 // ACTIONS
+
 export const fetchUncommitedGames = () => ({
   type: 'FETCH_UNCOMMITED_GAMES',
 });

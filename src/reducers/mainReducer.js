@@ -3,6 +3,7 @@ const initialState = {
   isLoginOpen: false,
   isRegistration: false,
   isNavOpen: false,
+  isFilterOpen: false,
   isLoading: true,
   isLogged: false,
   adminNav: false,
@@ -32,6 +33,11 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLoginOpen: true,
+      };
+    case 'OPEN_FILTERS':
+      return {
+        ...state,
+        isFilterOpen: !state.isFilterOpen,
       };
     case 'TOGGLE_MOBILE':
       return {
