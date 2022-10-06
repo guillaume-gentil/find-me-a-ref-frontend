@@ -6,6 +6,8 @@ export const CHANGE_PASS_INPUT = 'CHANGE_PASS_INPUT';
 export const SEND_AUTH_CREDENTIALS = 'SEND_AUTH_CREDENTIALS';
 export const SAVE_JWT_TOKEN = 'SAVE_JWT_TOKEN';
 export const DISCONNECT_USER = 'DISCONNECT_USER';
+export const SET_USER_ROLES = 'SET_USER_ROLES';
+export const SET_ADMIN = 'SET_ADMIN';
 
 export const toggleMobile = (mobile) => ({
   type: 'TOGGLE_MOBILE',
@@ -38,4 +40,11 @@ export const disconnectUser = () => ({
 });
 export const checkLogState = () => ({
   type: 'CHECK_LOG_STATE',
+});
+export const setUserRoles = (userRoles) => ({
+  type: 'SET_USER_ROLES',
+  userRoles: userRoles,
+});
+export const setAdmin = () => ({
+  type: 'SET_ADMIN',
 });

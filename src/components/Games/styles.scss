@@ -107,24 +107,105 @@
 
   &__registering{
     // appearance :
-    width: 10rem;
+    //width: 10rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 0;
+    border-radius: 50%;
+    font-size: 2.4rem;
+    box-shadow: 0 0 0.7rem black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &>*{
+      filter: drop-shadow(1px 1px 2px black);
+    }
 
     // position :
     position: absolute;
-    bottom: -27px;
-    right: -33px;
+    bottom: -20px;
+    right: -20px;
+
+    transition: transform 0.15s ease-in-out;
+
+    &.noregistered{
+      // appearance
+      background-color:darken(rgb(255, 0, 0),20%);
+      color: white;
+    
+    }
+    &.oneregistered{
+      // appearance
+      background-color: rgb(255, 123, 0);
+      color: white;
+    }
+    &.fullregistered{
+      // appearance
+      background-color: darken(rgb(0, 255, 0),15%);
+      color: white;
+      display: none;
+      &.isregistered{
+        display: block;
+      }
+    }
+    &.isregistered{
+      // appearance
+      //background-color: rgb(38, 50, 224);
+      color: white;
+      transform: rotate(45deg);
+    }
+    &:hover{
+      transform: scale(1.2);
+      &.isregistered{
+        transform: rotate(45deg) scale(1.2);
+      }
+    }
   }
 }
 .isregistered{
   // appearance
-  color: rgb(0, 140, 255);
-  border: 2px solid  rgb(0, 217, 255);
+  //color: rgb(0, 140, 255);
+  //border: 2px solid  rgb(0, 217, 255);
 }
 h2{
   font-size: larger;
   font-family: 'Black Ops One', cursive;
 }
+body{
+  background: #000;
+}
+.game__register--button {
+  font-family: 'Black Ops One', cursive;
+  color:white;
+  padding: 10px;
+  background: black;
+  border-radius: 25px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+.game__register--button:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0px 15px white;
+}
+.unregistering{
+  // appearance :
+  width: 10rem;
+  color : grey;
+  font-size: large;
+  border:2px solid grey;
+  text-align: center;
 
+  // position :
+  position: absolute;
+  bottom: -46px;
+  right: -33px;
+}
+.game__unregister--button:hover {
+  color: rgb(188, 41, 41);
+  box-shadow: 0 0px 15px rgb(255, 0, 0);
+  border:2px solid  rgb(188, 41, 41);
+}
 
 @media screen and (min-width:768px){
   .games{
