@@ -12,7 +12,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           // saving datas in the store
           store.dispatch(saveAllUsers(response.data.users));
         })

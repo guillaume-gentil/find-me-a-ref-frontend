@@ -15,7 +15,6 @@ function UsersManagement() {
     dispatch(fetchAllUsers(token));
   });
   const users = useSelector((state) => state.allUsers);
-
   return (
     <>
       <section className="users">
@@ -37,7 +36,7 @@ function UsersManagement() {
       </section>
       <section className="users">
         {users.map(
-          (user) => <User key={user.id} {...user} />,
+          (user) => <User key={user.id} {...user} user={user} />,
         )}
       </section>
     </>

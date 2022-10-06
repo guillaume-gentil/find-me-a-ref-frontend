@@ -3,9 +3,10 @@ import '../styles.scss';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleUserDetails } from 'src/actions/users_management';
+import PropTypes from 'prop-types';
 
 // component :
-function UsersManagement() {
+function User({ user }) {
   const dispatch = useDispatch();
   const isUserOpen = useSelector((state) => state.isUserOpen);
   // const openDetails = (isUserOpen ? 'user user__detail--open' : 'user user__details--hidden');
@@ -19,13 +20,13 @@ function UsersManagement() {
     >
       <div className="user__items">
         <section className="user__name">
-          <p className="user__name--detail">Nom</p>
-          <p className="user__name--detail">Prénom</p>
+          <p className="user__name--detail">{user.lastname}</p>
+          <p className="user__name--detail">{user.firstname}</p>
         </section>
         <section className="user__details">
-          <p className="user__details--item">Numéro de tel</p>
-          <address className="user__details--item">Adresse mail</address>
-          <address className="user__details--item">Adresse</address>
+          <p className="user__details--item">{user.phoneNumber}</p>
+          <address className="user__details--item">{user.email}</address>
+          <address className="user__details--item">{user.address}</address>
         </section>
       </div>
       {isUserOpen && (
@@ -38,5 +39,9 @@ function UsersManagement() {
   );
 }
 
+// verify props :
+User.propTypes = {
+  user: PropTypes.object.isRequired,
+};
 // export :
-export default UsersManagement;
+export default User;
