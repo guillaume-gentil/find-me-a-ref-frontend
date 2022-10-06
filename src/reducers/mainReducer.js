@@ -169,6 +169,11 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         isUserOpen: !state.isUserOpen,
       };
+    case 'SAVE_ALL_USERS':
+      return {
+        ...state,
+        allUsers: action.users,
+      };
     default:
       return state;
   }

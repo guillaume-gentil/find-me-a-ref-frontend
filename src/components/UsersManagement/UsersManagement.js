@@ -9,8 +9,12 @@ import { fetchAllUsers } from '../../actions/users_management';
 
 // component :
 function UsersManagement() {
+  const token = useSelector((state) => state.jwtToken);
   const dispatch = useDispatch();
-  useEffect(dispatch(fetchAllUsers));
+  useEffect(() => {
+    dispatch(fetchAllUsers(token));
+  });
+  const users = useSelector((state) => state.allUsers);
 
   return (
     <>
@@ -32,7 +36,9 @@ function UsersManagement() {
         </div>
       </section>
       <section className="users">
-        <User />
+        {users.map(
+          (user) => <User key={user.id} {...user} />,
+        )}
       </section>
     </>
   );
