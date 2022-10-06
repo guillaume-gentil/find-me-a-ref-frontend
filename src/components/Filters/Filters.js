@@ -112,7 +112,7 @@ function Filters() {
           <option value="">Catégories</option>
           {categories.map(
             (category) => (
-              <option key={category.id} id={category.id} value={category.name}>{category.name}
+              <option className="filters__list--optionValue" key={category.id} id={category.id} value={category.name}>{category.name}
               </option>
             ),
           )}
@@ -126,7 +126,7 @@ function Filters() {
           <option value="">Equipes</option>
           {teams.map(
             (team) => (
-              <option key={team.id} id={team.id} value={team.name}>{team.name}
+              <option className="filters__list--optionValue" key={team.id} id={team.id} value={team.name}>{team.name}
               </option>
             ),
           )}
@@ -139,7 +139,7 @@ function Filters() {
         >
           <option value="">Clubs</option>
           {clubs.map(
-            (club) => <option key={club.id} id={club.id} value={club.name}>{club.name}</option>,
+            (club) => <option className="filters__list--optionValue" key={club.id} id={club.id} value={club.name}>{club.name}</option>,
           )}
         </select>
         <select
@@ -152,6 +152,7 @@ function Filters() {
           {arenas.map(
             (arena) => (
               <option
+                className="filters__list--optionValue"
                 key={arena.id}
                 id={arena.id}
                 value={arena.name}
@@ -169,7 +170,7 @@ function Filters() {
         >
           <option value="">Types de rencontres</option>
           {types.map(
-            (type) => <option key={type.id} id={type.id} value={type.name}>{type.name}</option>,
+            (type) => <option className="filters__list--optionValue" key={type.id} id={type.id} value={type.name}>{type.name}</option>,
           )}
         </select>
       </div>
