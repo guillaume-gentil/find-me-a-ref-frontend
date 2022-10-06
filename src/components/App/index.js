@@ -23,6 +23,7 @@ import './styles.scss';
 import { fetchGames } from '../../actions/games';
 import { saveJwtToken, setUserRoles } from '../../actions/login';
 import { fetchUserRole } from '../../selectors/fetchUserRole';
+import GameForm from '../GamesManagement/GameForm/GameForm';
 
 // Component :
 function App() {
@@ -124,6 +125,14 @@ function App() {
           element={
             isAdmin
               ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/games/create"
+          element={
+            isAdmin
+              ? <GameForm />
               : <Navigate to="/403" replace />
             }
         />
