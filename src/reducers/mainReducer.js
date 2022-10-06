@@ -163,12 +163,6 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         adminNav: false,
       };
-      // openable user details on usersmanagement :
-    case 'TOGGLE_USER_DETAILS':
-      return {
-        ...state,
-        isUserOpen: !state.isUserOpen,
-      };
     case 'SAVE_ALL_USERS':
       return {
         ...state,

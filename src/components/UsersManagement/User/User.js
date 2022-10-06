@@ -1,22 +1,24 @@
 // import :
 import '../styles.scss';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleUserDetails } from 'src/actions/users_management';
+import { useDispatch } from 'react-redux';
+import { Edit, Trash } from 'react-feather';
 import PropTypes from 'prop-types';
 
 // component :
 function User({ user }) {
   const dispatch = useDispatch();
-  const isUserOpen = useSelector((state) => state.isUserOpen);
-  // const openDetails = (isUserOpen ? 'user user__detail--open' : 'user user__details--hidden');
+
+  function handleClassChange(e) {
+    const targetedUser = e.target.querySelector('.user__link');
+    // console.log(targetedUser);
+    targetedUser.classList.toggle('hidden');
+  }
 
   return (
     <section
       className="user"
-      onClick={() => {
-        dispatch(toggleUserDetails());
-      }}
+      onClick={handleClassChange}
     >
       <div className="user__items">
         <section className="user__name">
@@ -29,12 +31,12 @@ function User({ user }) {
           <address className="user__details--item">{user.address}</address>
         </section>
       </div>
-      {isUserOpen && (
-      <section className="user__link">
-        <Link className="users__interaction" to="#">Editer</Link>
-        <Link className="users__interaction" to="#">Supprimer</Link>
+
+      <section className="user__link hidden">
+        <Link className="users__interaction" to="#"><Edit size={25} /></Link>
+        <Link className="users__interaction" to="#"><Trash size={25} /></Link>
       </section>
-      )}
+
     </section>
   );
 }
