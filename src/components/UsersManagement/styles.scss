@@ -28,7 +28,7 @@ section{
     color: white;
     padding: 1rem;
     margin: 5px;
-    & input{
+    & input, & select{
       padding: 0.5rem;
       border: 1px solid #888;
       border-radius: 0.2rem;
@@ -96,7 +96,7 @@ section{
         width: 50%;
         padding-right: 5%;
       }
-      & input{
+      & input, & select{
         width: 100%;
         padding: 0.5rem;
         border: 1px solid #888;
