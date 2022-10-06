@@ -17,6 +17,7 @@ const initialState = {
   clubs: [],
   arenas: [],
   types: [],
+  allUsers: [],
   userRoles: [],
 };
 
@@ -162,6 +163,10 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         adminNav: false,
       };
+    case 'SAVE_ALL_USERS':
+      return {
+        ...state,
+        allUsers: action.users,
     case 'SET_USER_ROLES':
       return {
         ...state,

@@ -115,7 +115,7 @@ function App() {
           path="/admin/users"
           element={
             isAdmin
-              ? <div />
+              ? <UsersManagement />
               : <Navigate to="/403" replace />
             }
         />
