@@ -78,7 +78,7 @@ function Game({
         dispatch(openLogin());
       }}
     >
-      <section className={gameState}>
+      <section className={gameClass}>
         <h2 className="game__item">{teams[0].name} VS </h2>
         <h2 className="game__item">{teams[1].name}</h2>
         <p className="game__item">{formatDate}</p>
