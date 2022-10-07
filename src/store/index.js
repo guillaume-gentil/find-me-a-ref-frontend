@@ -7,9 +7,9 @@ import gamesMiddleware from 'src/middlewares/gamesMiddleware';
 import filtersMiddleware from 'src/middlewares/filtersMiddleware';
 import commitMiddleware from '../middlewares/commitMiddleware';
 import usersMiddleware from '../middlewares/usersMiddleware';
+import teamsMiddleware from '../middlewares/teamsMiddleware';
 import arenasMiddleware from '../middlewares/arenasMiddleware';
 import clubsMiddleware from '../middlewares/clubsMiddleware';
-
 
 const enhancers = composeWithDevTools(
   applyMiddleware(
@@ -19,6 +19,7 @@ const enhancers = composeWithDevTools(
     filtersMiddleware,
     commitMiddleware,
     usersMiddleware,
+    teamsMiddleware,
     arenasMiddleware,
     clubsMiddleware,
   ),
