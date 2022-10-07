@@ -1,36 +1,37 @@
 // import :
 import '../styles.scss';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
+import Moment from 'moment';
 import PropTypes from 'prop-types';
 
 // component :
 function GameDisplay({ game }) {
   function handleClassChange(e) {
-    const targetedGame = e.target.querySelector('.game__link');
-    // console.log(targetedGame);
-    targetedGame.classList.toggle('hidden');
+    const targetedUser = e.target.closest('.game-item');
+    const linkElem = targetedUser.querySelector('.game-item__link');
+    linkElem.classList.toggle('game-hidden');
   }
-  console.log(game);
+  const formatDate = Moment(game.date).format('DD-MM-YYYY à HH:MM');
   return (
     <section
-      className="game"
+      className="game-item"
       onClick={handleClassChange}
     >
-      <div className="game__items">
-        <section className="game__name">
-          <p className="game__name--detail">{game.date}</p>
-          <p className="game__name--detail">{game.teams[0].name} VS {game.teams[1].name}</p>
+      <div className="game-item__items">
+        <section className="game-item__name">
+          <p className="game-item__name--detail">{formatDate}</p>
+          <p className="game-item__name--detail">{game.teams[0].name} VS {game.teams[1].name}</p>
         </section>
-        <section className="game__details">
-          <p className="game__details--item">{game.type.name}</p>
+        <section className="game-item__details">
+          <p className="game-item__details--item">{game.type.name}</p>
         </section>
       </div>
 
-      <section className="game__link hidden">
-        <Link className="games__interaction" to={`/admin/games/${game.id}/edit`}><Edit size={25} /></Link>
-        <Link className="games__interaction" to="#"><Trash size={25} /></Link>
+      <section className="game-item__link game-hidden">
+        <Link className="games-management__interaction" to="#"><Edit size={25} /></Link>
+        <Link className="games-management__interaction" to="#"><Trash size={25} /></Link>
+
       </section>
 
     </section>
