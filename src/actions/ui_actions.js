@@ -34,3 +34,4 @@ export const setErrorMessage = (message) => ({
 export const openFilters = () => ({
   type: 'OPEN_FILTERS',
 });
+
