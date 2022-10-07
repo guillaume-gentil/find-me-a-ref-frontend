@@ -19,6 +19,7 @@ const initialState = {
   types: [],
   allUsers: [],
   userRoles: [],
+  errorMessage: '',
 };
 
 const mainReducer = (state = initialState, action = {}) => {

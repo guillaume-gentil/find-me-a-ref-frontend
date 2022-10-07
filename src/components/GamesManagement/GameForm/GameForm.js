@@ -1,44 +1,58 @@
+import { useEffect } from 'react';
 import { CornerUpLeft } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllUsers } from '../../../actions/users_management';
+import {
+  fetchArenas, fetchTeams, fetchTypes,
+} from '../../../actions/filters';
 import '../styles.scss';
-// import { setErrorMessage } from '../../../actions/ui_actions';
+import { setErrorMessage } from '../../../actions/ui_actions';
+import { sendGameForm } from '../../../actions/games_management';
 
 function GameForm() {
   const dispatch = useDispatch();
-
   const token = useSelector((state) => state.jwtToken);
-  const error = '';
+  const error = useSelector((state) => state.errorMessage);
+  useEffect(() => {
+    dispatch(fetchAllUsers(token));
+    dispatch(fetchTeams());
+    dispatch(fetchArenas());
+    dispatch(fetchTypes());
+  }, []);
+
+  const userList = useSelector((state) => state.allUsers);
+  const teamList = useSelector((state) => state.teams);
+  const arenaList = useSelector((state) => state.arenas);
+  const typeList = useSelector((state) => state.types);
 
   function isEmptyOrSpaces(str) {
     return str === null || str.match(/^ *$/) !== null;
   }
-  // function checkRole(arr) {
-  //   const found = arr.find((item) => item !== 'ROLE_REFEREE' && item !== 'ROLE_TEAMHEAD' && item !== 'ROLE_ADMIN');
-  //   if (found) {
-  //     return false;
-  //   }
-  //   return true;
-  // }
 
-  // function handleFormSubmit(e) {
-  //   e.preventDefault();
-  //   const requestObject = {
-  //     firstname: e.target.querySelector('#firstname').value,
-  //     lastname: e.target.querySelector('#lastname').value,
-  //     email: e.target.querySelector('#email').value,
-  //     roles: [e.target.querySelector('#role').value],
-  //     password: e.target.querySelector('#password').value,
-  //     token: token,
-  //   };
-  //   // eslint-disable-next-line max-len
-  //   if (isEmptyOrSpaces(requestObject.firstname) || isEmptyOrSpaces(requestObject.lastname) || isEmptyOrSpaces(requestObject.email) || isEmptyOrSpaces(requestObject.password) || !checkRole(requestObject.roles)) {
-  //     const message = 'Veuillez renseigner tous les champs.';
-  //     dispatch(setErrorMessage(message));
-  //   }
-  //   else {
-  //     dispatch(sendgameForm(requestObject));
-  //   }
-  // }
+  function filterReferee(arr) {
+    const filteredReferee = arr.filter((item) => !isEmptyOrSpaces(item));
+    return filteredReferee;
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const requestObject = {
+      date: e.target.querySelector('#date').value,
+      teams: [e.target.querySelector('#team1').value, e.target.querySelector('#team2').value],
+      users: filterReferee([e.target.querySelector('#referee1').value, e.target.querySelector('#referee2').value]),
+      arena: e.target.querySelector('#arena').value,
+      type: e.target.querySelector('#type').value,
+      token: token,
+    };
+    // eslint-disable-next-line max-len
+    if (isEmptyOrSpaces(requestObject.date) || isEmptyOrSpaces(requestObject.arena) || isEmptyOrSpaces(requestObject.type) || requestObject.teams.length < 2) {
+      const message = 'Veuillez renseigner tous les champs.';
+      dispatch(setErrorMessage(message));
+    }
+    else {
+      dispatch(sendGameForm(requestObject));
+    }
+  }
 
   return (
     <div className="game-form">
@@ -46,39 +60,109 @@ function GameForm() {
         <h3 className="game-form__title">
           Matchs
         </h3>
-        <button type="button" className="game-form__back"><CornerUpLeft /></button>
+        <button
+          type="button"
+          className="game-form__back"
+        ><CornerUpLeft />
+        </button>
       </section>
-      <form action="" className="game-form__form">
+      <form action="" method="POST" className="game-form__form" onSubmit={handleFormSubmit}>
         <fieldset className="game-form__fieldset">
           <label htmlFor="date">
             Date
-            <input type="date" name="date" id="date" />
+            <input type="datetime-local" name="date" id="date" />
           </label>
           <label htmlFor="team1">
             Equipe 1
-            <input type="text" name="team1" id="team1" />
+            <select name="team1" id="team1">
+              <option value="">-</option>
+              {teamList.map(
+                (team) => (
+                  <option
+                    key={team.id}
+                    value={team.id}
+                  >{team.name}
+                  </option>
+                ),
+              )}
+            </select>
           </label>
           <label htmlFor="team2">
             Equipe 2
-            <input type="text" name="team2" id="team2" />
+            <select name="team2" id="team2">
+              <option value="">-</option>
+              {teamList.map(
+                (team) => (
+                  <option
+                    key={team.id}
+                    value={team.id}
+                  >{team.name}
+                  </option>
+                ),
+              )}
+            </select>
           </label>
           <label htmlFor="referee1">
             Arbitre 1
-            <input type="text" name="referee1" id="referee1" />
+            <select name="referee1" id="referee1">
+              <option value="">-</option>
+              {userList.map(
+                (user) => (
+                  <option
+                    key={user.id}
+                    value={user.id}
+                  >{user.firstname} {user.lastname}
+                  </option>
+                ),
+              )}
+            </select>
           </label>
           <label htmlFor="referee2">
             Arbitre 2
-            <input type="number" name="referee2" id="referee2" />
+            <select name="referee2" id="referee2">
+              <option value="">-</option>
+              {userList.map(
+                (user) => (
+                  <option
+                    key={user.id}
+                    value={user.id}
+                  >{user.firstname} {user.lastname}
+                  </option>
+                ),
+              )}
+            </select>
           </label>
         </fieldset>
         <fieldset className="game-form__fieldset">
           <label htmlFor="arena">
             Gymnase
-            <input type="text" name="arena" id="arena" />
+            <select name="arena" id="arena">
+              <option value="">-</option>
+              {arenaList.map(
+                (arena) => (
+                  <option
+                    key={arena.id}
+                    value={arena.id}
+                  >{arena.name} {arena.address}
+                  </option>
+                ),
+              )}
+            </select>
           </label>
           <label htmlFor="type">
             Type de match
-            <input type="text" name="type" id="type" />
+            <select name="type" id="type">
+              <option value="">-</option>
+              {typeList.map(
+                (type) => (
+                  <option
+                    key={type.id}
+                    value={type.id}
+                  >{type.name}
+                  </option>
+                ),
+              )}
+            </select>
           </label>
           {error && <p className="error_message">Erreur : Veuillez remplir tous les champs</p>}
           <button type="submit" className="game-form__submit">Valider</button>
