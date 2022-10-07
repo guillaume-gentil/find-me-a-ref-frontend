@@ -17,6 +17,7 @@ import Legals from 'src/components/Legals/Legals';
 import FourOhFour from 'src/components/FourOhFour/FourOhFour';
 import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
 import ArenaForm from 'src/components/ArenaManagement/ArenaForm/ArenaForm';
+import UserFormEdit from 'src/components/UsersManagement/UserFormEdit/UserFormEdit';
 import UsersManagement from '../UsersManagement/UsersManagement';
 import TeamForm from '../TeamManagement/TeamForm/TeamForm';
 import ClubForm from '../ClubManagement/ClubForm/ClubForm';
@@ -129,6 +130,14 @@ function App() {
           element={
             isAdmin
               ? <UserForm />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/users/:id/edit"
+          element={
+            isAdmin
+              ? <UserFormEdit />
               : <Navigate to="/403" replace />
             }
         />
