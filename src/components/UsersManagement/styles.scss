@@ -1,27 +1,55 @@
-section{
-  // appearance : 
+.users{
+  color: white;
+  border-bottom: 1px solid grey;
+  margin:10px;
   font-family: 'Saira', sans-serif;
-  background-color: white;
-  color : black;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-}
-.users{
+  justify-content: space-between;
   &__title{
-    margin: 15px;
+    margin: 10px;
+    padding:10px;
   }
-  &__createButton{
-    margin: 15px;
+  &__interaction{
+    margin: 10px;
+    margin-right: 0;
+    padding: 10px;
   }
+  &__interaction--create{
+    background-color: rgba($color: white, $alpha: 0.2);
+    border: 1px white solid;
+    padding: 10px;
+  }
+}
+.hidden{
+  display: none;
 }
 .user{
-  // appearance :
-  width: 100%;
-  // position :
+  background-color: rgba($color: white, $alpha: 0.2);
+  font-family: 'Saira', sans-serif;
+  color: white;
+  margin : 10px;
+  padding: 15px;
+  padding-right: 0;
+  width : 100%;
   display: flex;
-  justify-content:space-around;
-
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__items{
+    display: flex;
+  }
+  &__name{
+    display: flex;
+  }
+  &__name--detail{
+    margin-right: 10px;
+  }
+  &__details{
+    display: none;
+  }
+  &__link{
+    margin-right: 0;
+    padding-right: 0;
   &-form{
     background-color: rgba($color: white, $alpha: 0.2);
     border: 1px solid #888;
@@ -83,14 +111,23 @@ section{
   font-size: 0.9rem;
   font-family: 'Saira', sans-serif;
 }
-
 @media screen and (min-width: 768px) {
   .user{
     // appearance :
+    
     width: 100%;
     // position :
     display: flex;
     justify-content:space-around;
+    &__items{
+      display: flex;
+    }
+    &__details{
+      display:flex;
+    }
+    &__details--item{
+      margin-right: 10px;
+    }
   
     &-form{
       background-color: rgba($color: white, $alpha: 0.2);

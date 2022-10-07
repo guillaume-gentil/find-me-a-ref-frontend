@@ -3,9 +3,9 @@ const initialState = {
   isLoginOpen: false,
   isRegistration: false,
   isNavOpen: false,
+  isFilterOpen: false,
   isLoading: true,
   isLogged: false,
-  isAdmin: true,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -28,7 +28,8 @@ const initialState = {
   userFormInputLicense: '',
   userFormInputLevel: '',
   errorMessage: '',
-
+  allUsers: [],
+  userRoles: [],
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -42,6 +43,11 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLoginOpen: true,
+      };
+    case 'OPEN_FILTERS':
+      return {
+        ...state,
+        isFilterOpen: !state.isFilterOpen,
       };
     case 'TOGGLE_MOBILE':
       return {
@@ -89,6 +95,7 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         jwtToken: '',
         isLogged: false,
+        userRoles: [],
       };
 
     case 'REMOVE_LOADING':
@@ -216,6 +223,16 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         errorMessage: action.message,
+     };
+    case 'SAVE_ALL_USERS':
+      return {
+        ...state,
+        allUsers: action.users,
+      };
+    case 'SET_USER_ROLES':
+      return {
+        ...state,
+        userRoles: action.userRoles,
       };
     default:
       return state;

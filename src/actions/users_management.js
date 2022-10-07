@@ -1,3 +1,5 @@
+export const FETCH_ALL_USERS = 'FETCH_ALL_USERS';
+export const SAVE_ALL_USERS = 'SAVE_ALL_USERS';
 export const SEND_USER_FORM = 'SEND_USER_FORM';
 export const CHANGE_INPUT_PASS = 'CHANGE_INPUT_PASS';
 export const CHANGE_INPUT_ADDRESS = 'CHANGE_INPUT_ADDRESS';
@@ -43,4 +45,12 @@ export const changeInputLevel = (value) => ({
 export const changeInputLicense = (value) => ({
   type: 'CHANGE_INPUT_LICENSE',
   newValue: value,
+});
+export const fetchAllUsers = (token) => ({
+  type: 'FETCH_ALL_USERS',
+  token: token,
+});
+export const saveAllUsers = (users) => ({
+  type: 'SAVE_ALL_USERS',
+  users: users,
 });

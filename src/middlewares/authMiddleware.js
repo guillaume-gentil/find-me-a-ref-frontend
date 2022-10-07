@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { saveJwtToken, sendAuthCredentials } from '../actions/login';
+import { saveJwtToken, setUserRoles } from '../actions/login';
+import { fetchUserRole } from '../selectors/fetchUserRole';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -9,6 +10,7 @@ const authMiddleware = (store) => (next) => (action) => {
           // TODO : replace this value by api json web token
           const { token } = response.data;
           store.dispatch(saveJwtToken(token));
+          store.dispatch(setUserRoles(fetchUserRole(token)));
         })
         .catch((error) => {
           console.log(error);
