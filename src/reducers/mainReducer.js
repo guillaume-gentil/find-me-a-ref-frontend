@@ -30,7 +30,7 @@ const initialState = {
   errorMessage: '',
   allUsers: [],
   userRoles: [],
-  errorMessage: '',
+  editedComponent: null,
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -224,7 +224,7 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         errorMessage: action.message,
-     };
+      };
     case 'SAVE_ALL_USERS':
       return {
         ...state,
@@ -234,6 +234,11 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userRoles: action.userRoles,
+      };
+    case 'SAVE_GAME_INFOS':
+      return {
+        ...state,
+        editedComponent: action.game,
       };
     default:
       return state;

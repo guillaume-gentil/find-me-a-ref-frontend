@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FETCH_GAMES, saveGames } from '../actions/games';
+import { saveGameInfos } from '../actions/games_management';
 import { setEmergency, setErrorMessage } from '../actions/ui_actions';
 
 const gamesMiddleware = (store) => (next) => (action) => {
@@ -45,6 +46,48 @@ const gamesMiddleware = (store) => (next) => (action) => {
           store.dispatch(setErrorMessage(message));
         });
       break;
+    case 'SEND_EDIT_GAME_FORM':
+      axios.put(
+        `http://localhost:8000/api/v1/games/${action.formObj.id}/edit`,
+        {
+
+          date: action.formObj.date,
+          teams: action.formObj.teams,
+          users: action.formObj.users,
+          arena: action.formObj.arena,
+          type: action.formObj.type,
+
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${action.formObj.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+          const message = 'Une erreur est survenue.';
+          store.dispatch(setErrorMessage(message));
+        });
+      break;
+    case 'FETCH_GAME_INFOS':
+      axios.get(`http://localhost:8000/api/v1/games/${action.gameId}`, {
+        headers: {
+          Authorization: `Bearer ${action.token}`,
+        },
+      })
+        .then((response) => {
+          console.log(response);
+          store.dispatch(saveGameInfos(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
     default:
   }
   // next action :
