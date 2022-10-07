@@ -4,6 +4,7 @@ export const SET_EMERGENCY = 'SET_EMERGENCY';
 export const OPEN_LOGIN = 'OPEN_LOGIN';
 export const SET_ADMIN_NAV = 'SET_ADMIN_NAV';
 export const UNSET_ADMIN_NAV = 'UNSET_ADMIN_NAV';
+export const OPEN_FILTERS = 'OPEN_FILTERS';
 
 export const openNavbar = () => ({
   type: 'OPEN_NAVBAR',
@@ -23,4 +24,7 @@ export const setAdminNav = () => ({
 });
 export const unsetAdminNav = () => ({
   type: 'UNSET_ADMIN_NAV',
+});
+export const openFilters = () => ({
+  type: 'OPEN_FILTERS',
 });
