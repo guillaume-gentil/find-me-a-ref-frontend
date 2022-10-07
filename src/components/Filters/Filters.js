@@ -67,23 +67,107 @@ function Filters() {
 
   // Handler for all filters :
   function handleDateChange(e) {
+    // reset of other filters :
+    const resets = document.querySelectorAll('.filters__list--items:not(.button)');
+    const resetsArray = Array.from(resets);
+
+    resetsArray.forEach(
+      (reset) => {
+        try {
+          reset.selectedIndex = 0;
+        }
+        catch {
+          console.log('ca passe pas !');
+        }
+      },
+    );
     dispatch(orderGamesByDates());
   }
   function handleCategoryChange(e) {
+    // reset of other filters :
+    const resets = document.querySelectorAll('.filters__list--items:not(.categories)');
+    const resetsArray = Array.from(resets);
+
+    resetsArray.forEach(
+      (reset) => {
+        try {
+          reset.selectedIndex = 0;
+        }
+        catch {
+          console.log('ca passe pas !');
+        }
+      },
+    );
     dispatch(orderGamesByCategory(e.target.options[e.target.selectedIndex].id));
   }
   function handleTeamChange(e) {
+    // reset of other filters :
+    const resets = document.querySelectorAll('.filters__list--items:not(.teams)');
+    const resetsArray = Array.from(resets);
+
+    resetsArray.forEach(
+      (reset) => {
+        try {
+          reset.selectedIndex = 0;
+        }
+        catch {
+          console.log('ca passe pas !');
+        }
+      },
+    );
     dispatch(orderGamesByTeam(e.target.options[e.target.selectedIndex].id));
   }
   function handleClubChange(e) {
+    // reset of other filters :
+    const resets = document.querySelectorAll('.filters__list--items:not(.clubs)');
+    const resetsArray = Array.from(resets);
+
+    resetsArray.forEach(
+      (reset) => {
+        try {
+          reset.selectedIndex = 0;
+        }
+        catch {
+          console.log('ca passe pas !');
+        }
+      },
+    );
     dispatch(orderGamesByClub(e.target.options[e.target.selectedIndex].id));
   }
 
   function handleArenaChange(e) {
+    // reset of other filters :
+    const resets = document.querySelectorAll('.filters__list--items:not(.arenas)');
+    const resetsArray = Array.from(resets);
+
+    resetsArray.forEach(
+      (reset) => {
+        try {
+          reset.selectedIndex = 0;
+        }
+        catch {
+          console.log('ca passe pas !');
+        }
+      },
+    );
     dispatch(orderGamesByArena(e.target.options[e.target.selectedIndex].id));
   }
 
   function handleTypeChange(e) {
+    // reset of other filters :
+    const resets = document.querySelectorAll('.filters__list--items:not(.types)');
+    const resetsArray = Array.from(resets);
+
+    resetsArray.forEach(
+      (reset) => {
+        try {
+          reset.selectedIndex = 0;
+        }
+        catch {
+          console.log('ca passe pas !');
+        }
+      },
+    );
     dispatch(orderGamesByType(e.target.options[e.target.selectedIndex].id));
   }
   const isFilterOpen = useSelector((state) => state.isFilterOpen);
@@ -94,7 +178,6 @@ function Filters() {
         type="button"
         className="filters__emergencies"
         onClick={() => dispatch(emergencyAction())}
-        // nouvelle route ou filter ?
       >Voir les urgences
       </button>
       <div className="filters__list">
@@ -107,14 +190,14 @@ function Filters() {
         <section className={isFilterOpen ? 'filters__menu open' : 'filters__menu close'}>
           <button
             type="button"
-            className="filters__list--items"
+            className="filters__list--items button"
             onClick={handleDateChange}
           >Trier par date
           </button>
           <select
             name="categories"
             id=""
-            className="filters__list--items"
+            className="filters__list--items categories"
             onChange={handleCategoryChange}
           >
             <option value="">Catégories</option>
@@ -128,7 +211,7 @@ function Filters() {
           <select
             name="teams"
             id=""
-            className="filters__list--items"
+            className="filters__list--items teams"
             onChange={handleTeamChange}
           >
             <option value="">Equipes</option>
@@ -142,7 +225,7 @@ function Filters() {
           <select
             name="clubs"
             id=""
-            className="filters__list--items"
+            className="filters__list--items clubs"
             onChange={handleClubChange}
           >
             <option value="">Clubs</option>
@@ -153,7 +236,7 @@ function Filters() {
           <select
             name="arena"
             id=""
-            className="filters__list--items"
+            className="filters__list--items arenas"
             onChange={handleArenaChange}
           >
             <option value="">Gymnases</option>
@@ -173,7 +256,7 @@ function Filters() {
           <select
             name="types"
             id=""
-            className="filters__list--items"
+            className="filters__list--items types"
             onChange={handleTypeChange}
           >
             <option value="">Types de rencontres</option>
