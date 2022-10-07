@@ -18,6 +18,7 @@ import FourOhFour from 'src/components/FourOhFour/FourOhFour';
 import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
 import ArenaForm from 'src/components/ArenaManagement/ArenaForm/ArenaForm';
 import UsersManagement from '../UsersManagement/UsersManagement';
+import GamesManagement from '../GamesManagement/GamesManagement';
 import TeamForm from '../TeamManagement/TeamForm/TeamForm';
 import ClubForm from '../ClubManagement/ClubForm/ClubForm';
 import './styles.scss';
@@ -136,7 +137,7 @@ function App() {
           path="/admin/games"
           element={
             isAdmin
-              ? <div />
+              ? <GamesManagement />
               : <Navigate to="/403" replace />
             }
         />
