@@ -30,7 +30,7 @@ const initialState = {
   errorMessage: '',
   allUsers: [],
   userRoles: [],
-  errorMessage: '',
+  editedComponent: null,
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -224,11 +224,16 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         errorMessage: action.message,
-     };
+      };
     case 'SAVE_ALL_USERS':
       return {
         ...state,
         allUsers: action.users,
+      };
+    case 'SAVE_USER':
+      return {
+        ...state,
+        editedComponent: action.user,
       };
     case 'SET_USER_ROLES':
       return {
