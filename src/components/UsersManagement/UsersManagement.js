@@ -13,7 +13,7 @@ function UsersManagement() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllUsers(token));
-  });
+  }, []);
   const users = useSelector((state) => state.allUsers);
   return (
     <>
