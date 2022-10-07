@@ -230,6 +230,11 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         allUsers: action.users,
       };
+    case 'SAVE_USER':
+      return {
+        ...state,
+        editedComponent: action.user,
+      };
     case 'SET_USER_ROLES':
       return {
         ...state,

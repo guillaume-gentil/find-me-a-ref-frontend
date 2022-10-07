@@ -33,7 +33,7 @@ function User({ user }) {
       </div>
 
       <section className="user__link hidden">
-        <Link className="users__interaction" to="#"><Edit size={25} /></Link>
+        <Link className="users__interaction" to={`/admin/users/${user.id}/edit`}><Edit size={25} /></Link>
         <Link className="users__interaction" to="#"><Trash size={25} /></Link>
       </section>
 

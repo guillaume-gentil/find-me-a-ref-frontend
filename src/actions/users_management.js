@@ -1,6 +1,8 @@
 export const FETCH_ALL_USERS = 'FETCH_ALL_USERS';
+export const FETCH_USER = 'FETCH_USER';
 export const SAVE_ALL_USERS = 'SAVE_ALL_USERS';
 export const SEND_USER_FORM = 'SEND_USER_FORM';
+export const SEND_EDIT_USER_FORM = 'SEND_EDIT_USER_FORM';
 export const CHANGE_INPUT_PASS = 'CHANGE_INPUT_PASS';
 export const CHANGE_INPUT_ADDRESS = 'CHANGE_INPUT_ADDRESS';
 export const CHANGE_INPUT_FIRSTNAME = 'CHANGE_INPUT_FIRSTNAME';
@@ -12,6 +14,10 @@ export const CHANGE_INPUT_LICENSE = 'CHANGE_INPUT_LICENSE';
 
 export const sendUserForm = (formObj) => ({
   type: 'SEND_USER_FORM',
+  formObj: formObj,
+});
+export const sendEditUserForm = (formObj) => ({
+  type: 'SEND_EDIT_USER_FORM',
   formObj: formObj,
 });
 export const changeInputPass = (value) => ({
@@ -50,7 +56,16 @@ export const fetchAllUsers = (token) => ({
   type: 'FETCH_ALL_USERS',
   token: token,
 });
+export const fetchUser = ({ token, id }) => ({
+  type: 'FETCH_USER',
+  token: token,
+  id: id,
+});
 export const saveAllUsers = (users) => ({
   type: 'SAVE_ALL_USERS',
   users: users,
+});
+export const saveUser = (user) => ({
+  type: 'SAVE_USER',
+  user: user,
 });
