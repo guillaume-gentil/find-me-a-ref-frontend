@@ -1,13 +1,5 @@
-section{
-  // appearance : 
-  font-family: 'Saira', sans-serif;
-  background-color: white;
-  color : black;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.games{
+
+.games-management{
   &__title{
     margin: 15px;
   }
@@ -15,7 +7,7 @@ section{
     margin: 15px;
   }
 }
-.game{
+.game-item{
   // appearance :
   width: 100%;
   // position :
@@ -85,7 +77,7 @@ section{
 }
 
 @media screen and (min-width: 768px) {
-  .game{
+  .game-item{
     // appearance :
     width: 100%;
     // position :

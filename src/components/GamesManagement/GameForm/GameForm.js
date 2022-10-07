@@ -55,19 +55,19 @@ function GameForm() {
   }
 
   return (
-    <div className="game-form">
-      <section className="game-form__top">
-        <h3 className="game-form__title">
+    <div className="game-item-form">
+      <section className="game-item-form__top">
+        <h3 className="game-item-form__title">
           Matchs
         </h3>
         <button
           type="button"
-          className="game-form__back"
+          className="game-item-form__back"
         ><CornerUpLeft />
         </button>
       </section>
-      <form action="" method="POST" className="game-form__form" onSubmit={handleFormSubmit}>
-        <fieldset className="game-form__fieldset">
+      <form action="" method="POST" className="game-item-form__form" onSubmit={handleFormSubmit}>
+        <fieldset className="game-item-form__fieldset">
           <label htmlFor="date">
             Date
             <input type="datetime-local" name="date" id="date" />
@@ -133,7 +133,7 @@ function GameForm() {
             </select>
           </label>
         </fieldset>
-        <fieldset className="game-form__fieldset">
+        <fieldset className="game-item-form__fieldset">
           <label htmlFor="arena">
             Gymnase
             <select name="arena" id="arena">
@@ -165,7 +165,7 @@ function GameForm() {
             </select>
           </label>
           {error && <p className="error_message">Erreur : Veuillez remplir tous les champs</p>}
-          <button type="submit" className="game-form__submit">Valider</button>
+          <button type="submit" className="game-item-form__submit">Valider</button>
         </fieldset>
       </form>
     </div>
