@@ -18,6 +18,16 @@ const initialState = {
   clubs: [],
   arenas: [],
   types: [],
+  // Controlled inputs
+  userFormInputPass: '',
+  userFormInputFirstname: '',
+  userFormInputLastname: '',
+  userFormInputEmail: '',
+  userFormInputAddress: '',
+  userFormInputZipcode: '',
+  userFormInputLicense: '',
+  userFormInputLevel: '',
+  errorMessage: '',
   allUsers: [],
   userRoles: [],
 };
@@ -169,6 +179,51 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         adminNav: false,
       };
+    case 'CHANGE_INPUT_PASS':
+      return {
+        ...state,
+        userFormInputPass: action.newValue,
+      };
+    case 'CHANGE_INPUT_ADDRESS':
+      return {
+        ...state,
+        userFormInputAddress: action.newValue,
+      };
+    case 'CHANGE_INPUT_FIRSTNAME':
+      return {
+        ...state,
+        userFormInputFirstname: action.newValue,
+      };
+    case 'CHANGE_INPUT_LASTNAME':
+      return {
+        ...state,
+        userFormInputLastname: action.newValue,
+      };
+    case 'CHANGE_INPUT_EMAIL':
+      return {
+        ...state,
+        userFormInputEmail: action.newValue,
+      };
+    case 'CHANGE_INPUT_ZIPCODE':
+      return {
+        ...state,
+        userFormInputZipcode: action.newValue,
+      };
+    case 'CHANGE_INPUT_LEVEL':
+      return {
+        ...state,
+        userFormInputPass: action.newValue,
+      };
+    case 'CHANGE_INPUT_LICENSE':
+      return {
+        ...state,
+        userFormInputLevel: action.newValue,
+      };
+    case 'SET_ERROR_MESSAGE':
+      return {
+        ...state,
+        errorMessage: action.message,
+     };
     case 'SAVE_ALL_USERS':
       return {
         ...state,

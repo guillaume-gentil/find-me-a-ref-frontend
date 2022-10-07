@@ -21,6 +21,7 @@ import './styles.scss';
 
 // Import actions :
 import { fetchGames } from '../../actions/games';
+import UserForm from '../UsersManagement/UserForm/UserForm';
 import { saveJwtToken, setUserRoles } from '../../actions/login';
 import { fetchUserRole } from '../../selectors/fetchUserRole';
 
@@ -116,6 +117,14 @@ function App() {
           element={
             isAdmin
               ? <UsersManagement />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/users/create"
+          element={
+            isAdmin
+              ? <UserForm />
               : <Navigate to="/403" replace />
             }
         />
