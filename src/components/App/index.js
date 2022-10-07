@@ -29,6 +29,7 @@ import UserForm from '../UsersManagement/UserForm/UserForm';
 import { saveJwtToken, setUserRoles } from '../../actions/login';
 import { fetchUserRole } from '../../selectors/fetchUserRole';
 import GameForm from '../GamesManagement/GameForm/GameForm';
+import GameFormEdit from '../GamesManagement/GameFormEdit/GameFormEdit';
 
 // Component :
 function App() {
@@ -146,6 +147,14 @@ function App() {
           element={
             isAdmin
               ? <GameForm />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/games/:id/edit"
+          element={
+            isAdmin
+              ? <GameFormEdit />
               : <Navigate to="/403" replace />
             }
         />

@@ -31,6 +31,7 @@ function GameDisplay({ game }) {
       <section className="game-item__link game-hidden">
         <Link className="games-management__interaction" to="#"><Edit size={25} /></Link>
         <Link className="games-management__interaction" to="#"><Trash size={25} /></Link>
+
       </section>
 
     </section>
