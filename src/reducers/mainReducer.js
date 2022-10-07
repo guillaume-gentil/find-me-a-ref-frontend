@@ -167,6 +167,7 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         allUsers: action.users,
+      };
     case 'SET_USER_ROLES':
       return {
         ...state,

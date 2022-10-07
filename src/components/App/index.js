@@ -17,6 +17,7 @@ import Legals from 'src/components/Legals/Legals';
 import FourOhFour from 'src/components/FourOhFour/FourOhFour';
 import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
 import UsersManagement from '../UsersManagement/UsersManagement';
+import ClubForm from '../ClubManagement/ClubForm/ClubForm';
 import './styles.scss';
 
 // Import actions :
@@ -132,6 +133,14 @@ function App() {
           element={
             isAdmin
               ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/clubs/create"
+          element={
+            isAdmin
+              ? <ClubForm />
               : <Navigate to="/403" replace />
             }
         />
