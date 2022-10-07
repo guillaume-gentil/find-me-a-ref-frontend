@@ -14,7 +14,7 @@ function User({ user }) {
     // console.log(targetedUser);
     targetedUser.classList.toggle('hidden');
   }
-
+  console.log(user);
   return (
     <section
       className="user"

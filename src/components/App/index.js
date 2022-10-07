@@ -17,6 +17,7 @@ import Legals from 'src/components/Legals/Legals';
 import FourOhFour from 'src/components/FourOhFour/FourOhFour';
 import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
 import UsersManagement from '../UsersManagement/UsersManagement';
+import GamesManagement from '../GamesManagement/GamesManagement';
 import './styles.scss';
 
 // Import actions :
@@ -123,7 +124,7 @@ function App() {
           path="/admin/games"
           element={
             isAdmin
-              ? <div />
+              ? <GamesManagement />
               : <Navigate to="/403" replace />
             }
         />

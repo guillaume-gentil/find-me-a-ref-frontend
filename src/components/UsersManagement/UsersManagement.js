@@ -36,7 +36,7 @@ function UsersManagement() {
       </section>
       <section className="users">
         {users.map(
-          (user) => <User key={user.id} {...user} user={user} />,
+          (user) => <User key={user.id} user={user} />,
         )}
       </section>
     </>
