@@ -30,6 +30,7 @@ const initialState = {
   errorMessage: '',
   allUsers: [],
   userRoles: [],
+  errorMessage: '',
 };
 
 const mainReducer = (state = initialState, action = {}) => {
