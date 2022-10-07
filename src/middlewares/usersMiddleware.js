@@ -64,7 +64,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         });
       break;
     case 'SEND_EDIT_USER_FORM':
-      axios.post(
+      axios.put(
         `http://localhost:8000/api/v1/users/${action.formObj.id}/edit`,
         {
 
