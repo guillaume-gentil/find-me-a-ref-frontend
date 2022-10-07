@@ -16,6 +16,7 @@ import Login from 'src/components/Login/Login';
 import Legals from 'src/components/Legals/Legals';
 import FourOhFour from 'src/components/FourOhFour/FourOhFour';
 import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
+import ArenaForm from 'src/components/ArenaManagement/ArenaForm/ArenaForm';
 import UsersManagement from '../UsersManagement/UsersManagement';
 import './styles.scss';
 
@@ -148,6 +149,14 @@ function App() {
           element={
             isAdmin
               ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/arena/create"
+          element={
+            isAdmin
+              ? <ArenaForm />
               : <Navigate to="/403" replace />
             }
         />
