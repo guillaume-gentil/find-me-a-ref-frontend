@@ -10,9 +10,9 @@ function User({ user }) {
   const dispatch = useDispatch();
 
   function handleClassChange(e) {
-    const targetedUser = e.target.querySelector('.user__link');
-    // console.log(targetedUser);
-    targetedUser.classList.toggle('hidden');
+    const targetedUser = e.target.closest('.user');
+    const linkElem = targetedUser.querySelector('.user__link');
+    linkElem.classList.toggle('hidden');
   }
 
   return (
