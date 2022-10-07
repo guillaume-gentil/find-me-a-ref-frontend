@@ -16,14 +16,19 @@ import Login from 'src/components/Login/Login';
 import Legals from 'src/components/Legals/Legals';
 import FourOhFour from 'src/components/FourOhFour/FourOhFour';
 import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
+import ArenaForm from 'src/components/ArenaManagement/ArenaForm/ArenaForm';
 import UsersManagement from '../UsersManagement/UsersManagement';
 import GamesManagement from '../GamesManagement/GamesManagement';
+import TeamForm from '../TeamManagement/TeamForm/TeamForm';
+import ClubForm from '../ClubManagement/ClubForm/ClubForm';
 import './styles.scss';
 
 // Import actions :
 import { fetchGames } from '../../actions/games';
+import UserForm from '../UsersManagement/UserForm/UserForm';
 import { saveJwtToken, setUserRoles } from '../../actions/login';
 import { fetchUserRole } from '../../selectors/fetchUserRole';
+import GameForm from '../GamesManagement/GameForm/GameForm';
 
 // Component :
 function App() {
@@ -121,10 +126,26 @@ function App() {
             }
         />
         <Route
+          path="/admin/users/create"
+          element={
+            isAdmin
+              ? <UserForm />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
           path="/admin/games"
           element={
             isAdmin
               ? <GamesManagement />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/games/create"
+          element={
+            isAdmin
+              ? <GameForm />
               : <Navigate to="/403" replace />
             }
         />
@@ -137,6 +158,14 @@ function App() {
             }
         />
         <Route
+          path="/admin/clubs/create"
+          element={
+            isAdmin
+              ? <ClubForm />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
           path="/admin/teams"
           element={
             isAdmin
@@ -145,10 +174,26 @@ function App() {
             }
         />
         <Route
+          path="/admin/teams/create"
+          element={
+            isAdmin
+              ? <TeamForm />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
           path="/admin/arena"
           element={
             isAdmin
               ? <div />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/arena/create"
+          element={
+            isAdmin
+              ? <ArenaForm />
               : <Navigate to="/403" replace />
             }
         />
