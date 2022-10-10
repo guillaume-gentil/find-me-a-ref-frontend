@@ -245,6 +245,11 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         editedComponent: action.game,
       };
+    case 'SAVE_CLUB_INFOS':
+      return {
+        ...state,
+        editedComponent: action.club,
+      };
     default:
       return state;
   }
