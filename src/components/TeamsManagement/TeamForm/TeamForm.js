@@ -1,4 +1,5 @@
 import { CornerUpLeft } from 'react-feather';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import '../styles.scss';
 import { useEffect } from 'react';
@@ -46,11 +47,9 @@ function TeamForm() {
         <h3 className="team-form__title">
           Equipes
         </h3>
-        <button
-          type="button"
-          className="team-form__back"
-        ><CornerUpLeft />
-        </button>
+        <Link to="/admin/teams">
+          <button type="button" className="user-form__back"><CornerUpLeft /></button>
+        </Link>
       </section>
       <form action="" method="POST" className="team-form__form" onSubmit={handleFormSubmit}>
         <fieldset className="team-form__fieldset">

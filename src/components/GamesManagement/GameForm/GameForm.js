@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { CornerUpLeft } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchAllUsers } from '../../../actions/users_management';
 import {
   fetchArenas, fetchTeams, fetchTypes,
@@ -60,11 +61,9 @@ function GameForm() {
         <h3 className="game-item-form__title">
           Matchs
         </h3>
-        <button
-          type="button"
-          className="game-item-form__back"
-        ><CornerUpLeft />
-        </button>
+        <Link to="/admin/games">
+          <button type="button" className="user-form__back"><CornerUpLeft /></button>
+        </Link>
       </section>
       <form action="" method="POST" className="game-item-form__form" onSubmit={handleFormSubmit}>
         <fieldset className="game-item-form__fieldset">

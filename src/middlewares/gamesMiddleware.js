@@ -2,6 +2,7 @@ import axios from 'axios';
 import { FETCH_GAMES, saveGames } from '../actions/games';
 import { saveGameInfos } from '../actions/games_management';
 import { setEmergency, setErrorMessage } from '../actions/ui_actions';
+import { removeUser } from '../selectors/removeUser';
 
 const gamesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -87,7 +88,23 @@ const gamesMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
-
+    case 'DELETE_GAME':
+      axios.delete(
+        `http://localhost:8000/api/v1/games/${action.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${action.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          const games = removeUser(store.getState().games, action.id);
+          store.dispatch(saveGames(games));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
     default:
   }
   // next action :

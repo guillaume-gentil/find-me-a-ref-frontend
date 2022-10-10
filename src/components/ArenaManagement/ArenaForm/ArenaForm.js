@@ -1,5 +1,6 @@
 import { CornerUpLeft } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import '../styles.scss';
 import { setErrorMessage } from '../../../actions/ui_actions';
 import { sendArenaForm } from '../../../actions/arenas_management';
@@ -37,11 +38,9 @@ function ArenaForm() {
         <h3 className="arena-form__title">
           Gymnases
         </h3>
-        <button
-          type="button"
-          className="arena-form__back"
-        ><CornerUpLeft />
-        </button>
+        <Link to="/admin/arenas">
+          <button type="button" className="user-form__back"><CornerUpLeft /></button>
+        </Link>
       </section>
       <form action="" method="POST" className="arena-form__form" onSubmit={handleFormSubmit}>
         <fieldset className="arena-form__fieldset">

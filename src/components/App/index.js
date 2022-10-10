@@ -20,7 +20,10 @@ import ArenaForm from 'src/components/ArenaManagement/ArenaForm/ArenaForm';
 import UserFormEdit from 'src/components/UsersManagement/UserFormEdit/UserFormEdit';
 import UsersManagement from '../UsersManagement/UsersManagement';
 import GamesManagement from '../GamesManagement/GamesManagement';
-import TeamForm from '../TeamManagement/TeamForm/TeamForm';
+import ClubsManagement from '../ClubManagement/ClubsManagement';
+import TeamsManagement from '../TeamsManagement/TeamsManagement';
+
+import TeamForm from '../TeamsManagement/TeamForm/TeamForm';
 import ClubForm from '../ClubManagement/ClubForm/ClubForm';
 import ClubFormEdit from '../ClubManagement/ClubFormEdit/ClubFormEdit';
 import './styles.scss';
@@ -176,7 +179,7 @@ function App() {
           path="/admin/clubs"
           element={
             isAdmin
-              ? <div />
+              ? <ClubsManagement />
               : <Navigate to="/403" replace />
             }
         />
@@ -201,7 +204,7 @@ function App() {
           path="/admin/teams"
           element={
             isAdmin
-              ? <div />
+              ? <TeamsManagement />
               : <Navigate to="/403" replace />
             }
         />
