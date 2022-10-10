@@ -43,7 +43,6 @@ function TeamDisplay({ team }) {
       <section className="team__link team-hidden">
         <Link className="teams-management__interaction" to="#"><Edit size={25} /></Link>
         <button type="button" className="teams-management__interaction" onClick={handleDelete}><Trash size={25} /></button>
-
       </section>
 
     </section>
