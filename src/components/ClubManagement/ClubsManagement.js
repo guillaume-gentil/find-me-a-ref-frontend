@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 // import component :
 import ClubDisplay from './ClubDisplay/ClubsDisplay';
-import { fetchClubs } from '../../actions/clubs_management';
+// fetchClubs is already coded in filters :
+import { fetchClubs } from '../../actions/filters';
 
 // component :
 function ClubsManagement() {
@@ -19,22 +20,19 @@ function ClubsManagement() {
   const clubs = useSelector((state) => state.clubs);
   return (
     <>
-      <section className="clubs-management">
-        <h2 className="clubs-management__clubstitle">Matchs</h2>
-        <Link className="clubs-management__interaction--create" to="/admin/clubs/create">Créer un match</Link>
+      <section className="clubs">
+        <h2 className="clubs__title">Clubs</h2>
+        <Link className="clubs__interaction--create" to="/admin/clubs/create">Créer un club</Link>
         <div className="club">
           <div className="club__items">
             <section className="club__name">
-              <p className="club__name--detail">Date</p>
-              <p className="club__name--detail">Equipe 1 VS Equipe 2</p>
-            </section>
-            <section className="club__details">
-              <p className="club__details--item">Type</p>
+              <p className="club__name--detail">Nom du Club</p>
+              <p className="club__name--detail">Adresse</p>
             </section>
           </div>
         </div>
       </section>
-      <section className="clubs-management">
+      <section className="clubs">
         {clubs.map(
           (club) => <ClubDisplay key={club.id} club={club} />,
         )}
