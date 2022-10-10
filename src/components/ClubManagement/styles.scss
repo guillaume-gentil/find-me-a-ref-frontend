@@ -1,18 +1,65 @@
 
 .clubs{
+  color: white;
+  border-bottom: 1px solid grey;
+  margin:10px;
+  font-family: 'Saira', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   &__title{
     margin: 15px;
   }
   &__createButton{
     margin: 15px;
   }
+  &__interaction{
+    margin: 10px;
+    margin-right: 0;
+    padding: 10px;
+  }
+  &__interaction--create{
+    background-color: rgba($color: white, $alpha: 0.2);
+    border: 1px white solid;
+    padding: 10px;
+  }  
+}
+.club-hidden{
+  display: none;
 }
 .club{
   // appearance :
+  background: #222;	
+	background: linear-gradient(#333, #222);	
+	border: 1px solid #444;
+	border-radius: 5px 0 0 5px;
+	box-shadow: 0 2px 0 #000;
+  font-family: 'Saira', sans-serif;
+  color: white;
   width: 100%;
+  margin : 10px;
+  padding: 15px;
+  padding-right: 0;
   // position :
-  display: flex;
-  justify-content:space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__items{
+    display: flex;
+    
+  }
+  &__name{
+    display: flex;
+  }
+  &__name--detail{
+    margin-right: 10px;
+  }
+  &__details{
+    display: none;
+  }
+  &__link{
+    margin-right: 0;
+    padding-right: 0;
+  }
 
   &-form{
     background-color: rgba($color: white, $alpha: 0.2);
@@ -82,7 +129,16 @@
     width: 100%;
     // position :
     display: flex;
-    justify-content:space-around;
+    // justify-content:space-around;
+    &__items{
+      display: flex;
+    }
+    &__details{
+      display:flex;
+    }
+    &__details--item{
+      margin-right: 10px;
+    }
   
     &-form{
       background-color: rgba($color: white, $alpha: 0.2);

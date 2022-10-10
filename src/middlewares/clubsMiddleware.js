@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setEmergency, setErrorMessage } from '../actions/ui_actions';
+import { setErrorMessage } from '../actions/ui_actions';
 
 const clubsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
