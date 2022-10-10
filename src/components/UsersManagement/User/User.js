@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
 import PropTypes from 'prop-types';
+import { deleteUser } from '../../../actions/users_management';
 
 // component :
 function User({ user }) {
@@ -22,7 +23,7 @@ function User({ user }) {
       token: token,
     };
     if (confirm('Etes-vous sûr de vouloir supprimer cet utilisateur?')) {
-      console.log('deleted');
+      dispatch(deleteUser(requestObject));
     }
   }
 

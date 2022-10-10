@@ -11,6 +11,7 @@ export const CHANGE_INPUT_EMAIL = 'CHANGE_INPUT_EMAIL';
 export const CHANGE_INPUT_ZIPCODE = 'CHANGE_INPUT_ZIPCODE';
 export const CHANGE_INPUT_LEVEL = 'CHANGE_INPUT_LEVEL';
 export const CHANGE_INPUT_LICENSE = 'CHANGE_INPUT_LICENSE';
+export const DELETE_USER = 'DELETE_USER';
 
 export const sendUserForm = (formObj) => ({
   type: 'SEND_USER_FORM',
@@ -67,5 +68,9 @@ export const saveAllUsers = (users) => ({
 });
 export const saveUser = (user) => ({
   type: 'SAVE_USER',
+  user: user,
+});
+export const deleteUser = (user) => ({
+  type: 'DELETE_USER',
   user: user,
 });
