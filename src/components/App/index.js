@@ -22,6 +22,7 @@ import UsersManagement from '../UsersManagement/UsersManagement';
 import GamesManagement from '../GamesManagement/GamesManagement';
 import ClubsManagement from '../ClubManagement/ClubsManagement';
 import TeamsManagement from '../TeamsManagement/TeamsManagement';
+import ArenasManagement from '../ArenaManagement/ArenasManagement';
 
 import TeamForm from '../TeamsManagement/TeamForm/TeamForm';
 import ClubForm from '../ClubManagement/ClubForm/ClubForm';
@@ -206,7 +207,7 @@ function App() {
           path="/admin/arena"
           element={
             isAdmin
-              ? <div />
+              ? <ArenasManagement />
               : <Navigate to="/403" replace />
             }
         />
