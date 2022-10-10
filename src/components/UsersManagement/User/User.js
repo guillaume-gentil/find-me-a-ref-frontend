@@ -1,20 +1,32 @@
 // import :
 import '../styles.scss';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
 import PropTypes from 'prop-types';
 
 // component :
 function User({ user }) {
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.jwtToken);
 
   function handleClassChange(e) {
     const targetedUser = e.target.closest('.user');
     const linkElem = targetedUser.querySelector('.user__link');
     linkElem.classList.toggle('hidden');
   }
-  console.log(user);
+
+  function handleDelete(e) {
+    const requestObject = {
+      elemId: user.id,
+      token: token,
+    };
+    if (confirm('Etes-vous sûr de vouloir supprimer cet utilisateur?')) {
+      console.log('deleted');
+    }
+  }
+
+  // console.log(user);
   return (
     <section
       className="user"
@@ -34,7 +46,13 @@ function User({ user }) {
 
       <section className="user__link hidden">
         <Link className="users__interaction" to={`/admin/users/${user.id}/edit`}><Edit size={25} /></Link>
-        <Link className="users__interaction" to="#"><Trash size={25} /></Link>
+        <button
+          type="button"
+          className="users__interaction"
+          onClick={handleDelete}
+        >
+          <Trash size={25} />
+        </button>
       </section>
 
     </section>
