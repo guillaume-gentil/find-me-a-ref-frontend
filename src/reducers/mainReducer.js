@@ -249,6 +249,14 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         editedComponent: action.arena,
+    case 'SAVE_TEAM_INFOS':
+      return {
+        ...state,
+        editedComponent: action.team,
+    case 'SAVE_CLUB_INFOS':
+      return {
+        ...state,
+        editedComponent: action.club,
       };
     default:
       return state;
