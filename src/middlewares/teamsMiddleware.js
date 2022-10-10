@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { saveTeamInfos } from '../actions/teams_management';
 import { setErrorMessage } from '../actions/ui_actions';
+import { saveTeams } from '../actions/filters';
+import { removeUser } from '../selectors/removeUser';
 
 const teamsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -29,6 +31,13 @@ const teamsMiddleware = (store) => (next) => (action) => {
           store.dispatch(setErrorMessage(message));
         });
       break;
+
+    case 'DELETE_TEAM':
+      axios.delete(
+        `http://localhost:8000/api/v1/teams/${action.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${action.token}`,
     case 'SEND_EDIT_TEAM_FORM':
       axios.put(
         `http://localhost:8000/api/v1/teams/${action.formObj.id}/edit`,
@@ -46,6 +55,8 @@ const teamsMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
+          const teams = removeUser(store.getState().teams, action.id);
+          store.dispatch(saveTeams(teams));
           console.log(response);
         })
         .catch((error) => {

@@ -3,9 +3,23 @@ import '../styles.scss';
 import { Link } from 'react-router-dom';
 import { Edit, Trash } from 'react-feather';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteTeam } from '../../../actions/teams_management';
 
 // component :
 function TeamDisplay({ team }) {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.jwtToken);
+  function handleDelete(e) {
+    const requestObject = {
+      id: team.id,
+      token: token,
+    };
+    if (confirm('Etes-vous sûr de vouloir supprimer cette équipe?')) {
+      console.log(requestObject);
+      dispatch(deleteTeam(requestObject));
+    }
+  }
   function handleClassChange(e) {
     const targetedUser = e.target.closest('.team');
     const linkElem = targetedUser.querySelector('.team__link');
@@ -27,9 +41,8 @@ function TeamDisplay({ team }) {
       </div>
 
       <section className="team__link team-hidden">
-        <Link className="teams-management__interaction" to={`/admin/teams/${team.id}/edit`}><Edit size={25} /></Link>
-        <Link className="teams-management__interaction" to="#"><Trash size={25} /></Link>
-
+        <Link className="teams-management__interaction" to="#"><Edit size={25} /></Link>
+        <button type="button" className="teams-management__interaction" onClick={handleDelete}><Trash size={25} /></button>
       </section>
 
     </section>
