@@ -13,10 +13,12 @@
   &__createButton{
     margin: 15px;
   }
-  &__interaction{
-    margin: 10px;
+  &-management__interaction{
     margin-right: 0;
-    padding: 10px;
+    padding: 5px 10px;
+    background-color: unset;
+    border: 0;
+    color: white;
   }
   &__interaction--create{
     background-color: rgba($color: white, $alpha: 0.2);

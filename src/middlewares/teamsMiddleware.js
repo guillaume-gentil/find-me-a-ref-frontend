@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { setErrorMessage } from '../actions/ui_actions';
+import { saveTeams } from '../actions/filters';
+import { removeUser } from '../selectors/removeUser';
 
 const teamsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -26,6 +28,23 @@ const teamsMiddleware = (store) => (next) => (action) => {
           console.log(error);
           const message = 'Une erreur est survenue.';
           store.dispatch(setErrorMessage(message));
+        });
+      break;
+    case 'DELETE_TEAM':
+      axios.delete(
+        `http://localhost:8000/api/v1/teams/${action.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${action.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          const teams = removeUser(store.getState().teams, action.id);
+          store.dispatch(saveTeams(teams));
+        })
+        .catch((error) => {
+          console.log(error);
         });
       break;
     default:
