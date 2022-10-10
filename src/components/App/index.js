@@ -22,7 +22,8 @@ import UsersManagement from '../UsersManagement/UsersManagement';
 import GamesManagement from '../GamesManagement/GamesManagement';
 import ClubsManagement from '../ClubManagement/ClubsManagement';
 import TeamsManagement from '../TeamsManagement/TeamsManagement';
-
+import GameFormEdit from '../GamesManagement/GameFormEdit/GameFormEdit';
+import TeamFormEdit from '../TeamsManagement/TeamFormEdit/TeamFormEdit';
 import TeamForm from '../TeamsManagement/TeamForm/TeamForm';
 import ClubForm from '../ClubManagement/ClubForm/ClubForm';
 import './styles.scss';
@@ -33,7 +34,6 @@ import UserForm from '../UsersManagement/UserForm/UserForm';
 import { saveJwtToken, setUserRoles } from '../../actions/login';
 import { fetchUserRole } from '../../selectors/fetchUserRole';
 import GameForm from '../GamesManagement/GameForm/GameForm';
-import GameFormEdit from '../GamesManagement/GameFormEdit/GameFormEdit';
 
 // Component :
 function App() {
@@ -199,6 +199,14 @@ function App() {
           element={
             isAdmin
               ? <TeamForm />
+              : <Navigate to="/403" replace />
+            }
+        />
+        <Route
+          path="/admin/teams/:id/edit"
+          element={
+            isAdmin
+              ? <TeamFormEdit />
               : <Navigate to="/403" replace />
             }
         />
