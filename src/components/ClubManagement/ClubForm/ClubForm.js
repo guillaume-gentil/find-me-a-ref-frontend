@@ -1,5 +1,6 @@
 import { CornerUpLeft } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import '../styles.scss';
 import { setErrorMessage } from '../../../actions/ui_actions';
 import { sendClubForm } from '../../../actions/clubs_management';
@@ -37,11 +38,9 @@ function ClubForm() {
         <h3 className="club-form__title">
           Clubs
         </h3>
-        <button
-          type="button"
-          className="club-form__back"
-        ><CornerUpLeft />
-        </button>
+        <Link to="/admin/clubs">
+          <button type="button" className="user-form__back"><CornerUpLeft /></button>
+        </Link>
       </section>
       <form action="" method="POST" className="club-form__form" onSubmit={handleFormSubmit}>
         <fieldset className="club-form__fieldset">
