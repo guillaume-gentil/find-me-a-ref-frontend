@@ -20,7 +20,10 @@ import ArenaForm from 'src/components/ArenaManagement/ArenaForm/ArenaForm';
 import UserFormEdit from 'src/components/UsersManagement/UserFormEdit/UserFormEdit';
 import UsersManagement from '../UsersManagement/UsersManagement';
 import GamesManagement from '../GamesManagement/GamesManagement';
-import TeamForm from '../TeamManagement/TeamForm/TeamForm';
+import ClubsManagement from '../ClubManagement/ClubsManagement';
+import TeamsManagement from '../TeamsManagement/TeamsManagement';
+
+import TeamForm from '../TeamsManagement/TeamForm/TeamForm';
 import ClubForm from '../ClubManagement/ClubForm/ClubForm';
 import './styles.scss';
 
@@ -31,7 +34,6 @@ import { saveJwtToken, setUserRoles } from '../../actions/login';
 import { fetchUserRole } from '../../selectors/fetchUserRole';
 import GameForm from '../GamesManagement/GameForm/GameForm';
 import GameFormEdit from '../GamesManagement/GameFormEdit/GameFormEdit';
-import ClubsManagement from '../ClubManagement/ClubsManagement';
 
 // Component :
 function App() {
@@ -188,7 +190,7 @@ function App() {
           path="/admin/teams"
           element={
             isAdmin
-              ? <div />
+              ? <TeamsManagement />
               : <Navigate to="/403" replace />
             }
         />
