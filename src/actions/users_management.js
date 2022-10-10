@@ -70,7 +70,8 @@ export const saveUser = (user) => ({
   type: 'SAVE_USER',
   user: user,
 });
-export const deleteUser = (user) => ({
+export const deleteUser = ({ token, id }) => ({
   type: 'DELETE_USER',
-  user: user,
+  token: token,
+  id: id,
 });

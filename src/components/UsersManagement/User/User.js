@@ -19,10 +19,11 @@ function User({ user }) {
 
   function handleDelete(e) {
     const requestObject = {
-      elemId: user.id,
+      id: user.id,
       token: token,
     };
     if (confirm('Etes-vous sûr de vouloir supprimer cet utilisateur?')) {
+      console.log(requestObject);
       dispatch(deleteUser(requestObject));
     }
   }

@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { FETCH_ALL_USERS, saveAllUsers, saveUser } from '../actions/users_management';
 import { setErrorMessage } from '../actions/ui_actions';
+import { removeUser } from '../selectors/removeUser';
 
 // middleware :
 const usersMiddleware = (store) => (next) => (action) => {
@@ -88,6 +89,23 @@ const usersMiddleware = (store) => (next) => (action) => {
           console.log(error);
           const message = 'Une erreur est survenue.';
           store.dispatch(setErrorMessage(message));
+        });
+      break;
+    case 'DELETE_USER':
+      axios.delete(
+        `http://localhost:8000/api/v1/users/${action.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${action.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          const allUsers = removeUser(store.getState().allUsers, action.id);
+          store.dispatch(saveAllUsers(allUsers));
+        })
+        .catch((error) => {
+          console.log(error);
         });
       break;
     default:
