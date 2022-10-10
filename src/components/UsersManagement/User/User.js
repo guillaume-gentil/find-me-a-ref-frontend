@@ -14,7 +14,7 @@ function User({ user }) {
     const linkElem = targetedUser.querySelector('.user__link');
     linkElem.classList.toggle('hidden');
   }
-  console.log(user);
+  // console.log(user);
   return (
     <section
       className="user"
