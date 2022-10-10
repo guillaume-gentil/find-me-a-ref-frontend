@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 // import component :
-import ArenaDisplay from './ArenaDisplay/ArenasDisplay';
+import ArenaDisplay from './ArenaDisplay/ArenaDisplay';
 // fetchArenas is already coded in filters :
 import { fetchArenas } from '../../actions/filters';
 

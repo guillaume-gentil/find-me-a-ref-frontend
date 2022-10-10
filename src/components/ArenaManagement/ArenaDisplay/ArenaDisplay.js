@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Trash } from 'react-feather';
 import PropTypes from 'prop-types';
-import { deleteArena } from '../../../actions/arenas_management';
+// import { deleteArena } from '../../../actions/arenas_management';
 
 // component :
 function ArenaDisplay({ arena }) {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.jwtToken);
 
-  function handleDelete(e) {
-    const requestObject = {
-      id: arena.id,
-      token: token,
-    };
-    if (confirm('Etes-vous sûr de vouloir supprimer ce gymnase?')) {
-      console.log(requestObject);
-      dispatch(deleteArena(requestObject));
-    }
-  }
+  // function handleDelete(e) {
+  //   const requestObject = {
+  //     id: arena.id,
+  //     token: token,
+  //   };
+  //   if (confirm('Etes-vous sûr de vouloir supprimer ce gymnase?')) {
+  //     console.log(requestObject);
+  //     dispatch(deleteArena(requestObject));
+  //   }
+  // }
 
   function handleClassChange(e) {
     const targetedArena = e.target.closest('.arena');
@@ -43,7 +43,7 @@ function ArenaDisplay({ arena }) {
 
       <section className="arena__link arena-hidden">
         <Link className="arenas-management__interaction" to="#"><Edit size={25} /></Link>
-        <button type="button" className="arenas-management__interaction" onClick={handleDelete}><Trash size={25} /></button>
+        {/* <button type="button" className="arenas-management__interaction" onClick={handleDelete}><Trash size={25} /></button> */}
 
       </section>
 
