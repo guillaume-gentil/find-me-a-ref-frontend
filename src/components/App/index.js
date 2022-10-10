@@ -31,6 +31,7 @@ import { saveJwtToken, setUserRoles } from '../../actions/login';
 import { fetchUserRole } from '../../selectors/fetchUserRole';
 import GameForm from '../GamesManagement/GameForm/GameForm';
 import GameFormEdit from '../GamesManagement/GameFormEdit/GameFormEdit';
+import ClubsManagement from '../ClubManagement/ClubsManagement';
 
 // Component :
 function App() {
@@ -171,7 +172,7 @@ function App() {
           path="/admin/clubs"
           element={
             isAdmin
-              ? <div />
+              ? <ClubsManagement />
               : <Navigate to="/403" replace />
             }
         />
