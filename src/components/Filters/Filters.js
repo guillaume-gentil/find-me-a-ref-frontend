@@ -85,7 +85,7 @@ function Filters() {
   }
   function handleCategoryChange(e) {
     // reset of other filters :
-    const resets = document.querySelectorAll('.filters__list--items:not(.categories)');
+    const resets = document.querySelectorAll('.filters__list--items:not(.categories-filters)');
     const resetsArray = Array.from(resets);
 
     resetsArray.forEach(
@@ -102,7 +102,7 @@ function Filters() {
   }
   function handleTeamChange(e) {
     // reset of other filters :
-    const resets = document.querySelectorAll('.filters__list--items:not(.teams)');
+    const resets = document.querySelectorAll('.filters__list--items:not(.teams-filters)');
     const resetsArray = Array.from(resets);
 
     resetsArray.forEach(
@@ -119,7 +119,7 @@ function Filters() {
   }
   function handleClubChange(e) {
     // reset of other filters :
-    const resets = document.querySelectorAll('.filters__list--items:not(.clubs)');
+    const resets = document.querySelectorAll('.filters__list--items:not(.clubs-filters)');
     const resetsArray = Array.from(resets);
 
     resetsArray.forEach(
@@ -137,7 +137,7 @@ function Filters() {
 
   function handleArenaChange(e) {
     // reset of other filters :
-    const resets = document.querySelectorAll('.filters__list--items:not(.arenas)');
+    const resets = document.querySelectorAll('.filters__list--items:not(.arenas-filters)');
     const resetsArray = Array.from(resets);
 
     resetsArray.forEach(
@@ -155,7 +155,7 @@ function Filters() {
 
   function handleTypeChange(e) {
     // reset of other filters :
-    const resets = document.querySelectorAll('.filters__list--items:not(.types)');
+    const resets = document.querySelectorAll('.filters__list--items:not(.types-filters)');
     const resetsArray = Array.from(resets);
 
     resetsArray.forEach(
@@ -197,7 +197,7 @@ function Filters() {
           <select
             name="categories"
             id=""
-            className="filters__list--items categories"
+            className="filters__list--items categories-filters"
             onChange={handleCategoryChange}
           >
             <option value="">Catégories</option>
@@ -211,7 +211,7 @@ function Filters() {
           <select
             name="teams"
             id=""
-            className="filters__list--items teams"
+            className="filters__list--items teams-filters"
             onChange={handleTeamChange}
           >
             <option value="">Equipes</option>
@@ -225,7 +225,7 @@ function Filters() {
           <select
             name="clubs"
             id=""
-            className="filters__list--items clubs"
+            className="filters__list--items clubs-filters"
             onChange={handleClubChange}
           >
             <option value="">Clubs</option>
@@ -236,7 +236,7 @@ function Filters() {
           <select
             name="arena"
             id=""
-            className="filters__list--items arenas"
+            className="filters__list--items arenas-filters"
             onChange={handleArenaChange}
           >
             <option value="">Gymnases</option>
@@ -256,7 +256,7 @@ function Filters() {
           <select
             name="types"
             id=""
-            className="filters__list--items types"
+            className="filters__list--items types-filters"
             onChange={handleTypeChange}
           >
             <option value="">Types de rencontres</option>
