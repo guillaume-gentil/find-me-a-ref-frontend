@@ -22,6 +22,7 @@ import UsersManagement from '../UsersManagement/UsersManagement';
 import GamesManagement from '../GamesManagement/GamesManagement';
 import TeamForm from '../TeamManagement/TeamForm/TeamForm';
 import ClubForm from '../ClubManagement/ClubForm/ClubForm';
+import ClubFormEdit from '../ClubManagement/ClubFormEdit/ClubFormEdit';
 import './styles.scss';
 
 // Import actions :
@@ -111,6 +112,7 @@ function App() {
               : <Navigate to="/403" replace />
           }
         />
+        {/* ADMIN ROUTES  */}
         <Route
           path="/admin"
           element={
@@ -119,6 +121,7 @@ function App() {
               : <Navigate to="/403" replace />
             }
         />
+        {/* USER ROUTES  */}
         <Route
           path="/admin/users"
           element={
@@ -143,6 +146,7 @@ function App() {
               : <Navigate to="/403" replace />
             }
         />
+        {/* GAME ROUTES  */}
         <Route
           path="/admin/games"
           element={
@@ -167,6 +171,7 @@ function App() {
               : <Navigate to="/403" replace />
             }
         />
+        {/* CLUB ROUTES  */}
         <Route
           path="/admin/clubs"
           element={
@@ -184,6 +189,15 @@ function App() {
             }
         />
         <Route
+          path="/admin/clubs/:id/edit"
+          element={
+            isAdmin
+              ? <ClubFormEdit />
+              : <Navigate to="/403" replace />
+            }
+        />
+        {/* TEAM ROUTES  */}
+        <Route
           path="/admin/teams"
           element={
             isAdmin
@@ -199,6 +213,7 @@ function App() {
               : <Navigate to="/403" replace />
             }
         />
+        {/* ARENA ROUTES  */}
         <Route
           path="/admin/arena"
           element={
