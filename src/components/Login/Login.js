@@ -9,6 +9,7 @@ import {
   changePasswordInput,
   sendAuthCredentials,
   disconnectUser,
+  sendRegistration,
 } from '../../actions/login';
 import { findUserMail } from '../../selectors/findUserMail';
 import './styles.scss';
@@ -80,8 +81,8 @@ function Login() {
     e.preventDefault();
     const pwdCheck = e.target.querySelector('#pwdVerification').value;
     const requestObject = {
-      firstname: e.target.querySelector('#name').value,
-      lastname: e.target.querySelector('#firstname').value,
+      firstname: e.target.querySelector('#firstname').value,
+      lastname: e.target.querySelector('#name').value,
       email: e.target.querySelector('#email').value,
       roles: [e.target.querySelector('input[name="userRole"]:checked').value],
       password: e.target.querySelector('#password').value,
@@ -97,8 +98,7 @@ function Login() {
       console.log('erreur');
     }
     else {
-      // dispatch(sendEditUserForm(requestObject));
-      console.log(requestObject);
+      dispatch(sendRegistration(requestObject));
     }
   }
 
