@@ -20,6 +20,23 @@ function Login() {
   const token = useSelector((state) => state.jwtToken);
   const userMail = findUserMail(token);
 
+  function isEmptyOrSpaces(str) {
+    return str === null || str.match(/^ *$/) !== null;
+  }
+  function checkRole(arr) {
+    const found = arr.find((item) => item !== 'ROLE_REFEREE' && item !== 'ROLE_TEAMHEAD');
+    if (found) {
+      return false;
+    }
+    return true;
+  }
+  function verifyPwd(password, pwdCheck) {
+    if (password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)) {
+      return password === pwdCheck;
+    }
+    return false;
+  }
+
   function handleResize() {
     if (parseInt(window.innerWidth, 10) < 768) {
       dispatch(toggleMobile(true));
@@ -61,6 +78,28 @@ function Login() {
 
   function handleRegistrationSubmit(e) {
     e.preventDefault();
+    const pwdCheck = e.target.querySelector('#pwdVerification').value;
+    const requestObject = {
+      firstname: e.target.querySelector('#name').value,
+      lastname: e.target.querySelector('#firstname').value,
+      email: e.target.querySelector('#email').value,
+      roles: [e.target.querySelector('input[name="userRole"]:checked').value],
+      password: e.target.querySelector('#password').value,
+    };
+    if (isEmptyOrSpaces(requestObject.firstname)
+      || isEmptyOrSpaces(requestObject.lastname)
+      || isEmptyOrSpaces(requestObject.email)
+      || isEmptyOrSpaces(requestObject.password)
+      || !checkRole(requestObject.roles)
+      || !verifyPwd(requestObject.password, pwdCheck)) {
+      const message = 'Veuillez renseigner tous les champs.';
+      // dispatch(setErrorMessage(message));
+      console.log('erreur');
+    }
+    else {
+      // dispatch(sendEditUserForm(requestObject));
+      console.log(requestObject);
+    }
   }
 
   const textButton = isLogged ? 'Déconnexion' : 'Connexion';
@@ -94,13 +133,23 @@ function Login() {
               <input type="text" id="firstname" name="firstname" placeholder="ex : Nordine" />
             </label>
             <label htmlFor="email" className="login__label">Adresse mail
-              <input type="mail" id="email" placeholder="ex : Nordine.Ateur@monmail.com" />
+              <input type="mail" id="email" placeholder="Nordine.Ateur@monmail.com" />
             </label>
             <label htmlFor="password" className="login__label">Mot de passe
-              <input type="text" id="password" placeholder="mot de passe" />
+              <input type="password" id="password" placeholder="mot de passe" />
             </label>
             <label htmlFor="pwdVerification" className="login__label">Retapez votre mot de passe
-              <input type="text" id="pwdVerification" placeholder="mot de passe" />
+              <input type="password" id="pwdVerification" placeholder="mot de passe" />
+            </label>
+            <label htmlFor="userRole" className="login__label">Rôle
+              <div className="login__form--radio">
+                <input type="radio" id="userReferee" value="ROLE_REFEREE" name="userRole" />
+                <label htmlFor="userReferee" className="login_label" name="userRole">Arbitre</label>
+              </div>
+              <div className="login__form--radio">
+                <input type="radio" id="userTeamhead" value="ROLE_TEAMHEAD" name="userRole" />
+                <label htmlFor="userTeamhead" className="login_label" name="userRole">Chef d'équipe</label>
+              </div>
             </label>
             <label htmlFor="licenceId" className="login__label">Numéro de licence
               <input type="text" id="licenceId" placeholder="ex : Nateur" />
