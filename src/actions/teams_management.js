@@ -14,6 +14,7 @@ export const deleteTeam = ({ token, id }) => ({
   type: 'DELETE_TEAM',
   token: token,
   id: id,
+});
 export const sendEditTeamForm = (formObj) => ({
   type: 'SEND_EDIT_TEAM_FORM',
   formObj: formObj,

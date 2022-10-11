@@ -43,7 +43,7 @@ function GameDisplay({ game }) {
       </div>
 
       <section className="game-item__link game-hidden">
-        <Link className="games-management__interaction" to="#"><Edit size={25} /></Link>
+        <Link className="games-management__interaction" to={`/admin/games/${game.id}/edit`}><Edit size={25} /></Link>
         <button type="button" className="games-management__interaction" onClick={handleDelete}><Trash size={25} /></button>
 
       </section>

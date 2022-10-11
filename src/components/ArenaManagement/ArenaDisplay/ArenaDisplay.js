@@ -42,7 +42,7 @@ function ArenaDisplay({ arena }) {
       </div>
 
       <section className="arena__link arena-hidden">
-        <Link className="arenas-management__interaction" to="#"><Edit size={25} /></Link>
+        <Link className="arenas-management__interaction" to={`/admin/arena/${arena.id}/edit`}><Edit size={25} /></Link>
         {/* <button type="button" className="arenas-management__interaction" onClick={handleDelete}><Trash size={25} /></button> */}
 
       </section>

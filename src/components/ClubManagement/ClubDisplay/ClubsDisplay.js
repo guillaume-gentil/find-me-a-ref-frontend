@@ -42,7 +42,7 @@ function ClubDisplay({ club }) {
       </div>
 
       <section className="club__link club-hidden">
-        <Link className="clubs-management__interaction" to="#"><Edit size={25} /></Link>
+        <Link className="clubs-management__interaction" to={`/admin/clubs/${club.id}/edit`}><Edit size={25} /></Link>
         <button type="button" className="clubs-management__interaction" onClick={handleDelete}><Trash size={25} /></button>
 
       </section>

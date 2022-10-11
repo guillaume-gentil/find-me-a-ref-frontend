@@ -38,6 +38,18 @@ const teamsMiddleware = (store) => (next) => (action) => {
         {
           headers: {
             Authorization: `Bearer ${action.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+          const message = 'Une erreur est survenue.';
+          store.dispatch(setErrorMessage(message));
+        });
+      break;
     case 'SEND_EDIT_TEAM_FORM':
       axios.put(
         `http://localhost:8000/api/v1/teams/${action.formObj.id}/edit`,
