@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FETCH_ALL_USERS, saveAllUsers, saveUser } from '../actions/users_management';
 import { setErrorMessage } from '../actions/ui_actions';
 import { removeUser } from '../selectors/removeUser';
+import { saveCurrentUser } from '../actions/profile';
 
 // middleware :
 const usersMiddleware = (store) => (next) => (action) => {
@@ -17,6 +18,20 @@ const usersMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           // saving datas in the store
           store.dispatch(saveAllUsers(response.data.users));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case 'FETCH_USER_DATA':
+      axios.get('http://localhost:8000/api/v1/users/edit', {
+        headers: {
+          Authorization: `Bearer ${action.token}`,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(saveCurrentUser(response.data));
         })
         .catch((error) => {
           console.log(error);

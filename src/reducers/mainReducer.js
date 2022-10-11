@@ -31,6 +31,7 @@ const initialState = {
   allUsers: [],
   userRoles: [],
   editedComponent: null,
+  currentUser: null,
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -259,6 +260,11 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         editedComponent: action.club,
+      };
+    case 'SAVE_CURRENT_USER':
+      return {
+        ...state,
+        currentUser: action.userData,
       };
     default:
       return state;
