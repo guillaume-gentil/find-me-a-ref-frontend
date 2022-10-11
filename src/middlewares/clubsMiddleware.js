@@ -68,11 +68,12 @@ const clubsMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          store.dispatch(saveClubInfos(response.data));
+          const clubs = removeUser(store.getState().clubs, action.id);
+          store.dispatch(saveClubs(clubs));
         })
         .catch((error) => {
           console.log(error);
-          const message = 'Une erreur est survenue.';
-          store.dispatch(setErrorMessage(message));
         });
       break;
     case 'FETCH_CLUB_INFOS':
@@ -83,12 +84,11 @@ const clubsMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
-          store.dispatch(saveClubInfos(response.data));
-          const clubs = removeUser(store.getState().clubs, action.id);
-          store.dispatch(saveClubs(clubs));
         })
         .catch((error) => {
           console.log(error);
+          const message = 'Une erreur est survenue.';
+          store.dispatch(setErrorMessage(message));
         });
       break;
     default:
