@@ -11,6 +11,7 @@ import {
   disconnectUser,
   sendRegistration,
 } from '../../actions/login';
+import { setPassModalHidden, setPassModalVisible } from '../../actions/ui_actions';
 import { findUserMail } from '../../selectors/findUserMail';
 import './styles.scss';
 
@@ -20,6 +21,7 @@ function Login() {
 
   const token = useSelector((state) => state.jwtToken);
   const userMail = findUserMail(token);
+  const isPassModalVisible = useSelector((state) => state.isPassModalVisible);
 
   function isEmptyOrSpaces(str) {
     return str === null || str.match(/^ *$/) !== null;
@@ -46,10 +48,19 @@ function Login() {
       dispatch(toggleMobile(false));
     }
   }
+
   useEffect(() => {
     window.addEventListener('resize', handleResize);
     handleResize();
   }, []);
+
+  function handlePassFocus() {
+    dispatch(setPassModalVisible());
+  }
+
+  function handlePassBlur() {
+    dispatch(setPassModalHidden());
+  }
 
   let classSection = 'login__section';
   let classButton = 'login__button';
@@ -135,8 +146,18 @@ function Login() {
             <label htmlFor="email" className="login__label">Adresse mail
               <input type="mail" id="email" placeholder="Nordine.Ateur@monmail.com" />
             </label>
-            <label htmlFor="password" className="login__label">Mot de passe
-              <input type="password" id="password" placeholder="mot de passe" />
+            <label htmlFor="password" className="login__label modal__anchor">Mot de passe
+              <input type="password" id="password" placeholder="mot de passe" onFocus={handlePassFocus} onBlur={handlePassBlur} />
+              {isPassModalVisible && (
+              <div className="password__modal">
+                <ul className="password__modal--list">
+                  <li className="password__modal--item">8 caractères minimum</li>
+                  <li className="password__modal--item">1 majuscule minimum</li>
+                  <li className="password__modal--item">1 chiffre minimum</li>
+                  <li className="password__modal--item">1 symbole minimum (@$!%*#?&)</li>
+                </ul>
+              </div>
+              )}
             </label>
             <label htmlFor="pwdVerification" className="login__label">Retapez votre mot de passe
               <input type="password" id="pwdVerification" placeholder="mot de passe" />

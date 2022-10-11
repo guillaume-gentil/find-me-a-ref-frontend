@@ -6,6 +6,7 @@ const initialState = {
   isFilterOpen: false,
   isLoading: true,
   isLogged: false,
+  isPassModalVisible: false,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -259,6 +260,16 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         editedComponent: action.club,
+      };
+    case 'SET_PASS_MODAL_VISIBLE':
+      return {
+        ...state,
+        isPassModalVisible: true,
+      };
+    case 'SET_PASS_MODAL_HIDDEN':
+      return {
+        ...state,
+        isPassModalVisible: false,
       };
     default:
       return state;
