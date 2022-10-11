@@ -1,6 +1,7 @@
 // import :
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   toggleMobile,
   toggleLoginButton,
@@ -81,7 +82,17 @@ function Login() {
       >{textButton}
       </button>
       {isLogged && (
+      <>
+        <Link to="/profile" className="login__profile">
+          <button
+            type="button"
+            className={classButton}
+          >
+            Profil
+          </button>
+        </Link>
         <p className="login__welcome">Bienvenue {userMail.split('@')[0]} </p>
+      </>
       )}
       {isLoginOpen
       && isRegistration && (
