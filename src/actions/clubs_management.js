@@ -5,7 +5,6 @@ export const FETCH_CLUB_INFOS = 'FETCH_CLUB_INFOS';
 export const SAVE_CLUB_INFOS = 'SAVE_CLUB_INFOS';
 export const DELETE_CLUB = 'DELETE_CLUB';
 
-
 export const sendClubForm = (formObj) => ({
   type: 'SEND_CLUB_FORM',
   formObj: formObj,
@@ -23,6 +22,7 @@ export const fetchClubInfos = ({ id, token }) => ({
 export const saveClubInfos = (club) => ({
   type: 'SAVE_CLUB_INFOS',
   club: club,
+});
 export const deleteClub = ({ token, id }) => ({
   type: 'DELETE_CLUB',
   token: token,

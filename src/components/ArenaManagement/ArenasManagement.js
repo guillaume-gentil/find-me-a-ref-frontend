@@ -22,7 +22,7 @@ function ArenasManagement() {
     <>
       <section className="arenas">
         <h2 className="arenas__title">Arenas</h2>
-        <Link className="arenas__interaction--create" to="/admin/arenas/create">Créer un gymnase</Link>
+        <Link className="arenas__interaction--create" to="/admin/arena/create">Créer un gymnase</Link>
         <div className="arena">
           <div className="arena__items">
             <section className="arena__name">

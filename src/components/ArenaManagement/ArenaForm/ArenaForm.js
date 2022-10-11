@@ -38,7 +38,7 @@ function ArenaForm() {
         <h3 className="arena-form__title">
           Gymnases
         </h3>
-        <Link to="/admin/arenas">
+        <Link to="/admin/arena">
           <button type="button" className="user-form__back"><CornerUpLeft /></button>
         </Link>
       </section>

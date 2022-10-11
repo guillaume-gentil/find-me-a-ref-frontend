@@ -1,5 +1,6 @@
 import { CornerUpLeft } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setErrorMessage } from '../../../actions/ui_actions';
 import {
   changeInputAddress,
@@ -56,7 +57,9 @@ function UserForm() {
         <h3 className="user-form__title">
           Utilisateurs
         </h3>
-        <button type="button" className="user-form__back"><CornerUpLeft /></button>
+        <Link to="/admin/users">
+          <button type="button" className="user-form__back"><CornerUpLeft /></button>
+        </Link>
       </section>
       <form action="" className="user-form__form" onSubmit={handleFormSubmit}>
         <fieldset className="user-form__fieldset">
