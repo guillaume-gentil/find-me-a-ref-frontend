@@ -4,6 +4,33 @@
   background-color:rgba($color: white, $alpha: 0.2);
   border: 1px solid #888;
   color: white;
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    background-color: unset;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 1.75rem;
+  }
+  & fieldset{
+
+    margin: 2rem;
+  }
+  & input, & select{
+    padding: 0.5rem;
+    border: 1px solid #888;
+    border-radius: 0.2rem;
+    width: 100%;
+  }
+  & label{
+    display: block;
+    padding: 1rem 0;
+    width: 100%;
+    font-family: 'Saira', sans-serif;
+    font-size: 1.2rem;
+  }
+  &__form form{
+    width: 100%;
+  }
 }
 @media screen and (min-width: 768px) {
   .user-profile{
@@ -12,5 +39,14 @@
       margin-right:1rem;
       line-height: 1.4rem;
       min-height: 420px;
+      &__form form{
+        display: flex;
+      }
+      & fieldset{
+        width: 100%;
+      }
+      &__infos{
+        display: flex;
+      }
   }
 }
