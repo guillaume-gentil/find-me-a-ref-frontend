@@ -19,12 +19,12 @@ import AdminRedirect from 'src/components/AdminRedirect/AdminRedirect';
 import ArenaForm from 'src/components/ArenaManagement/ArenaForm/ArenaForm';
 import UserFormEdit from 'src/components/UsersManagement/UserFormEdit/UserFormEdit';
 import ArenaFormEdit from 'src/components/ArenaManagement/ArenaFormEdit/ArenaFormEdit';
+import MailModal from '../MailModal/MailModal';
 import UsersManagement from '../UsersManagement/UsersManagement';
 import GamesManagement from '../GamesManagement/GamesManagement';
 import ClubsManagement from '../ClubManagement/ClubsManagement';
 import TeamsManagement from '../TeamsManagement/TeamsManagement';
 import ArenasManagement from '../ArenaManagement/ArenasManagement';
-
 import GameFormEdit from '../GamesManagement/GameFormEdit/GameFormEdit';
 import TeamFormEdit from '../TeamsManagement/TeamFormEdit/TeamFormEdit';
 import TeamForm from '../TeamsManagement/TeamForm/TeamForm';
@@ -66,9 +66,12 @@ function App() {
   const isLogged = useSelector((state) => state.isLogged);
   const isAdmin = useSelector((state) => state.userRoles.includes('ROLE_ADMIN'));
 
+  const isModalOpen = useSelector((state) => state.isMailModalOpen);
+
   return (
     <div className="app">
       <Header />
+      {isModalOpen && <MailModal />}
       <Login />
       {isGamesLoaded && (
       <Routes>
