@@ -7,6 +7,7 @@ const initialState = {
   isLoading: true,
   isLogged: false,
   isPassModalVisible: false,
+  isProfileOnEdit: false,
   isTeamNameModalVisible: false,
   adminNav: false,
   loginInputMail: '',
@@ -33,6 +34,7 @@ const initialState = {
   allUsers: [],
   userRoles: [],
   editedComponent: null,
+  currentUser: null,
   checkPwdUppercase: false,
   checkPwdDigit: false,
   checkPwdSymbol: false,
@@ -327,6 +329,16 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isTeamNameModalVisible: false,
+      };
+    case 'SAVE_CURRENT_USER':
+      return {
+        ...state,
+        currentUser: action.userData,
+      };
+    case 'SET_PROFILE_EDIT':
+      return {
+        ...state,
+        isProfileOnEdit: action.boolean,
       };
     default:
       return state;
