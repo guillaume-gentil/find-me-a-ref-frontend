@@ -6,6 +6,7 @@ const initialState = {
   isFilterOpen: false,
   isLoading: true,
   isLogged: false,
+  isTeamNameModalVisible: false,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -259,6 +260,16 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         editedComponent: action.club,
+      };
+    case 'SET_TEAM_NAME_MODAL_VISIBLE':
+      return {
+        ...state,
+        isTeamNameModalVisible: true,
+      };
+    case 'SET_TEAM_NAME_MODAL_HIDDEN':
+      return {
+        ...state,
+        isTeamNameModalVisible: false,
       };
     default:
       return state;
