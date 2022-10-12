@@ -32,6 +32,10 @@ const initialState = {
   allUsers: [],
   userRoles: [],
   editedComponent: null,
+  checkPwdUppercase: false,
+  checkPwdDigit: false,
+  checkPwdSymbol: false,
+  checkPwdLetters: false,
 };
 
 const mainReducer = (state = initialState, action = {}) => {
@@ -270,6 +274,48 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isPassModalVisible: false,
+      };
+    case 'COLORIZE_MODAL':
+      if (action.identifier === 'uppercase') {
+        return {
+          ...state,
+          checkPwdUppercase: true,
+        };
+      } if (action.identifier === 'digit') {
+        return {
+          ...state,
+          checkPwdDigit: true,
+        };
+      } if (action.identifier === 'symbol') {
+        return {
+          ...state,
+          checkPwdSymbol: true,
+        };
+      }
+      return {
+        ...state,
+        checkPwdLetters: true,
+      };
+    case 'UNCOLORIZE_MODAL':
+      if (action.identifier === 'uppercase') {
+        return {
+          ...state,
+          checkPwdUppercase: false,
+        };
+      } if (action.identifier === 'digit') {
+        return {
+          ...state,
+          checkPwdDigit: false,
+        };
+      } if (action.identifier === 'symbol') {
+        return {
+          ...state,
+          checkPwdSymbol: false,
+        };
+      }
+      return {
+        ...state,
+        checkPwdLetters: false,
       };
     default:
       return state;

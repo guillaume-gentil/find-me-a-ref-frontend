@@ -11,7 +11,9 @@ import {
   disconnectUser,
   sendRegistration,
 } from '../../actions/login';
-import { setPassModalHidden, setPassModalVisible } from '../../actions/ui_actions';
+import {
+  setPassModalHidden, setPassModalVisible, colorizeModal, uncolorizeModal,
+} from '../../actions/ui_actions';
 import { findUserMail } from '../../selectors/findUserMail';
 import './styles.scss';
 
@@ -39,6 +41,61 @@ function Login() {
     }
     return false;
   }
+  function checkWithUppercase(password) {
+    if (password.match(/.*[A-Z]/)) {
+      return true;
+    }
+    return false;
+  }
+  function checkWithLetters(password) {
+    if (password.match(/.{8,}/)) {
+      return true;
+    }
+    return false;
+  }
+  function checkWithDigit(password) {
+    if (password.match(/.*\d.*/)) {
+      return true;
+    }
+    return false;
+  }
+  function checkWithSymbol(password) {
+    if (password.match(/.*\W.*/)) {
+      return true;
+    }
+    return false;
+  }
+
+  function handlePassChange(e) {
+    if (checkWithUppercase(e.target.value)) {
+      dispatch(colorizeModal('uppercase'));
+    }
+    else {
+      dispatch(uncolorizeModal('uppercase'));
+    }
+    if (checkWithDigit(e.target.value)) {
+      dispatch(colorizeModal('digit'));
+    }
+    else {
+      dispatch(uncolorizeModal('digit'));
+    }
+    if (checkWithSymbol(e.target.value)) {
+      dispatch(colorizeModal('symbol'));
+    }
+    else {
+      dispatch(uncolorizeModal('symbol'));
+    }
+    if (checkWithLetters(e.target.value)) {
+      dispatch(colorizeModal('letter'));
+    }
+    else {
+      dispatch(uncolorizeModal('letter'));
+    }
+  }
+  const checkPwdUppercase = useSelector((state) => state.checkPwdUppercase);
+  const checkPwdDigit = useSelector((state) => state.checkPwdDigit);
+  const checkPwdSymbol = useSelector((state) => state.checkPwdSymbol);
+  const checkPwdLetters = useSelector((state) => state.checkPwdLetters);
 
   function handleResize() {
     if (parseInt(window.innerWidth, 10) < 768) {
@@ -147,14 +204,14 @@ function Login() {
               <input type="mail" id="email" placeholder="Nordine.Ateur@monmail.com" />
             </label>
             <label htmlFor="password" className="login__label modal__anchor">Mot de passe
-              <input type="password" id="password" placeholder="mot de passe" onFocus={handlePassFocus} onBlur={handlePassBlur} />
+              <input type="password" id="password" placeholder="mot de passe" onFocus={handlePassFocus} onBlur={handlePassBlur} onChange={handlePassChange} />
               {isPassModalVisible && (
               <div className="password__modal">
                 <ul className="password__modal--list">
-                  <li className="password__modal--item">8 caractères minimum</li>
-                  <li className="password__modal--item">1 majuscule minimum</li>
-                  <li className="password__modal--item">1 chiffre minimum</li>
-                  <li className="password__modal--item">1 symbole minimum (@$!%*#?&)</li>
+                  <li className={checkPwdLetters ? 'password__modal--item highlight' : 'password__modal--item'}>8 caractères minimum</li>
+                  <li className={checkPwdUppercase ? 'password__modal--item highlight' : 'password__modal--item'}>1 majuscule minimum</li>
+                  <li className={checkPwdDigit ? 'password__modal--item highlight' : 'password__modal--item'}>1 chiffre minimum</li>
+                  <li className={checkPwdSymbol ? 'password__modal--item highlight' : 'password__modal--item'}>1 symbole minimum (@$!%*#?&)</li>
                 </ul>
               </div>
               )}
