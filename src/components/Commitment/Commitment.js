@@ -58,7 +58,14 @@ function Commitment() {
   function handleCommitButton() {
     const gameId = game.id;
     const userMail = findUserMail(token);
-    dispatch(addRefToGame({ userMail, gameId, token }));
+    if (checkCommited()) {
+      if (confirm('Etes-vous sûr de vouloir vous désengager?')) {
+        dispatch(addRefToGame({ userMail, gameId, token }));
+      }
+    }
+    else {
+      dispatch(addRefToGame({ userMail, gameId, token }));
+    }
   }
 
   return (

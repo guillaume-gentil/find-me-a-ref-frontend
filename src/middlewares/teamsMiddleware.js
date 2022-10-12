@@ -42,6 +42,8 @@ const teamsMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
+          const teams = removeUser(store.getState().teams, action.id);
+          store.dispatch(saveTeams(teams));
           console.log(response);
         })
         .catch((error) => {
@@ -67,8 +69,6 @@ const teamsMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          const teams = removeUser(store.getState().teams, action.id);
-          store.dispatch(saveTeams(teams));
           console.log(response);
         })
         .catch((error) => {

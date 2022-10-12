@@ -6,7 +6,8 @@ export const SET_ADMIN_NAV = 'SET_ADMIN_NAV';
 export const UNSET_ADMIN_NAV = 'UNSET_ADMIN_NAV';
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
 export const OPEN_FILTERS = 'OPEN_FILTERS';
-
+export const SET_TEAM_NAME_MODAL_VISIBLE = 'SET_TEAM_NAME_MODAL_VISIBLE';
+export const SET_TEAM_NAME_MODAL_HIDDEN = 'SET_TEAM_NAME_MODAL_HIDDEN';
 
 export const openNavbar = () => ({
   type: 'OPEN_NAVBAR',
@@ -34,4 +35,9 @@ export const setErrorMessage = (message) => ({
 export const openFilters = () => ({
   type: 'OPEN_FILTERS',
 });
-
+export const setTeamNameModalVisible = () => ({
+  type: 'SET_TEAM_NAME_MODAL_VISIBLE',
+});
+export const setTeamNameModalHidden = () => ({
+  type: 'SET_TEAM_NAME_MODAL_HIDDEN',
+});

@@ -87,10 +87,6 @@ function UserForm() {
               Email
               <input type="email" name="email" id="email" value={user.email} onChange={(e) => dispatch(changeInputEmail(e.target.value))} />
             </label>
-            <label htmlFor="password">
-              Mot de passe
-              <input type="password" name="password" id="password" autoComplete="" onChange={(e) => dispatch(changeInputPass(e.target.value))} />
-            </label>
             <label htmlFor="license_id">
               Numéro de licence
               <input type="number" name="license_id" id="license_id" value={user.licenceId} onChange={(e) => dispatch(changeInputLicense(e.target.value))} />
