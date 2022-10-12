@@ -6,6 +6,10 @@ export const SET_ADMIN_NAV = 'SET_ADMIN_NAV';
 export const UNSET_ADMIN_NAV = 'UNSET_ADMIN_NAV';
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
 export const OPEN_FILTERS = 'OPEN_FILTERS';
+export const SET_PASS_MODAL_VISIBLE = 'SET_PASS_MODAL_VISIBLE';
+export const SET_PASS_MODAL_HIDDEN = 'SET_PASS_MODAL_HIDDEN';
+export const COLORIZE_MODAL = 'COLORIZE_MODAL';
+export const UNCOLORIZE_MODAL = 'UNCOLORIZE_MODAL';
 export const SET_TEAM_NAME_MODAL_VISIBLE = 'SET_TEAM_NAME_MODAL_VISIBLE';
 export const SET_TEAM_NAME_MODAL_HIDDEN = 'SET_TEAM_NAME_MODAL_HIDDEN';
 
@@ -35,6 +39,20 @@ export const setErrorMessage = (message) => ({
 export const openFilters = () => ({
   type: 'OPEN_FILTERS',
 });
+export const setPassModalVisible = () => ({
+  type: 'SET_PASS_MODAL_VISIBLE',
+});
+export const setPassModalHidden = () => ({
+  type: 'SET_PASS_MODAL_HIDDEN',
+});
+export const colorizeModal = (identifier) => ({
+  type: 'COLORIZE_MODAL',
+  identifier: identifier,
+});
+export const uncolorizeModal = (identifier) => ({
+  type: 'UNCOLORIZE_MODAL',
+  identifier: identifier,
+}); 
 export const setTeamNameModalVisible = () => ({
   type: 'SET_TEAM_NAME_MODAL_VISIBLE',
 });

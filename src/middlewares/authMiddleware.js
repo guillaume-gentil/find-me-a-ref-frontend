@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { saveJwtToken, setUserRoles } from '../actions/login';
+import { saveJwtToken, setUserRoles, toggleLoginButton } from '../actions/login';
 import { fetchUserRole } from '../selectors/fetchUserRole';
 
 const authMiddleware = (store) => (next) => (action) => {
@@ -16,9 +16,18 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
+    case 'SEND_REGISTRATION':
+      axios.post('http://localhost:8000/api/v1/users', action.credentials)
+        .then((response) => {
+          console.log('raiponce');
+          store.dispatch(toggleLoginButton());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
     default:
   }
-  // on passe l'action au suivant (middleware suivant ou reducer)
   next(action);
 };
 export default authMiddleware;

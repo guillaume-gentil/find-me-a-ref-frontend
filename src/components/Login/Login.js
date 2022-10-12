@@ -9,7 +9,11 @@ import {
   changePasswordInput,
   sendAuthCredentials,
   disconnectUser,
+  sendRegistration,
 } from '../../actions/login';
+import {
+  setPassModalHidden, setPassModalVisible, colorizeModal, uncolorizeModal,
+} from '../../actions/ui_actions';
 import { findUserMail } from '../../selectors/findUserMail';
 import './styles.scss';
 
@@ -19,6 +23,79 @@ function Login() {
 
   const token = useSelector((state) => state.jwtToken);
   const userMail = findUserMail(token);
+  const isPassModalVisible = useSelector((state) => state.isPassModalVisible);
+
+  function isEmptyOrSpaces(str) {
+    return str === null || str.match(/^ *$/) !== null;
+  }
+  function checkRole(arr) {
+    const found = arr.find((item) => item !== 'ROLE_REFEREE' && item !== 'ROLE_TEAMHEAD');
+    if (found) {
+      return false;
+    }
+    return true;
+  }
+  function verifyPwd(password, pwdCheck) {
+    if (password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)) {
+      return password === pwdCheck;
+    }
+    return false;
+  }
+  function checkWithUppercase(password) {
+    if (password.match(/.*[A-Z]/)) {
+      return true;
+    }
+    return false;
+  }
+  function checkWithLetters(password) {
+    if (password.match(/.{8,}/)) {
+      return true;
+    }
+    return false;
+  }
+  function checkWithDigit(password) {
+    if (password.match(/.*\d.*/)) {
+      return true;
+    }
+    return false;
+  }
+  function checkWithSymbol(password) {
+    if (password.match(/.*\W.*/)) {
+      return true;
+    }
+    return false;
+  }
+
+  function handlePassChange(e) {
+    if (checkWithUppercase(e.target.value)) {
+      dispatch(colorizeModal('uppercase'));
+    }
+    else {
+      dispatch(uncolorizeModal('uppercase'));
+    }
+    if (checkWithDigit(e.target.value)) {
+      dispatch(colorizeModal('digit'));
+    }
+    else {
+      dispatch(uncolorizeModal('digit'));
+    }
+    if (checkWithSymbol(e.target.value)) {
+      dispatch(colorizeModal('symbol'));
+    }
+    else {
+      dispatch(uncolorizeModal('symbol'));
+    }
+    if (checkWithLetters(e.target.value)) {
+      dispatch(colorizeModal('letter'));
+    }
+    else {
+      dispatch(uncolorizeModal('letter'));
+    }
+  }
+  const checkPwdUppercase = useSelector((state) => state.checkPwdUppercase);
+  const checkPwdDigit = useSelector((state) => state.checkPwdDigit);
+  const checkPwdSymbol = useSelector((state) => state.checkPwdSymbol);
+  const checkPwdLetters = useSelector((state) => state.checkPwdLetters);
 
   function handleResize() {
     if (parseInt(window.innerWidth, 10) < 768) {
@@ -28,10 +105,19 @@ function Login() {
       dispatch(toggleMobile(false));
     }
   }
+
   useEffect(() => {
     window.addEventListener('resize', handleResize);
     handleResize();
   }, []);
+
+  function handlePassFocus() {
+    dispatch(setPassModalVisible());
+  }
+
+  function handlePassBlur() {
+    dispatch(setPassModalHidden());
+  }
 
   let classSection = 'login__section';
   let classButton = 'login__button';
@@ -61,6 +147,27 @@ function Login() {
 
   function handleRegistrationSubmit(e) {
     e.preventDefault();
+    const pwdCheck = e.target.querySelector('#pwdVerification').value;
+    const requestObject = {
+      firstname: e.target.querySelector('#firstname').value,
+      lastname: e.target.querySelector('#name').value,
+      email: e.target.querySelector('#email').value,
+      roles: [e.target.querySelector('input[name="userRole"]:checked').value],
+      password: e.target.querySelector('#password').value,
+    };
+    if (isEmptyOrSpaces(requestObject.firstname)
+      || isEmptyOrSpaces(requestObject.lastname)
+      || isEmptyOrSpaces(requestObject.email)
+      || isEmptyOrSpaces(requestObject.password)
+      || !checkRole(requestObject.roles)
+      || !verifyPwd(requestObject.password, pwdCheck)) {
+      const message = 'Veuillez renseigner tous les champs.';
+      // dispatch(setErrorMessage(message));
+      console.log('erreur');
+    }
+    else {
+      dispatch(sendRegistration(requestObject));
+    }
   }
 
   const textButton = isLogged ? 'Déconnexion' : 'Connexion';
@@ -94,13 +201,33 @@ function Login() {
               <input type="text" id="firstname" name="firstname" placeholder="ex : Nordine" />
             </label>
             <label htmlFor="email" className="login__label">Adresse mail
-              <input type="mail" id="email" placeholder="ex : Nordine.Ateur@monmail.com" />
+              <input type="mail" id="email" placeholder="Nordine.Ateur@monmail.com" />
             </label>
-            <label htmlFor="password" className="login__label">Mot de passe
-              <input type="text" id="password" placeholder="mot de passe" />
+            <label htmlFor="password" className="login__label modal__anchor">Mot de passe
+              <input type="password" id="password" placeholder="mot de passe" onFocus={handlePassFocus} onBlur={handlePassBlur} onChange={handlePassChange} />
+              {isPassModalVisible && (
+              <div className="password__modal">
+                <ul className="password__modal--list">
+                  <li className={checkPwdLetters ? 'password__modal--item highlight' : 'password__modal--item'}>8 caractères minimum</li>
+                  <li className={checkPwdUppercase ? 'password__modal--item highlight' : 'password__modal--item'}>1 majuscule minimum</li>
+                  <li className={checkPwdDigit ? 'password__modal--item highlight' : 'password__modal--item'}>1 chiffre minimum</li>
+                  <li className={checkPwdSymbol ? 'password__modal--item highlight' : 'password__modal--item'}>1 symbole minimum (@$!%*#?&)</li>
+                </ul>
+              </div>
+              )}
             </label>
             <label htmlFor="pwdVerification" className="login__label">Retapez votre mot de passe
-              <input type="text" id="pwdVerification" placeholder="mot de passe" />
+              <input type="password" id="pwdVerification" placeholder="mot de passe" />
+            </label>
+            <label htmlFor="userRole" className="login__label">Rôle
+              <div className="login__form--radio">
+                <input type="radio" id="userReferee" value="ROLE_REFEREE" name="userRole" />
+                <label htmlFor="userReferee" className="login_label" name="userRole">Arbitre</label>
+              </div>
+              <div className="login__form--radio">
+                <input type="radio" id="userTeamhead" value="ROLE_TEAMHEAD" name="userRole" />
+                <label htmlFor="userTeamhead" className="login_label" name="userRole">Chef d'équipe</label>
+              </div>
             </label>
             <label htmlFor="licenceId" className="login__label">Numéro de licence
               <input type="text" id="licenceId" placeholder="ex : Nateur" />
