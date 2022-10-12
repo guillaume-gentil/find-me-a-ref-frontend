@@ -8,6 +8,7 @@ const initialState = {
   isLogged: false,
   isPassModalVisible: false,
   isProfileOnEdit: false,
+  isTeamNameModalVisible: false,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -34,6 +35,10 @@ const initialState = {
   userRoles: [],
   editedComponent: null,
   currentUser: null,
+  checkPwdUppercase: false,
+  checkPwdDigit: false,
+  checkPwdSymbol: false,
+  checkPwdLetters: false,
 };
 
 const mainReducer = (state = initialState, action = {}) => {

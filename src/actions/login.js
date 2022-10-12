@@ -8,6 +8,7 @@ export const SAVE_JWT_TOKEN = 'SAVE_JWT_TOKEN';
 export const DISCONNECT_USER = 'DISCONNECT_USER';
 export const SET_USER_ROLES = 'SET_USER_ROLES';
 export const SET_ADMIN = 'SET_ADMIN';
+export const SEND_REGISTRATION = 'SEND_REGISTRATION';
 
 export const toggleMobile = (mobile) => ({
   type: 'TOGGLE_MOBILE',
@@ -47,4 +48,8 @@ export const setUserRoles = (userRoles) => ({
 });
 export const setAdmin = () => ({
   type: 'SET_ADMIN',
+});
+export const sendRegistration = (credentials) => ({
+  type: 'SEND_REGISTRATION',
+  credentials: credentials,
 });
