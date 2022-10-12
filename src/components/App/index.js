@@ -37,6 +37,7 @@ import { fetchGames } from '../../actions/games';
 import { saveJwtToken, setUserRoles } from '../../actions/login';
 import { fetchUserRole } from '../../selectors/fetchUserRole';
 import GameForm from '../GamesManagement/GameForm/GameForm';
+import UserProfile from '../UserProfile/UserProfile';
 
 // Component :
 function App() {
@@ -111,6 +112,19 @@ function App() {
               ? (
                 <>
                   <Commitment />
+                  <Footer />
+                </>
+              )
+              : <Navigate to="/403" replace />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            isLogged
+              ? (
+                <>
+                  <UserProfile />
                   <Footer />
                 </>
               )
