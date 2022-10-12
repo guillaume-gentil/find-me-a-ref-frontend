@@ -12,6 +12,8 @@ export const COLORIZE_MODAL = 'COLORIZE_MODAL';
 export const UNCOLORIZE_MODAL = 'UNCOLORIZE_MODAL';
 export const SET_TEAM_NAME_MODAL_VISIBLE = 'SET_TEAM_NAME_MODAL_VISIBLE';
 export const SET_TEAM_NAME_MODAL_HIDDEN = 'SET_TEAM_NAME_MODAL_HIDDEN';
+export const OPEN_MAIL_CONFIRM = 'OPEN_MAIL_CONFIRM';
+export const CLOSE_MAIL_CONFIRM = 'CLOSE_MAIL_CONFIRM';
 
 export const openNavbar = () => ({
   type: 'OPEN_NAVBAR',
@@ -52,10 +54,16 @@ export const colorizeModal = (identifier) => ({
 export const uncolorizeModal = (identifier) => ({
   type: 'UNCOLORIZE_MODAL',
   identifier: identifier,
-}); 
+});
 export const setTeamNameModalVisible = () => ({
   type: 'SET_TEAM_NAME_MODAL_VISIBLE',
 });
 export const setTeamNameModalHidden = () => ({
   type: 'SET_TEAM_NAME_MODAL_HIDDEN',
+});
+export const openMailConfirm = () => ({
+  type: 'OPEN_MAIL_CONFIRM',
+});
+export const closeMailConfirm = () => ({
+  type: 'CLOSE_MAIL_CONFIRM',
 });

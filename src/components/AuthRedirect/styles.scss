@@ -1,0 +1,15 @@
+.redirect{
+  color: white;
+  font-family: 'Saira' sans-serif;
+  min-height: 400px;
+  text-align: center;
+  & a{
+    color: cornflowerblue;
+    text-decoration: underline;
+  }
+}
+@media screen and (min-width: 768px) {
+  .redirect{
+    padding-top: 5rem;
+  }
+}

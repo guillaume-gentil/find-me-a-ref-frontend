@@ -30,6 +30,7 @@ import TeamFormEdit from '../TeamsManagement/TeamFormEdit/TeamFormEdit';
 import TeamForm from '../TeamsManagement/TeamForm/TeamForm';
 import ClubForm from '../ClubManagement/ClubForm/ClubForm';
 import ClubFormEdit from '../ClubManagement/ClubFormEdit/ClubFormEdit';
+import AuthRedirect from '../AuthRedirect/AuthRedirect';
 import './styles.scss';
 
 // Import actions :
@@ -116,6 +117,15 @@ function App() {
               )
               : <Navigate to="/403" replace />
           }
+        />
+        <Route
+          path="/authRedirect"
+          element={(
+            <>
+              <AuthRedirect />
+              <Footer />
+            </>
+          )}
         />
         {/* ADMIN ROUTES  */}
         <Route
