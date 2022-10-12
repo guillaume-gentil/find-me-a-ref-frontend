@@ -15,6 +15,13 @@
     font-size: x-large;
     margin: 30px;
   }
+  &__text{
+    padding: 1.5rem;
+  }
+  &__subtitle{
+    font-size: large;
+    font-weight: bold;
+  }
 }
 .partners{
   display: flex;
@@ -41,7 +48,6 @@ a{
     margin-right:1rem;
     max-width: calc(100% - 237px);
     min-height: 400px;
-    max-height: 460px;
   }
   .partners{
     margin: 1rem 0px;
