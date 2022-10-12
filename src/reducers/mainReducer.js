@@ -7,6 +7,7 @@ const initialState = {
   isLoading: true,
   isLogged: false,
   isPassModalVisible: false,
+  isTeamNameModalVisible: false,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -316,6 +317,16 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         checkPwdLetters: false,
+      };
+    case 'SET_TEAM_NAME_MODAL_VISIBLE':
+      return {
+        ...state,
+        isTeamNameModalVisible: true,
+      };
+    case 'SET_TEAM_NAME_MODAL_HIDDEN':
+      return {
+        ...state,
+        isTeamNameModalVisible: false,
       };
     default:
       return state;

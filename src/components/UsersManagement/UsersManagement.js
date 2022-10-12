@@ -19,7 +19,6 @@ function UsersManagement() {
     <>
       <section className="users">
         <h2 className="users__title">Utilisateurs</h2>
-        <Link className="users__interaction--create" to="/admin/users/create">Créer un utilisateur</Link>
         <div className="user">
           <div className="user__items">
             <section className="user__name">
