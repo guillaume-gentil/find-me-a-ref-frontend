@@ -6,6 +6,8 @@ const initialState = {
   isFilterOpen: false,
   isLoading: true,
   isLogged: false,
+  isPassModalVisible: false,
+  isProfileOnEdit: false,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -261,10 +263,77 @@ const mainReducer = (state = initialState, action = {}) => {
         ...state,
         editedComponent: action.club,
       };
+    case 'SET_PASS_MODAL_VISIBLE':
+      return {
+        ...state,
+        isPassModalVisible: true,
+      };
+    case 'SET_PASS_MODAL_HIDDEN':
+      return {
+        ...state,
+        isPassModalVisible: false,
+      };
+    case 'COLORIZE_MODAL':
+      if (action.identifier === 'uppercase') {
+        return {
+          ...state,
+          checkPwdUppercase: true,
+        };
+      } if (action.identifier === 'digit') {
+        return {
+          ...state,
+          checkPwdDigit: true,
+        };
+      } if (action.identifier === 'symbol') {
+        return {
+          ...state,
+          checkPwdSymbol: true,
+        };
+      }
+      return {
+        ...state,
+        checkPwdLetters: true,
+      };
+    case 'UNCOLORIZE_MODAL':
+      if (action.identifier === 'uppercase') {
+        return {
+          ...state,
+          checkPwdUppercase: false,
+        };
+      } if (action.identifier === 'digit') {
+        return {
+          ...state,
+          checkPwdDigit: false,
+        };
+      } if (action.identifier === 'symbol') {
+        return {
+          ...state,
+          checkPwdSymbol: false,
+        };
+      }
+      return {
+        ...state,
+        checkPwdLetters: false,
+      };
+    case 'SET_TEAM_NAME_MODAL_VISIBLE':
+      return {
+        ...state,
+        isTeamNameModalVisible: true,
+      };
+    case 'SET_TEAM_NAME_MODAL_HIDDEN':
+      return {
+        ...state,
+        isTeamNameModalVisible: false,
+      };
     case 'SAVE_CURRENT_USER':
       return {
         ...state,
         currentUser: action.userData,
+      };
+    case 'SET_PROFILE_EDIT':
+      return {
+        ...state,
+        isProfileOnEdit: action.boolean,
       };
     default:
       return state;

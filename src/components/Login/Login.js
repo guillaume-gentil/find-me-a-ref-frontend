@@ -86,7 +86,7 @@ function Login() {
         <Link to="/profile" className="login__profile">
           <button
             type="button"
-            className={classButton}
+            className={`${classButton} profile`}
           >
             Profil
           </button>

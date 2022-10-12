@@ -30,7 +30,6 @@ const usersMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
           store.dispatch(saveCurrentUser(response.data));
         })
         .catch((error) => {
@@ -44,7 +43,6 @@ const usersMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response);
           // saving datas in the store
           store.dispatch(saveUser(response.data));
         })
@@ -99,6 +97,25 @@ const usersMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+          const message = 'Une erreur est survenue.';
+          store.dispatch(setErrorMessage(message));
+        });
+      break;
+    case 'UPDATE_USER_DATA':
+      axios.put(
+        'http://localhost:8000/api/v1/users/edit',
+        action.userData,
+        {
+          headers: {
+            Authorization: `Bearer ${action.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          store.dispatch(saveCurrentUser(response.data));
         })
         .catch((error) => {
           console.log(error);
