@@ -1,5 +1,6 @@
 // import :
 import './styles.scss';
+import logo_ffrs from 'src/assets/img/logo_ffrs.png';
 
 // component :
 function Legals() {
@@ -20,8 +21,7 @@ function Legals() {
       </section>
       <section className="partners">
         <h1 className="partners__title">Nos partenaires</h1>
-        <a href="">lien 1</a>
-        <a href="">lien 2</a>
+        <a href="https://ffroller-skateboard.fr/les-disciplines/roller_hockey/"><img className="legals__link--img" src={logo_ffrs} alt="logo de la fédération" /></a>
       </section>
     </div>
   );

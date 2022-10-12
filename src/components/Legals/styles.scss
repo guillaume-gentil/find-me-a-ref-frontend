@@ -1,63 +1,66 @@
+
 .legals,.partners{
-    // appearance :
-    font-family: 'Saira', sans-serif;
-    color: white;
-    padding: 20px;
-    margin: 5px;
-    background-color:rgba($color: white, $alpha: 0.2);
-    border: 1px solid #888;
-    font-size: large;
+  // appearance :
+  font-family: 'Saira', sans-serif;
+  color: white;
+  padding: 20px;
+  margin: 5px;
+  background-color:rgba($color: white, $alpha: 0.2);
+  border: 1px solid #888;
+  font-size: large;
 }
 .legals{
-  text-align: justify;
-  &__title{
-    text-align: center;
-    font-size: x-large;
-    margin: 30px;
-  }
-  &__text{
-    padding: 1.5rem;
-  }
-  &__subtitle{
-    font-size: large;
-    font-weight: bold;
-  }
+text-align: justify;
+&__title{
+  text-align: center;
+  font-size: x-large;
+  margin: 30px;
+}
+&__text{
+  padding: 1.5rem;
+}
+&__subtitle{
+  font-size: large;
+  font-weight: bold;
+}
+&__link--img{
+  width: 100%;
+  margin: 0;
+}
 }
 .partners{
+display: flex;
+flex-direction: column;
+&__title{
+  text-align: center;
+  font-size: x-large;
+  margin: 30px;
+}
+}
+
+@media screen and (min-width:768px) {
+.informations{
+  display: flex;
+}
+.legals{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin: 1rem 0px;
+  margin-bottom: 0;
+  margin-right:1rem;
+  max-width: calc(100% - 237px);
+  min-height: 400px;
+}
+.partners{
+  margin: 1rem 0px;
+  margin-bottom: 0;
+  position : absolute;
+  right : 0;
+  max-width:15rem;
+  max-width: calc(237px - 1rem);
   &__title{
-    text-align: center;
-    font-size: x-large;
-    margin: 30px;
+    margin: 15px;
   }
 }
-a{
-  margin: 10px;
-}
-@media screen and (min-width:768px) {
-  .informations{
-    display: flex;
-  }
-  .legals{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 1rem 0px;
-    margin-bottom: 0;
-    margin-right:1rem;
-    max-width: calc(100% - 237px);
-    min-height: 400px;
-  }
-  .partners{
-    margin: 1rem 0px;
-    margin-bottom: 0;
-    position : absolute;
-    right : 0;
-    max-width:15rem;
-    padding: 5px;
-    &__title{
-      margin: 15px;
-    }
-  }
 }
