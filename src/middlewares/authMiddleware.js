@@ -5,7 +5,7 @@ import { fetchUserRole } from '../selectors/fetchUserRole';
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case 'SEND_AUTH_CREDENTIALS':
-      axios.post('http://localhost:8000/api/v1/login_check', action.credentials)
+      axios.post(`${process.env.API_URL}/api/v1/login_check`, action.credentials)
         .then((response) => {
           // TODO : replace this value by api json web token
           const { token } = response.data;
@@ -17,7 +17,7 @@ const authMiddleware = (store) => (next) => (action) => {
         });
       break;
     case 'SEND_REGISTRATION':
-      axios.post('http://localhost:8000/api/v1/users', action.credentials)
+      axios.post(`${process.env.API_URL}/api/v1/users`, action.credentials)
         .then((response) => {
           console.log('raiponce');
           store.dispatch(toggleLoginButton());

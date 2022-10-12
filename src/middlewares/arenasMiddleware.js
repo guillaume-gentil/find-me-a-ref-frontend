@@ -8,7 +8,7 @@ const arenasMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case 'SEND_ARENA_FORM':
       axios.post(
-        'http://localhost:8000/api/v1/arenas',
+        `${process.env.API_URL}/api/v1/arenas`,
         {
 
           name: action.formObj.name,
@@ -33,7 +33,7 @@ const arenasMiddleware = (store) => (next) => (action) => {
       break;
     case 'SEND_EDIT_ARENA_FORM':
       axios.put(
-        `http://localhost:8000/api/v1/arenas/${action.formObj.id}/edit`,
+        `${process.env.API_URL}/api/v1/arenas/${action.formObj.id}/edit`,
         {
 
           name: action.formObj.name,
@@ -57,7 +57,7 @@ const arenasMiddleware = (store) => (next) => (action) => {
         });
       break;
     case 'FETCH_ARENA_INFOS':
-      axios.get(`http://localhost:8000/api/v1/arenas/${action.arenaId}`, {
+      axios.get(`${process.env.API_URL}/api/v1/arenas/${action.arenaId}`, {
         headers: {
           Authorization: `Bearer ${action.token}`,
         },
@@ -72,7 +72,7 @@ const arenasMiddleware = (store) => (next) => (action) => {
       break;
     case 'DELETE_ARENA':
       axios.delete(
-        `http://localhost:8000/api/v1/arenas/${action.id}`,
+        `${process.env.API_URL}/api/v1/arenas/${action.id}`,
         {
           headers: {
             Authorization: `Bearer ${action.token}`,

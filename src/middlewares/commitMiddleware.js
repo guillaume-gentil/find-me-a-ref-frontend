@@ -4,7 +4,7 @@ import { changeGameData } from '../actions/commitment';
 const commitMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case 'ADD_REF_TO_GAME':
-      axios.patch(`http://localhost:8000/api/v1/games/${action.gameId}`, { user_email: action.userMail }, {
+      axios.patch(`${process.env.API_URL}/api/v1/games/${action.gameId}`, { user_email: action.userMail }, {
         headers: {
           Authorization: `Bearer ${action.token}`,
         },

@@ -8,7 +8,7 @@ const teamsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case 'SEND_TEAM_FORM':
       axios.post(
-        'http://localhost:8000/api/v1/teams',
+        `${process.env.API_URL}/api/v1/teams`,
         {
 
           name: action.formObj.name,
@@ -34,7 +34,7 @@ const teamsMiddleware = (store) => (next) => (action) => {
 
     case 'DELETE_TEAM':
       axios.delete(
-        `http://localhost:8000/api/v1/teams/${action.id}`,
+        `${process.env.API_URL}/api/v1/teams/${action.id}`,
         {
           headers: {
             Authorization: `Bearer ${action.token}`,
@@ -54,7 +54,7 @@ const teamsMiddleware = (store) => (next) => (action) => {
       break;
     case 'SEND_EDIT_TEAM_FORM':
       axios.put(
-        `http://localhost:8000/api/v1/teams/${action.formObj.id}/edit`,
+        `${process.env.API_URL}/api/v1/teams/${action.formObj.id}/edit`,
         {
 
           name: action.formObj.name,
@@ -78,7 +78,7 @@ const teamsMiddleware = (store) => (next) => (action) => {
         });
       break;
     case 'FETCH_TEAM_INFOS':
-      axios.get(`http://localhost:8000/api/v1/teams/${action.teamId}`, {
+      axios.get(`${process.env.API_URL}/api/v1/teams/${action.teamId}`, {
         headers: {
           Authorization: `Bearer ${action.token}`,
         },

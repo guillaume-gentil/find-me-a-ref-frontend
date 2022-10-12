@@ -8,7 +8,7 @@ const clubsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case 'SEND_CLUB_FORM':
       axios.post(
-        'http://localhost:8000/api/v1/clubs',
+        `${process.env.API_URL}/api/v1/clubs`,
         {
 
           name: action.formObj.name,
@@ -33,7 +33,7 @@ const clubsMiddleware = (store) => (next) => (action) => {
       break;
     case 'SEND_EDIT_CLUB_FORM':
       axios.put(
-        `http://localhost:8000/api/v1/clubs/${action.formObj.id}/edit`,
+        `${process.env.API_URL}/api/v1/clubs/${action.formObj.id}/edit`,
         {
 
           name: action.formObj.name,
@@ -58,7 +58,7 @@ const clubsMiddleware = (store) => (next) => (action) => {
       break;
     case 'DELETE_CLUB':
       axios.delete(
-        `http://localhost:8000/api/v1/clubs/${action.id}`,
+        `${process.env.API_URL}/api/v1/clubs/${action.id}`,
         {
           headers: {
             Authorization: `Bearer ${action.token}`,
@@ -77,7 +77,7 @@ const clubsMiddleware = (store) => (next) => (action) => {
         });
       break;
     case 'FETCH_CLUB_INFOS':
-      axios.get(`http://localhost:8000/api/v1/clubs/${action.clubId}`, {
+      axios.get(`${process.env.API_URL}/api/v1/clubs/${action.clubId}`, {
         headers: {
           Authorization: `Bearer ${action.token}`,
         },
