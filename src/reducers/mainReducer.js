@@ -9,6 +9,7 @@ const initialState = {
   isPassModalVisible: false,
   isProfileOnEdit: false,
   isTeamNameModalVisible: false,
+  isMailModalOpen: false,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
@@ -329,6 +330,16 @@ const mainReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isTeamNameModalVisible: false,
+      };
+    case 'OPEN_MAIL_CONFIRM':
+      return {
+        ...state,
+        isMailModalOpen: true,
+      };
+    case 'CLOSE_MAIL_CONFIRM':
+      return {
+        ...state,
+        isMailModalOpen: false,
       };
     case 'SAVE_CURRENT_USER':
       return {
