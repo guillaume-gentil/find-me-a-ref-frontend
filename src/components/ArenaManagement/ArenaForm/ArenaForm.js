@@ -1,6 +1,6 @@
 import { CornerUpLeft } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import '../styles.scss';
 import { setErrorMessage } from '../../../actions/ui_actions';
 import { sendArenaForm } from '../../../actions/arenas_management';

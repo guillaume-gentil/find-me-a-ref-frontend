@@ -24,6 +24,7 @@ const clubsMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/clubs';
         })
         .catch((error) => {
           console.log(error);
@@ -49,6 +50,7 @@ const clubsMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/clubs';
         })
         .catch((error) => {
           console.log(error);

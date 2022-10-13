@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 // import component :
 import GameDisplay from './GameDisplay/GameDisplay';
 import { fetchGames } from '../../actions/games';
+import { setAdminNav } from '../../actions/ui_actions';
 
 // component :
 function GamesManagement() {
@@ -15,6 +16,7 @@ function GamesManagement() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchGames(token));
+    dispatch(setAdminNav());
   }, []);
   const games = useSelector((state) => state.games);
   return (
