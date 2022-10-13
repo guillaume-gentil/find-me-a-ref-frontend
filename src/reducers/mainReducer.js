@@ -8,7 +8,7 @@ const initialState = {
   isLogged: false,
   isPassModalVisible: false,
   isTeamNameModalVisible: false,
-  isMailModalOpen: true,
+  isMailModalOpen: false,
   adminNav: false,
   loginInputMail: '',
   loginInputPass: '',
