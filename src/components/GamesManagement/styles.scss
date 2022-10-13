@@ -6,10 +6,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  &__title{
-    margin: 15px;
-  }
+
   &__gamestitle{
+    font-size: 2rem;
     margin: 10px;
     padding:10px;
   }
@@ -27,8 +26,15 @@
   &__interaction--create{
     background-color: rgba($color: white, $alpha: 0.2);
     border: 1px white solid;
-    padding: 10px;
+    padding: 1rem;
+    margin: 1rem;
   }  
+}
+.login__welcome{
+  display: none;
+}
+.login__profile{
+  padding: 0;
 }
 .game-hidden{
   display: none;

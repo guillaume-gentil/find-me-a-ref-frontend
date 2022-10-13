@@ -23,7 +23,7 @@ function TeamsManagement() {
   return (
     <>
       <section className="teams">
-        <h2 className="teams__title">Teams</h2>
+        <h2 className="teams__title">Equipes</h2>
         <Link className="teams__interaction--create" to="/admin/teams/create">Créer une équipe</Link>
         <div className="team">
           <div className="team__items">
