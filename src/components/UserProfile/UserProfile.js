@@ -62,12 +62,12 @@ function UserProfile() {
     const pwdCheck = e.target.querySelector('#pwdVerification').value;
     const addressValue = e.target.querySelector('#address').value;
     const phone = e.target.querySelector('#phone').value;
+    // const emailValue = e.target.querySelector('#email').value;
     const requestObject = {
       userData: {
         // Mandatory data
         firstname: e.target.querySelector('#firstname').value,
         lastname: e.target.querySelector('#lastname').value,
-        email: e.target.querySelector('#email').value,
       },
       token: token,
     };
@@ -82,9 +82,11 @@ function UserProfile() {
     if (!isEmptyOrSpaces(phone)) {
       requestObject.userData = { ...requestObject.userData, phoneNumber: phone };
     }
+    // if (!isEmptyOrSpaces(emailValue)) {
+    //   requestObject.userData = { ...requestObject.userData, email: emailValue };
+    // }
     if (isEmptyOrSpaces(requestObject.userData.firstname)
-      || isEmptyOrSpaces(requestObject.userData.lastname)
-      || isEmptyOrSpaces(requestObject.userData.email)) {
+      || isEmptyOrSpaces(requestObject.userData.lastname)) {
       const message = 'Veuillez renseigner tous les champs.';
       // dispatch(setErrorMessage(message));
       console.log('erreur');
@@ -224,10 +226,10 @@ function UserProfile() {
                 Prénom
                 <input type="text" name="firstname" id="firstname" defaultValue={user.firstname} />
               </label>
-              <label htmlFor="email" className="user-profile__label">
+              {/* <label htmlFor="email" className="user-profile__label">
                 Email
                 <input type="email" name="email" id="email" defaultValue={user.email} />
-              </label>
+              </label> */}
               <label htmlFor="address" className="user-profile__label">
                 Adresse
                 <input type="text" name="address" id="address" defaultValue={user.address} />
