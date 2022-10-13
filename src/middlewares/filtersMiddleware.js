@@ -25,7 +25,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_UNCOMMITED_GAMES:
       axios.get(
-        'http://localhost:8000/api/v1/games-by-users',
+        `${process.env.API_URL}/api/v1/games-by-users`,
       )
         .then((response) => {
           // console.log(response);
@@ -39,7 +39,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case FETCH_CATEGORIES:
       axios.get(
-        'http://localhost:8000/api/v1/categories',
+        `${process.env.API_URL}/api/v1/categories`,
       )
         .then((response) => {
           // console.log(response);
@@ -53,7 +53,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case FETCH_TEAMS:
       axios.get(
-        'http://localhost:8000/api/v1/teams',
+        `${process.env.API_URL}/api/v1/teams`,
       )
         .then((response) => {
           // console.log(response);
@@ -67,7 +67,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case FETCH_CLUBS:
       axios.get(
-        'http://localhost:8000/api/v1/clubs',
+        `${process.env.API_URL}/api/v1/clubs`,
       )
         .then((response) => {
           // console.log(response);
@@ -81,7 +81,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case FETCH_ARENAS:
       axios.get(
-        'http://localhost:8000/api/v1/arenas',
+        `${process.env.API_URL}/api/v1/arenas`,
       )
         .then((response) => {
           // console.log(response);
@@ -95,7 +95,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case FETCH_TYPES:
       axios.get(
-        'http://localhost:8000/api/v1/types',
+        `${process.env.API_URL}/api/v1/types`,
       )
         .then((response) => {
           // console.log(response);
@@ -109,7 +109,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case ORDER_GAMES_BY_CATEGORY:
       axios.get(
-        `http://localhost:8000/api/v1/categories/${action.categoryId}/games`,
+        `${process.env.API_URL}/api/v1/categories/${action.categoryId}/games`,
       )
         .then((response) => {
           // console.log(response.data);
@@ -123,7 +123,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case ORDER_GAMES_BY_TEAM:
       axios.get(
-        `http://localhost:8000/api/v1/teams/${action.teamId}/games`,
+        `${process.env.API_URL}/api/v1/teams/${action.teamId}/games`,
       )
         .then((response) => {
           // console.log(response.data);
@@ -137,7 +137,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case ORDER_GAMES_BY_CLUB:
       axios.get(
-        `http://localhost:8000/api/v1/clubs/${action.clubId}/games`,
+        `${process.env.API_URL}/api/v1/clubs/${action.clubId}/games`,
       )
         .then((response) => {
           // console.log(response.data);
@@ -151,7 +151,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case ORDER_GAMES_BY_ARENA:
       axios.get(
-        `http://localhost:8000/api/v1/arenas/${action.arenaId}/games`,
+        `${process.env.API_URL}/api/v1/arenas/${action.arenaId}/games`,
       )
         .then((response) => {
           console.log(response.data);
@@ -165,7 +165,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case ORDER_GAMES_BY_TYPE:
       axios.get(
-        `http://localhost:8000/api/v1/types/${action.typeId}/games`,
+        `${process.env.API_URL}/api/v1/types/${action.typeId}/games`,
       )
         .then((response) => {
           console.log(response.data);

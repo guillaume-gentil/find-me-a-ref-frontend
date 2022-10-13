@@ -8,7 +8,7 @@ const gamesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_GAMES:
       axios.get(
-        'http://localhost:8000/api/v1/games-by-dates',
+        `${process.env.API_URL}/api/v1/games-by-dates`,
       )
         .then((response) => {
           // console.log(response);
@@ -22,7 +22,7 @@ const gamesMiddleware = (store) => (next) => (action) => {
       break;
     case 'SEND_GAME_FORM':
       axios.post(
-        'http://localhost:8000/api/v1/games',
+        `${process.env.API_URL}/api/v1/games`,
         {
 
           date: action.formObj.date,
@@ -49,7 +49,7 @@ const gamesMiddleware = (store) => (next) => (action) => {
       break;
     case 'SEND_EDIT_GAME_FORM':
       axios.put(
-        `http://localhost:8000/api/v1/games/${action.formObj.id}/edit`,
+        `${process.env.API_URL}/api/v1/games/${action.formObj.id}/edit`,
         {
 
           date: action.formObj.date,
@@ -75,7 +75,7 @@ const gamesMiddleware = (store) => (next) => (action) => {
         });
       break;
     case 'FETCH_GAME_INFOS':
-      axios.get(`http://localhost:8000/api/v1/games/${action.gameId}`, {
+      axios.get(`${process.env.API_URL}/api/v1/games/${action.gameId}`, {
         headers: {
           Authorization: `Bearer ${action.token}`,
         },
@@ -90,7 +90,7 @@ const gamesMiddleware = (store) => (next) => (action) => {
       break;
     case 'DELETE_GAME':
       axios.delete(
-        `http://localhost:8000/api/v1/games/${action.id}`,
+        `${process.env.API_URL}/api/v1/games/${action.id}`,
         {
           headers: {
             Authorization: `Bearer ${action.token}`,

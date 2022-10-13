@@ -10,6 +10,7 @@ export const SET_PASS_MODAL_VISIBLE = 'SET_PASS_MODAL_VISIBLE';
 export const SET_PASS_MODAL_HIDDEN = 'SET_PASS_MODAL_HIDDEN';
 export const COLORIZE_MODAL = 'COLORIZE_MODAL';
 export const UNCOLORIZE_MODAL = 'UNCOLORIZE_MODAL';
+export const SET_PROFILE_EDIT = 'SET_PROFILE_EDIT';
 export const SET_TEAM_NAME_MODAL_VISIBLE = 'SET_TEAM_NAME_MODAL_VISIBLE';
 export const SET_TEAM_NAME_MODAL_HIDDEN = 'SET_TEAM_NAME_MODAL_HIDDEN';
 export const OPEN_MAIL_CONFIRM = 'OPEN_MAIL_CONFIRM';
@@ -55,6 +56,10 @@ export const uncolorizeModal = (identifier) => ({
   type: 'UNCOLORIZE_MODAL',
   identifier: identifier,
 });
+export const setProfileEdit = (boolean) => ({
+  type: 'SET_PROFILE_EDIT',
+  boolean: boolean,
+}); 
 export const setTeamNameModalVisible = () => ({
   type: 'SET_TEAM_NAME_MODAL_VISIBLE',
 });
