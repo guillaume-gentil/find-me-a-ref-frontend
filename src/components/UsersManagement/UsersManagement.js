@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 // import component :
 import User from './User/User';
 import { fetchAllUsers } from '../../actions/users_management';
+import { setAdminNav } from '../../actions/ui_actions';
 
 // component :
 function UsersManagement() {
@@ -13,6 +14,7 @@ function UsersManagement() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllUsers(token));
+    dispatch(setAdminNav());
   }, []);
   const users = useSelector((state) => state.allUsers);
   return (

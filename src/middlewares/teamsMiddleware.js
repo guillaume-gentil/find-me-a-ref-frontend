@@ -24,6 +24,7 @@ const teamsMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/teams';
         })
         .catch((error) => {
           console.log(error);
@@ -70,6 +71,7 @@ const teamsMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/teams';
         })
         .catch((error) => {
           console.log(error);

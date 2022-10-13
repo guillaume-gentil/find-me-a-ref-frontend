@@ -40,6 +40,7 @@ const gamesMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/games';
         })
         .catch((error) => {
           console.log(error);
@@ -67,6 +68,7 @@ const gamesMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/games';
         })
         .catch((error) => {
           console.log(error);

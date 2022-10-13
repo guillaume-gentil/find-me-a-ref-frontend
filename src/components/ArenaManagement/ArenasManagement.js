@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import ArenaDisplay from './ArenaDisplay/ArenaDisplay';
 // fetchArenas is already coded in filters :
 import { fetchArenas } from '../../actions/filters';
+import { setAdminNav } from '../../actions/ui_actions';
 
 // component :
 function ArenasManagement() {
@@ -16,6 +17,7 @@ function ArenasManagement() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchArenas(token));
+    dispatch(setAdminNav());
   }, []);
   const arenas = useSelector((state) => state.arenas);
   return (

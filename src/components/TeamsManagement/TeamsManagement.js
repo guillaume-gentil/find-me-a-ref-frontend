@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import TeamDisplay from './TeamDisplay/TeamDisplay';
 // fetchTeams is already coded in filters :
 import { fetchTeams } from '../../actions/filters';
+import { setAdminNav } from '../../actions/ui_actions';
 
 // component :
 function TeamsManagement() {
@@ -16,6 +17,7 @@ function TeamsManagement() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTeams(token));
+    dispatch(setAdminNav());
   }, []);
   const teams = useSelector((state) => state.teams);
   return (

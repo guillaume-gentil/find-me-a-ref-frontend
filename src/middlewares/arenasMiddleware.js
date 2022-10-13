@@ -24,6 +24,7 @@ const arenasMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/arena';
         })
         .catch((error) => {
           console.log(error);
@@ -49,6 +50,7 @@ const arenasMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/arena';
         })
         .catch((error) => {
           console.log(error);

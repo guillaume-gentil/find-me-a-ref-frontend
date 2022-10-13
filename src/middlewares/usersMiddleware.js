@@ -70,6 +70,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/users';
         })
         .catch((error) => {
           console.log(error);
@@ -97,6 +98,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          window.location = '/admin/users';
         })
         .catch((error) => {
           console.log(error);

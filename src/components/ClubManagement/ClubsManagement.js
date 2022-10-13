@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import ClubDisplay from './ClubDisplay/ClubsDisplay';
 // fetchClubs is already coded in filters :
 import { fetchClubs } from '../../actions/filters';
+import { setAdminNav } from '../../actions/ui_actions';
 
 // component :
 function ClubsManagement() {
@@ -16,6 +17,7 @@ function ClubsManagement() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchClubs(token));
+    dispatch(setAdminNav());
   }, []);
   const clubs = useSelector((state) => state.clubs);
   return (
