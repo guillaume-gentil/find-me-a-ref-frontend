@@ -222,12 +222,12 @@ const mainReducer = (state = initialState, action = {}) => {
     case 'CHANGE_INPUT_LEVEL':
       return {
         ...state,
-        userFormInputPass: action.newValue,
+        userFormInputLevel: action.newValue,
       };
     case 'CHANGE_INPUT_LICENSE':
       return {
         ...state,
-        userFormInputLevel: action.newValue,
+        userFormInputLicense: action.newValue,
       };
     case 'SET_ERROR_MESSAGE':
       return {

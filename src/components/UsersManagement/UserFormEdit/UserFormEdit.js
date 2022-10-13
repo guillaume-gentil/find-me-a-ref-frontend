@@ -10,7 +10,6 @@ import {
   changeInputLastname,
   changeInputLevel,
   changeInputLicense,
-  changeInputPass,
   changeInputZipcode,
   fetchUser,
   sendEditUserForm,
@@ -25,10 +24,32 @@ function UserForm() {
   const error = useSelector((state) => state.errorMessage);
   const user = useSelector((state) => state.editedComponent);
   const userObj = { token, id };
+  const userFormInputLastname = useSelector((state) => state.userFormInputLastname);
+  const userFormInputEmail = useSelector((state) => state.userFormInputEmail);
+  const userFormInputFirstname = useSelector((state) => state.userFormInputFirstname);
+  const userFormInputAddress = useSelector((state) => state.userFormInputAddress);
+  const userFormInputZipcode = useSelector((state) => state.userFormInputZipcode);
+  const userFormInputLicense = useSelector((state) => state.userFormInputLicense);
+  const userFormInputLevel = useSelector((state) => state.userFormInputLevel);
 
   useEffect(() => {
     dispatch(fetchUser(userObj));
   }, []);
+
+  useEffect(() => {
+    try {
+      dispatch(changeInputFirstname(user.firstname));
+      dispatch(changeInputLastname(user.lastname));
+      dispatch(changeInputEmail(user.email));
+      dispatch(changeInputAddress(user.address));
+      dispatch(changeInputLevel(user.level));
+      dispatch(changeInputLicense(user.licenceId));
+      dispatch(changeInputZipcode(user.zipCode));
+    }
+    catch (error) {
+      console.log('error');
+    }
+  }, [user]);
 
   function isEmptyOrSpaces(str) {
     return str === null || str.match(/^ *$/) !== null;
@@ -63,6 +84,7 @@ function UserForm() {
   }
 
   if (user) {
+    console.log(user);
     return (
       <div className="user-form">
         <section className="user-form__top">
@@ -77,33 +99,33 @@ function UserForm() {
           <fieldset className="user-form__fieldset">
             <label htmlFor="lastname">
               Nom
-              <input type="text" name="lastname" id="lastname" value={user.lastname} onChange={(e) => dispatch(changeInputLastname(e.target.value))} />
+              <input type="text" name="lastname" id="lastname" value={userFormInputLastname} onChange={(e) => dispatch(changeInputLastname(e.target.value))} />
             </label>
             <label htmlFor="firstname">
               Prénom
-              <input type="text" name="firstname" id="firstname" value={user.firstname} onChange={(e) => dispatch(changeInputFirstname(e.target.value))} />
+              <input type="text" name="firstname" id="firstname" value={userFormInputFirstname} onChange={(e) => dispatch(changeInputFirstname(e.target.value))} />
             </label>
             <label htmlFor="email">
               Email
-              <input type="email" name="email" id="email" value={user.email} onChange={(e) => dispatch(changeInputEmail(e.target.value))} />
+              <input type="email" name="email" id="email" value={userFormInputEmail} onChange={(e) => dispatch(changeInputEmail(e.target.value))} />
             </label>
             <label htmlFor="license_id">
               Numéro de licence
-              <input type="number" name="license_id" id="license_id" value={user.licenceId} onChange={(e) => dispatch(changeInputLicense(e.target.value))} />
+              <input type="number" name="license_id" id="license_id" value={userFormInputLicense} onChange={(e) => dispatch(changeInputLicense(e.target.value))} />
             </label>
             <label htmlFor="level">
               Niveau
-              <input type="text" name="level" id="level" value={user.level} onChange={(e) => dispatch(changeInputLevel(e.target.value))} />
+              <input type="text" name="level" id="level" value={userFormInputLevel} onChange={(e) => dispatch(changeInputLevel(e.target.value))} />
             </label>
           </fieldset>
           <fieldset className="user-form__fieldset">
             <label htmlFor="address">
               Adresse Complète
-              <input type="text" name="address" id="address" value={user.address} onChange={(e) => dispatch(changeInputAddress(e.target.value))} />
+              <input type="text" name="address" id="address" value={userFormInputAddress} onChange={(e) => dispatch(changeInputAddress(e.target.value))} />
             </label>
             <label htmlFor="zipCode">
               Code Postal
-              <input type="number" name="zipCode" id="zipCode" value={user.zipCode} onChange={(e) => dispatch(changeInputZipcode(e.target.value))} />
+              <input type="number" name="zipCode" id="zipCode" value={userFormInputZipcode} onChange={(e) => dispatch(changeInputZipcode(e.target.value))} />
             </label>
             <label htmlFor="role">
               Role
