@@ -17,7 +17,7 @@ function Legals() {
         <h3 className="legals__subtitle">Nous contacter</h3>
         <p className="legals__text">Par téléphone : +33556336565</p>
         <p className="legals__text">Par email : findmearef@gmail.com</p>
-        <p className="legals__text">Par courrier : 6, Boulevard du Pdt Franklin Roosevelt</p>
+        <p className="legals__text">Par courrier : 6, Boulevard du Pdt Franklin Roosevelt CS11742 33080 Bordeaux Cedex France</p>
       </section>
       <section className="partners">
         <h1 className="partners__title">Nos partenaires</h1>

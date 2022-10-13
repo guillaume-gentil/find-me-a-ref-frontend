@@ -12,7 +12,7 @@ function Contact() {
       <div className="contact__main">
         <h1 className="contact__title">Contact</h1>
         <p>En cas de problème, merci de bien vouloir contacter l'administrateur du site :
-          Administrateur.du.site@lesite.fr
+          findmearef@gmail.com
         </p>
       </div>
       <div className="contact__team">
