@@ -130,7 +130,8 @@ function App() {
               <Footer />
             </>
           )}
-         />
+        />
+        <Route
           path="/profile"
           element={
             isLogged
