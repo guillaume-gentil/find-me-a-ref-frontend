@@ -12,6 +12,7 @@ In your project root directory, be sure to create two files :
 ``` REACT_APP_API_URL=http://localhost:8000```
 ### .env.production  
 ```REACT_APP_API_URL= [put here the website url]```
+
 ## Install dependencies
 In your directory, run the command `yarn`, it should install all the dependencies.  
 If this command returns an error, then run this command instead `yarn install --ignore-engines`.

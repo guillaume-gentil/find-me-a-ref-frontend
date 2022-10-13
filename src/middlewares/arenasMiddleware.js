@@ -8,7 +8,7 @@ const arenasMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case 'SEND_ARENA_FORM':
       axios.post(
-        'http://localhost:8000/api/v1/arenas',
+        `${process.env.REACT_APP_API_URL}/api/v1/arenas`,
         {
 
           name: action.formObj.name,
