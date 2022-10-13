@@ -1,0 +1,41 @@
+.mailModal{
+  background: linear-gradient(#333, #222);
+  border: 2px solid  #6f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  padding: 1rem;
+  text-align: center;
+  margin: 5px;
+
+// position :
+
+  &__message{
+    margin: 5px;
+    color:white;
+  }
+  &__button{
+    font-family: 'Saira', sans-serif;
+    margin: 5px;
+    padding: 5px 10px;
+    text-align: left;
+    background: linear-gradient(#333, #222);	
+    border: 1px solid white;
+    box-shadow: 0 2px 0 #000;
+    color: white;
+    width: fit-content;
+  }
+}
+@media screen and (min-width: 768px) {
+.mailModal{
+  // position :
+  position : absolute;
+  top: 7rem;
+  right: 50%;
+  transform: translateX(50%);
+  &__button{
+  // appearnce : 
+  margin: 15px;
+}}
+}

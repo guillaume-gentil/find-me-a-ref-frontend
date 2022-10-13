@@ -1,0 +1,234 @@
+// component Games
+.games{
+  // appearance :
+  font-family: 'Saira', sans-serif;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  background-color: rgba($color: white, $alpha: 0.2);
+//  background-color: #344141;
+  text-align: center;
+  font-size: large;
+  border: 1px solid #888;
+
+  // position :
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  &__more{
+    background-color: #666F6F;
+    font-family: 'Saira', sans-serif;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    font-size: large;
+    border: none;
+  }
+  &__legend{
+    position: absolute;
+    padding: 0.1rem;
+    left: 0.5rem;
+    top: 0.5rem;
+    text-align: left;
+    width: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: black;
+    border: 1px solid #888;
+    transition: width 0.2s ease-in-out;
+    &--blue{
+      color: rgb(0, 140, 255);
+    }
+    &--green{
+      color:rgb(0, 255, 0)
+    }
+    &--orange{
+      color:rgb(255, 123, 0)
+    }
+    &--red{
+      color:rgb(255, 0, 0);
+    }
+    &:hover{
+      width: 250px;
+    }
+  }
+  
+}
+
+// component Game
+.noregistered{
+  // appearance
+  color: rgb(255, 0, 0);
+  border: 2px solid rgb(255, 0, 0);
+
+}
+.oneregistered{
+  // appearance
+  color: rgb(255, 123, 0);
+  border: 2px solid  rgb(255, 123, 0);
+}
+.fullregistered{
+  // appearance
+  color: rgb(0, 255, 0);
+  border: 2px solid rgb(0, 255, 0);
+  
+  .game__registering{
+    display: none;
+  }
+  
+}
+
+.game{
+  font-family: 'Saira', sans-serif;
+  padding: 5px;
+  margin: 15px;
+  background-color: black;
+  text-align: left;
+
+  // position :
+  position: relative;
+
+  &__item{
+    margin: 10px;
+    color: white;
+  }
+  &__counter{
+    // appearance
+    font-family: 'Black Ops One', cursive;
+    // Position :
+    position: absolute;
+    bottom: 13px;
+    right: 20px;
+
+  }
+
+  &__registering{
+    // appearance :
+    //width: 10rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 0;
+    border-radius: 50%;
+    font-size: 2.4rem;
+    box-shadow: 0 0 0.7rem black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &>*{
+      filter: drop-shadow(1px 1px 2px black);
+    }
+
+    // position :
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+
+    transition: transform 0.15s ease-in-out;
+
+    &.noregistered{
+      // appearance
+      background-color:darken(rgb(255, 0, 0),20%);
+      color: white;
+    
+    }
+    &.oneregistered{
+      // appearance
+      background-color: rgb(255, 123, 0);
+      color: white;
+    }
+    &.fullregistered{
+      // appearance
+      background-color: darken(rgb(0, 255, 0),15%);
+      color: white;
+      display: none;
+      &.isregistered{
+        display: block;
+      }
+    }
+    &.isregistered{
+      // appearance
+      //background-color: rgb(38, 50, 224);
+      color: white;
+      transform: rotate(45deg);
+    }
+    &:hover{
+      transform: scale(1.2);
+      &.isregistered{
+        transform: rotate(45deg) scale(1.2);
+      }
+    }
+  }
+}
+.isregistered{
+  // appearance
+  //color: rgb(0, 140, 255);
+  //border: 2px solid  rgb(0, 217, 255);
+}
+h2{
+  font-size: larger;
+  font-family: 'Black Ops One', cursive;
+}
+body{
+  background: #000;
+}
+.game__register--button {
+  font-family: 'Black Ops One', cursive;
+  color:white;
+  padding: 10px;
+  background: black;
+  border-radius: 25px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+.game__register--button:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0px 15px white;
+}
+.unregistering{
+  // appearance :
+  width: 10rem;
+  color : grey;
+  font-size: large;
+  border:2px solid grey;
+  text-align: center;
+
+  // position :
+  position: absolute;
+  bottom: -46px;
+  right: -33px;
+}
+.game__unregister--button:hover {
+  color: rgb(188, 41, 41);
+  box-shadow: 0 0px 15px rgb(255, 0, 0);
+  border:2px solid  rgb(188, 41, 41);
+}
+
+@media screen and (min-width:768px){
+  .games{
+    margin: 1rem 0px;
+    margin-right:1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: calc(100% - 237px);
+    max-height: 460px;
+    min-height: 420px;
+    overflow-y: auto;
+
+    &__text{
+      display: none;
+    }
+    &__more{
+      display: none;
+    }
+  }
+  .game{
+
+    width: 16rem;
+    height: 16rem;
+  }
+}

@@ -1,0 +1,173 @@
+.games-management{
+  color: white;
+  border-bottom: 1px solid grey;
+  margin:10px;
+  font-family: 'Saira', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__title{
+    margin: 15px;
+  }
+  &__gamestitle{
+    margin: 10px;
+    padding:10px;
+  }
+  &__createButton{
+    margin: 15px;
+  }
+  &__interaction{
+    //margin: 10px;
+    margin-right: 0;
+    padding: 5px 10px;
+    background-color: unset;
+    border: 0;
+    color: white;
+  }
+  &__interaction--create{
+    background-color: rgba($color: white, $alpha: 0.2);
+    border: 1px white solid;
+    padding: 10px;
+  }  
+}
+.game-hidden{
+  display: none;
+}
+.game-item{
+  // appearance :
+  background: #222;	
+	background: linear-gradient(#333, #222);	
+	border: 1px solid #444;
+	border-radius: 5px 0 0 5px;
+	box-shadow: 0 2px 0 #000;
+  font-family: 'Saira', sans-serif;
+  color: white;
+  width: 100%;
+  margin : 10px;
+  padding: 15px;
+  padding-right: 0;
+  // position :
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__items{
+    display: flex;
+    
+  }
+  &__name{
+    display: flex;
+  }
+  &__name--detail{
+    margin-right: 10px;
+  }
+  &__details{
+    display: none;
+  }
+  &__link{
+    margin-right: 0;
+    padding-right: 0;
+  }
+  &-form{
+    background-color: rgba($color: white, $alpha: 0.2);
+    border: 1px solid #888;
+    color: white;
+    padding: 1rem;
+    margin: 5px;
+    & input, & select{
+      padding: 0.5rem;
+      border: 1px solid #888;
+      border-radius: 0.2rem;
+      width: 100%;
+    }
+    & label{
+      display: block;
+      padding: 1rem 0;
+      width: 100%;
+      font-family: 'Saira', sans-serif;
+      font-size: 1.2rem;
+    }
+    &__top{
+      display: flex;
+      justify-content: space-between;
+      background-color: unset;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 1.75rem;
+    }
+    &__title{
+      font-size: 2rem;
+      color: white;
+    }
+    &__back{
+      margin: 0.4rem 0;
+      border: 0;
+      border-radius: 0.2rem;
+      box-shadow: 0 0 0.1rem black;
+      font-size: 1.2rem;
+      display: flex;
+      place-items: center;
+      padding: 0.3rem;
+    }
+    &__submit{
+      margin: 0.4rem 0;
+      border: 0;
+      border-radius: 0.2rem;
+      box-shadow: 0 0 0.1rem black;
+      padding: 0.6rem;
+      font-size: 1.2rem;
+    }
+  }
+  
+}
+.error_message{
+  background-color: brown;
+  color: white;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: 1px solid indianred;
+  font-size: 0.9rem;
+  font-family: 'Saira', sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  .game-item{
+    // appearance :
+    width: 100%;
+    // position :
+    display: flex;
+    // justify-content:space-around;
+    &__items{
+      display: flex;
+    }
+    &__details{
+      display:flex;
+    }
+    &__details--item{
+      margin-right: 10px;
+    }
+    &-form{
+      background-color: rgba($color: white, $alpha: 0.2);
+      border: 1px solid #888;
+      color: white;
+      padding: 1rem;
+      margin: 1rem 0px;
+      &__form{
+        display: flex;
+      }
+      &__fieldset{
+        box-sizing: border-box;
+        width: 50%;
+        padding-right: 5%;
+      }
+      & input, & select{
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #888;
+        border-radius: 0.2rem;
+      }
+      &__top{
+        display: flex;
+      }
+    }
+  
+  }
+}

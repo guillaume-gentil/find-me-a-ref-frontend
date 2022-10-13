@@ -1,0 +1,81 @@
+.topPartHeader{
+  // appearance :
+  font-family: 'Black Ops One', cursive;
+  background-image: url(../../assets/img/headerReferees1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 45%;
+  color : white;
+
+  //position :
+  position : relative;
+  display: flex;
+  flex-direction: column-reverse;
+
+  &__headerTitle{
+    // appearance :
+    background-color: rgba($color: black, $alpha: 0.2);
+    border: solid 1px grey;
+    width: 100%;
+    padding: 0.5rem;
+  }
+  &__ffLogo{
+    // appearance :
+    width: 30%;
+    // position : 
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &__buttons{
+    // appearance :
+    padding: 0.5rem;
+    padding-bottom: 1.5rem;
+    
+    // position :
+    display: flex;
+    justify-content: space-between;
+  }
+  h1{
+    font-size: 2.3rem;
+  }
+  h2{
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .topPartHeader{
+    // appearance :
+    height: 40vh;
+    // position
+    display: block;
+
+    &__headerTitle{
+      // appearance :
+      width: fit-content;
+      text-align: right;
+      padding-bottom: 2.25rem;
+    }
+    &__buttons{
+      // position :
+      display: block;
+    }
+    &__menu{
+      // position : 
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    h1{
+      font-size: 4rem;
+    }
+    h2{
+      font-size: 1.5rem;
+    }
+    &__ffLogo{
+      // appearance :
+      width: 15rem;
+      top:0;
+    }
+  }
+}
