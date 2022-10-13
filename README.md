@@ -8,10 +8,10 @@ Go in your directory switch to the dev branch with `git checkout dev`, then run 
 
 ## Setup API
 In your project root directory, be sure to create two files :  
-### .env.develompent  
-``` REACT_APP_API_URL=http://localhost:8000```
+### .env.development  
+``` API_URL=http://localhost:8000```
 ### .env.production  
-```REACT_APP_API_URL= [put here the website url]```
+```API_URL= [put here the website url]```
 
 ## Install dependencies
 In your directory, run the command `yarn`, it should install all the dependencies.  
