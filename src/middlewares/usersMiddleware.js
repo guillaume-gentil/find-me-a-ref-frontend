@@ -87,7 +87,6 @@ const usersMiddleware = (store) => (next) => (action) => {
           lastname: action.formObj.lastname,
           email: action.formObj.email,
           roles: action.formObj.roles,
-          password: action.formObj.password,
 
         },
         {

@@ -69,12 +69,11 @@ function UserForm() {
       lastname: e.target.querySelector('#lastname').value,
       email: e.target.querySelector('#email').value,
       roles: [e.target.querySelector('#role').value],
-      password: e.target.querySelector('#password').value,
       id: id,
       token: token,
     };
     // eslint-disable-next-line max-len
-    if (isEmptyOrSpaces(requestObject.firstname) || isEmptyOrSpaces(requestObject.lastname) || isEmptyOrSpaces(requestObject.email) || isEmptyOrSpaces(requestObject.password) || !checkRole(requestObject.roles)) {
+    if (isEmptyOrSpaces(requestObject.firstname) || isEmptyOrSpaces(requestObject.lastname) || isEmptyOrSpaces(requestObject.email) || !checkRole(requestObject.roles)) {
       const message = 'Veuillez renseigner tous les champs.';
       dispatch(setErrorMessage(message));
     }
