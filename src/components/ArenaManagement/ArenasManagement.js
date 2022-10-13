@@ -21,7 +21,7 @@ function ArenasManagement() {
   return (
     <>
       <section className="arenas">
-        <h2 className="arenas__title">Arenas</h2>
+        <h2 className="arenas__title">Gymnases</h2>
         <Link className="arenas__interaction--create" to="/admin/arena/create">Créer un gymnase</Link>
         <div className="arena">
           <div className="arena__items">
