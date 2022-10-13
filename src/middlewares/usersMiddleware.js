@@ -9,7 +9,7 @@ import { saveCurrentUser } from '../actions/profile';
 const usersMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_ALL_USERS:
-      axios.get('http://localhost:8000/api/v1/users', {
+      axios.get(`${process.env.API_URL}/api/v1/users`, {
         headers: {
           Authorization: `Bearer ${action.token}`,
         },
@@ -24,7 +24,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         });
       break;
     case 'FETCH_USER_DATA':
-      axios.get('http://localhost:8000/api/v1/users/edit', {
+      axios.get(`${process.env.API_URL}/api/v1/users/edit`, {
         headers: {
           Authorization: `Bearer ${action.token}`,
         },
@@ -37,7 +37,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         });
       break;
     case 'FETCH_USER':
-      axios.get(`http://localhost:8000/api/v1/users/${action.id}`, {
+      axios.get(`${process.env.API_URL}/api/v1/users/${action.id}`, {
         headers: {
           Authorization: `Bearer ${action.token}`,
         },
@@ -52,7 +52,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       break;
     case 'SEND_USER_FORM':
       axios.post(
-        'http://localhost:8000/api/v1/users',
+        `${process.env.API_URL}/api/v1/users`,
         {
 
           firstname: action.formObj.firstname,
@@ -79,7 +79,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       break;
     case 'SEND_EDIT_USER_FORM':
       axios.put(
-        `http://localhost:8000/api/v1/users/${action.formObj.id}/edit`,
+        `${process.env.API_URL}/api/v1/users/${action.formObj.id}/edit`,
         {
 
           firstname: action.formObj.firstname,
@@ -106,7 +106,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       break;
     case 'UPDATE_USER_DATA':
       axios.put(
-        'http://localhost:8000/api/v1/users/edit',
+        `${process.env.API_URL}/api/v1/users/edit`,
         action.userData,
         {
           headers: {
@@ -125,7 +125,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       break;
     case 'DELETE_USER':
       axios.delete(
-        `http://localhost:8000/api/v1/users/${action.id}`,
+        `${process.env.API_URL}/api/v1/users/${action.id}`,
         {
           headers: {
             Authorization: `Bearer ${action.token}`,
