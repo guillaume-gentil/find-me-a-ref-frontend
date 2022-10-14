@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { CornerUpLeft } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchUserData, updateUserData } from '../../actions/profile';
 import {
   setProfileEdit,
@@ -14,6 +14,7 @@ import './styles.scss';
 
 function UserProfile() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const token = useSelector((state) => state.jwtToken);
   const user = useSelector((state) => state.currentUser);
   const editState = useSelector((state) => state.isProfileOnEdit);
@@ -34,6 +35,7 @@ function UserProfile() {
     if (role === 'ROLE_TEAMHEAD') {
       return 'Responsable d\'équipe';
     }
+    return '';
   }
 
   function isEmptyOrSpaces(str) {
@@ -169,13 +171,12 @@ function UserProfile() {
           <h2 className="user-profile__title">
             Profil
           </h2>
-          <Link to="/">
-            <button
-              type="button"
-              className="user-profile__back"
-            ><CornerUpLeft />
-            </button>
-          </Link>
+          <button
+            type="button"
+            className="user-profile__back"
+            onClick={() => navigate(-1)}
+          ><CornerUpLeft />
+          </button>
         </div>
 
         {!editState
