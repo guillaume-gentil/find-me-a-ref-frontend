@@ -148,6 +148,7 @@ function Login() {
 
   function handleRegistrationSubmit(e) {
     e.preventDefault();
+
     const pwdCheck = e.target.querySelector('#pwdVerification').value;
     const requestObject = {
       firstname: e.target.querySelector('#firstname').value,
@@ -162,9 +163,37 @@ function Login() {
       || isEmptyOrSpaces(requestObject.password)
       || !checkRole(requestObject.roles)
       || !verifyPwd(requestObject.password, pwdCheck)) {
-      const message = 'Veuillez renseigner tous les champs.';
-      // dispatch(setErrorMessage(message));
-      console.log('erreur');
+      // add errors
+      if (isEmptyOrSpaces(requestObject.firstname)) {
+        e.target.querySelector('#firstname').classList.add('error');
+      }
+      else {
+        e.target.querySelector('#firstname').classList.remove('error');
+      }
+      if (isEmptyOrSpaces(requestObject.lastname)) {
+        e.target.querySelector('#name').classList.add('error');
+      }
+      else {
+        e.target.querySelector('#name').classList.remove('error');
+      }
+      if (isEmptyOrSpaces(requestObject.email)) {
+        e.target.querySelector('#email').classList.add('error');
+      }
+      else {
+        e.target.querySelector('#email').classList.remove('error');
+      }
+      if (isEmptyOrSpaces(requestObject.password)) {
+        e.target.querySelector('#password').classList.add('error');
+      }
+      else {
+        e.target.querySelector('#password').classList.remove('error');
+      }
+      if (!verifyPwd(requestObject.password, pwdCheck)) {
+        e.target.querySelector('#pwdVerification').classList.add('error');
+      }
+      else {
+        e.target.querySelector('#pwdVerification').classList.remove('error');
+      }
     }
     else {
       dispatch(sendRegistration(requestObject));
