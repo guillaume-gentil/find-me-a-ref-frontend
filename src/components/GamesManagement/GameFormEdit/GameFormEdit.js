@@ -54,6 +54,9 @@ function GameFormEdit() {
       const message = 'Veuillez renseigner tous les champs.';
       dispatch(setErrorMessage(message));
     }
+    else if (requestObject.teams[0] === requestObject.teams[1]) {
+      dispatch(setErrorMessage('Selectionnez deux équipes différentes'));
+    }
     else {
       dispatch(sendEditGameForm(requestObject));
     }
