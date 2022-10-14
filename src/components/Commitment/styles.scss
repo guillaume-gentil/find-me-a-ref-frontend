@@ -35,7 +35,10 @@
   }
   &__game-specs{
     display: flex;
-    justify-content: space-around;
+    &>*{
+      padding-right: 0.5rem;
+    }
+    // justify-content: space-around;
   }
   &__contact{
     display: flex;
@@ -1763,12 +1766,15 @@
   .commitment{
     background-color:rgba($color: white, $alpha: 0.2);
     border: 1px solid #888;
-    padding-left: 1rem;
     margin: 1rem 0px;
     margin-right:1rem;
     max-width: calc(100% - 350px);
+    min-width: calc(100% - 450px);
+    min-height: 535px;
     &>*{
-      padding-top: 2rem;
+      margin: 1rem;
+      border-bottom: #555 1px solid;
+      padding-bottom: 0.5rem;
     }
     &__wrapper{
       background-color: unset;
@@ -1778,24 +1784,34 @@
       margin:0;
       padding: 0;
     }
+    &__date{
+      text-align: center;
+      border: 0;
+    }
     &__teams{
       flex-direction: row;
+      justify-content: center;
       .vs{
         padding: 0 0.5rem;
       }
     }
+    &__address{
+      border: 0;
+    }
     &__game-specs{
       justify-content: flex-start;
+      border: 0;
       &>*{
-        padding: 0 3rem;
+        padding-right: 1rem;
         text-transform: capitalize;
+        border: 0;
       }
     }
     &__ref-section{
-      padding-top: 2.5rem;
+      padding-top: 1rem;
       display: flex;
-      width: 100%;
       justify-content: space-between;
+      border: 0;
     }
     &__button{
       margin: 1rem;

@@ -75,13 +75,13 @@ function Commitment() {
         <h1 className="commitment__teams">{game.teams[0].name} <span className="vs">VS</span> {game.teams[1].name}</h1>
         <p className="commitment__address">{game.arena.address}, {game.arena.zipCode}</p>
         <div className="commitment__game-specs">
-          <p className="commitment__category">{game.teams[0].category.name}</p>
+          <p className="commitment__category">{game.teams[0].category.name}</p> <p>-</p>
           <p className="commitment__type">{game.type.name}</p>
         </div>
         <p className="commitment__contact">Contact du match : <strong>Jean LeChef : 06 01 02 03 04</strong></p>
         <div className="commitment__ref-section">
           <div>
-            <p className="commitment__counter">ARBITRES INSCRITS SUR CETTE RENCONTRE : {game.users.length}/2</p>
+            <p className="commitment__counter">ARBITRES : {game.users.length}/2</p>
             { game.users.length > 0
                 && game.users.map((user) => <p className="commitment__ref" key={user.id}>{`${user.firstname}`}</p>)}
           </div>
