@@ -11,7 +11,7 @@ function Contact() {
     <section className="contact">
       <div className="contact__main">
         <h1 className="contact__title">Contact</h1>
-        <p>En cas de problème, merci de bien vouloir contacter l'administrateur du site :
+        <p className="contact__text">En cas de problème, merci de bien vouloir contacter l'administrateur du site :
           findmearef@gmail.com
         </p>
       </div>
