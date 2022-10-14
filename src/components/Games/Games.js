@@ -1,13 +1,18 @@
 // imports :
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
+import { useEffect } from 'react';
 import Game from './Game/Game';
+import { fetchGames } from '../../actions/games';
 
 // component :
 function Games() {
   // const isGamesLoaded = useSelector((state) => state.isGamesLoaded);
-
+  const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
+  useEffect(() => {
+    dispatch(fetchGames());
+  }, []);
 
   return (
     <section className="games">
