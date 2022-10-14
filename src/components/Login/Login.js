@@ -266,7 +266,8 @@ function Login() {
           }}
         >Nouvelle inscription
         </button>
-        <a href="" className="login__forgot">Mot de passe oublié ?</a>
+
+        {/* TODO create a feature to get back your forgotten pwd  :  <a href="" className="login__forgot">Mot de passe oublié ?</a> */}
       </section>
       )}
     </div>
