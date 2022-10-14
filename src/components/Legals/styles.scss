@@ -26,16 +26,21 @@ text-align: justify;
 &__link--img{
   width: 100%;
   margin: 0;
+  box-shadow: inset 0 0 1.5rem grey;
 }
 }
 .partners{
 display: flex;
 flex-direction: column;
+padding: 0.3rem;
+
 &__title{
   text-align: center;
   font-size: x-large;
   margin: 30px;
+  font-family: 'Black Ops One', cursive;
 }
+
 }
 
 @media screen and (min-width:768px) {

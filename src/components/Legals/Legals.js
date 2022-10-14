@@ -1,9 +1,12 @@
 // import :
 import './styles.scss';
-import logo_ffrs from 'src/assets/img/logo_ffrs.png';
+import logoFfrs from 'src/assets/img/logo_ffrs.png';
+import logoArbitre from 'src/assets/img/logoArbitre.png';
+import { useSelector } from 'react-redux';
 
 // component :
 function Legals() {
+  const hidePartners = useSelector((state) => state.isLoginOpen);
   return (
     <div className="informations">
       <section className="legals">
@@ -19,10 +22,16 @@ function Legals() {
         <p className="legals__text">Par email : findmearef@gmail.com</p>
         <p className="legals__text">Par courrier : 6, Boulevard du Pdt Franklin Roosevelt CS11742 33080 Bordeaux Cedex France</p>
       </section>
+      {!hidePartners
+      && (
       <section className="partners">
         <h1 className="partners__title">Nos partenaires</h1>
-        <a href="https://ffroller-skateboard.fr/les-disciplines/roller_hockey/"><img className="legals__link--img" src={logo_ffrs} alt="logo de la fédération" /></a>
+        <a href="https://ffroller-skateboard.fr/les-disciplines/roller_hockey/">
+          <img className="legals__link--img" src={logoFfrs} alt="logo de la fédération" />
+        </a>
+        <a href="http://rollerhockey.fr/#/"><img className="legals__link--img" src={logoArbitre} alt="logo de la fédération" /></a>
       </section>
+      )}
     </div>
   );
 }
