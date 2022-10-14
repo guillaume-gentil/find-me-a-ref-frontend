@@ -85,7 +85,15 @@ function Commitment() {
             { game.users.length > 0
                 && game.users.map((user) => <p className="commitment__ref" key={user.id}>{`${user.firstname}`}</p>)}
           </div>
-          { (game.users.length < 2 || checkCommited()) && <button type="button" className="commitment__button" onClick={handleCommitButton}>{checkCommited() ? 'Se désengager' : 'J\'arbitre !'}</button>}
+          { (game.users.length < 2 || checkCommited())
+            && (
+              <button type="button" className="commitment__button" onClick={handleCommitButton}>{checkCommited() ? 'Se désengager' : 'J\'arbitre !'}
+                <span />
+                <span />
+                <span />
+                <span />
+              </button>
+            )}
         </div>
       </section>
       <section className="map__container">
