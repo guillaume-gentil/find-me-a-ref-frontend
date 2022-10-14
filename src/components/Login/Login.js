@@ -150,17 +150,19 @@ function Login() {
     e.preventDefault();
 
     const pwdCheck = e.target.querySelector('#pwdVerification').value;
+    const licence = e.target.querySelector('#licenceId').value;
     const requestObject = {
       firstname: e.target.querySelector('#firstname').value,
       lastname: e.target.querySelector('#name').value,
       email: e.target.querySelector('#email').value,
-      roles: [e.target.querySelector('input[name="userRole"]:checked').value],
+      roles: e.target.querySelector('input[name="userRole"]:checked') !== null ? [e.target.querySelector('input[name="userRole"]:checked').value] : [],
       password: e.target.querySelector('#password').value,
     };
     if (isEmptyOrSpaces(requestObject.firstname)
       || isEmptyOrSpaces(requestObject.lastname)
       || isEmptyOrSpaces(requestObject.email)
       || isEmptyOrSpaces(requestObject.password)
+      || isEmptyOrSpaces(licence)
       || !checkRole(requestObject.roles)
       || !verifyPwd(requestObject.password, pwdCheck)) {
       // add errors
@@ -187,6 +189,18 @@ function Login() {
       }
       else {
         e.target.querySelector('#password').classList.remove('error');
+      }
+      if (isEmptyOrSpaces(licence)) {
+        e.target.querySelector('#licenceId').classList.add('error');
+      }
+      else {
+        e.target.querySelector('#licenceId').classList.remove('error');
+      }
+      if (requestObject.roles.length < 1) {
+        e.target.querySelector('.login__form--radio').classList.add('error');
+      }
+      else {
+        e.target.querySelector('.login__form--radio').classList.remove('error');
       }
       if (!verifyPwd(requestObject.password, pwdCheck)) {
         e.target.querySelector('#pwdVerification').classList.add('error');
@@ -244,7 +258,7 @@ function Login() {
               <input type="mail" id="email" placeholder="Nordine.Ateur@monmail.com" />
             </label>
             <label htmlFor="password" className="login__label modal__anchor">Mot de passe
-              <input type="password" id="password" placeholder="mot de passe" onFocus={handlePassFocus} onBlur={handlePassBlur} onChange={handlePassChange} />
+              <input type="password" autoComplete="" id="password" placeholder="mot de passe" onFocus={handlePassFocus} onBlur={handlePassBlur} onChange={handlePassChange} />
               {isPassModalVisible && (
               <div className="password__modal">
                 <ul className="password__modal--list">
@@ -257,7 +271,7 @@ function Login() {
               )}
             </label>
             <label htmlFor="pwdVerification" className="login__label">Retapez votre mot de passe
-              <input type="password" id="pwdVerification" placeholder="mot de passe" />
+              <input type="password" autoComplete="" id="pwdVerification" placeholder="mot de passe" />
             </label>
             <label htmlFor="userRole" className="login__label">Rôle
               <div className="login__form--radio">
