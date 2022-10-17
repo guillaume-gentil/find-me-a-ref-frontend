@@ -96,6 +96,7 @@ Game.propTypes = {
   date: PropTypes.string.isRequired,
   teams: PropTypes.arrayOf(
     PropTypes.shape({
+      name: PropTypes.string.isRequired,
       category: PropTypes.object.isRequired,
       club: PropTypes.object.isRequired,
     }),

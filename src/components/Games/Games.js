@@ -20,7 +20,7 @@ function Games() {
       {games.map(
         (game) => <Game key={game.id} {...game} />,
       )}
-      <button type="button" className="games__more"> Voir plus</button>
+      {/* <button type="button" className="games__more"> Voir plus</button> */}
     </section>
   );
 }

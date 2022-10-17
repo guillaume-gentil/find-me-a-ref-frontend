@@ -155,7 +155,8 @@ function Login() {
       firstname: e.target.querySelector('#firstname').value,
       lastname: e.target.querySelector('#name').value,
       email: e.target.querySelector('#email').value,
-      roles: e.target.querySelector('input[name="userRole"]:checked') !== null ? [e.target.querySelector('input[name="userRole"]:checked').value] : [],
+      // roles: e.target.querySelector('input[name="userRole"]:checked') !== null ? [e.target.querySelector('input[name="userRole"]:checked').value] : [],
+      roles: ['ROLE_REFEREE'],
       password: e.target.querySelector('#password').value,
     };
     if (isEmptyOrSpaces(requestObject.firstname)
@@ -163,7 +164,7 @@ function Login() {
       || isEmptyOrSpaces(requestObject.email)
       || isEmptyOrSpaces(requestObject.password)
       || isEmptyOrSpaces(licence)
-      || !checkRole(requestObject.roles)
+      // || !checkRole(requestObject.roles)
       || !verifyPwd(requestObject.password, pwdCheck)) {
       // add errors
       if (isEmptyOrSpaces(requestObject.firstname)) {
@@ -196,12 +197,12 @@ function Login() {
       else {
         e.target.querySelector('#licenceId').classList.remove('error');
       }
-      if (requestObject.roles.length < 1) {
-        e.target.querySelector('.login__form--radio').classList.add('error');
-      }
-      else {
-        e.target.querySelector('.login__form--radio').classList.remove('error');
-      }
+      // if (requestObject.roles.length < 1) {
+      //   e.target.querySelector('.login__form--radio').classList.add('error');
+      // }
+      // else {
+      //   e.target.querySelector('.login__form--radio').classList.remove('error');
+      // }
       if (!verifyPwd(requestObject.password, pwdCheck)) {
         e.target.querySelector('#pwdVerification').classList.add('error');
       }
@@ -273,7 +274,7 @@ function Login() {
             <label htmlFor="pwdVerification" className="login__label">Retapez votre mot de passe
               <input type="password" autoComplete="" id="pwdVerification" placeholder="mot de passe" />
             </label>
-            <label htmlFor="userRole" className="login__label">Rôle
+            {/* <label htmlFor="userRole" className="login__label">Rôle
               <div className="login__form--radio">
                 <input type="radio" id="userReferee" value="ROLE_REFEREE" name="userRole" />
                 <label htmlFor="userReferee" className="login_label" name="userRole">Arbitre</label>
@@ -282,7 +283,7 @@ function Login() {
                 <input type="radio" id="userTeamhead" value="ROLE_TEAMHEAD" name="userRole" />
                 <label htmlFor="userTeamhead" className="login_label" name="userRole">Chef d'équipe</label>
               </div>
-            </label>
+            </label> */}
             <label htmlFor="licenceId" className="login__label">Numéro de licence
               <input type="text" id="licenceId" placeholder="ex : Nateur" />
             </label>
