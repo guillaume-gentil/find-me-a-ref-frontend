@@ -285,7 +285,7 @@ function Login() {
               </div>
             </label> */}
             <label htmlFor="licenceId" className="login__label">Numéro de licence
-              <input type="text" id="licenceId" placeholder="ex : Nateur" />
+              <input type="number" id="licenceId" placeholder="ex : 123" />
             </label>
             <button type="submit" className="login__submit">Je m'inscris</button>
           </form>
