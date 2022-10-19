@@ -155,16 +155,17 @@ function Login() {
       firstname: e.target.querySelector('#firstname').value,
       lastname: e.target.querySelector('#name').value,
       email: e.target.querySelector('#email').value,
-      // roles: e.target.querySelector('input[name="userRole"]:checked') !== null ? [e.target.querySelector('input[name="userRole"]:checked').value] : [],
-      roles: ['ROLE_REFEREE'],
+      roles: e.target.querySelector('input[name="userRole"]:checked') !== null ? [e.target.querySelector('input[name="userRole"]:checked').value] : [],
       password: e.target.querySelector('#password').value,
+      licence: e.target.querySelector('#licenceId').value,
     };
+    console.log(requestObject);
     if (isEmptyOrSpaces(requestObject.firstname)
       || isEmptyOrSpaces(requestObject.lastname)
       || isEmptyOrSpaces(requestObject.email)
       || isEmptyOrSpaces(requestObject.password)
-      || isEmptyOrSpaces(licence)
-      // || !checkRole(requestObject.roles)
+      || isEmptyOrSpaces(requestObject.licence)
+      || !checkRole(requestObject.roles)
       || !verifyPwd(requestObject.password, pwdCheck)) {
       // add errors
       if (isEmptyOrSpaces(requestObject.firstname)) {
@@ -197,12 +198,12 @@ function Login() {
       else {
         e.target.querySelector('#licenceId').classList.remove('error');
       }
-      // if (requestObject.roles.length < 1) {
-      //   e.target.querySelector('.login__form--radio').classList.add('error');
-      // }
-      // else {
-      //   e.target.querySelector('.login__form--radio').classList.remove('error');
-      // }
+      if (requestObject.roles.length < 1) {
+        e.target.querySelector('.login__form--radio').classList.add('error');
+      }
+      else {
+        e.target.querySelector('.login__form--radio').classList.remove('error');
+      }
       if (!verifyPwd(requestObject.password, pwdCheck)) {
         e.target.querySelector('#pwdVerification').classList.add('error');
       }
@@ -274,7 +275,7 @@ function Login() {
             <label htmlFor="pwdVerification" className="login__label">Retapez votre mot de passe
               <input type="password" autoComplete="" id="pwdVerification" placeholder="mot de passe" />
             </label>
-            {/* <label htmlFor="userRole" className="login__label">Rôle
+            <label htmlFor="userRole" className="login__label">Rôle
               <div className="login__form--radio">
                 <input type="radio" id="userReferee" value="ROLE_REFEREE" name="userRole" />
                 <label htmlFor="userReferee" className="login_label" name="userRole">Arbitre</label>
@@ -283,7 +284,7 @@ function Login() {
                 <input type="radio" id="userTeamhead" value="ROLE_TEAMHEAD" name="userRole" />
                 <label htmlFor="userTeamhead" className="login_label" name="userRole">Chef d'équipe</label>
               </div>
-            </label> */}
+            </label>
             <label htmlFor="licenceId" className="login__label">Numéro de licence
               <input type="number" id="licenceId" placeholder="ex : 123" />
             </label>
