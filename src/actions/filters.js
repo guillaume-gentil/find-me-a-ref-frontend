@@ -19,6 +19,7 @@ export const ORDER_GAMES_BY_TEAM = 'ORDER_GAMES_BY_TEAM';
 export const ORDER_GAMES_BY_CLUB = 'ORDER_GAMES_BY_CLUB';
 export const ORDER_GAMES_BY_ARENA = 'ORDER_GAMES_BY_ARENA';
 export const ORDER_GAMES_BY_TYPE = 'ORDER_GAMES_BY_TYPE';
+export const ORDER_GAMES_BY_LOCATION = 'ORDER_GAMES_BY_LOCATION';
 
 // ACTIONS
 
@@ -89,4 +90,8 @@ export const orderGamesByArena = (arenaId) => ({
 export const orderGamesByType = (typeId) => ({
   type: 'ORDER_GAMES_BY_TYPE',
   typeId: typeId,
+});
+export const orderGamesByLocation = (location) => ({
+  type: 'ORDER_GAMES_BY_LOCATION',
+  location: location,
 });

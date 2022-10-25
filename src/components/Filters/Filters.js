@@ -14,6 +14,7 @@ import {
   orderGamesByClub,
   orderGamesByArena,
   orderGamesByType,
+  orderGamesByLocation,
 } from '../../actions/filters';
 import { openFilters } from '../../actions/ui_actions';
 import { fetchGames } from '../../actions/games';
@@ -152,7 +153,6 @@ function Filters() {
     );
     dispatch(orderGamesByArena(e.target.options[e.target.selectedIndex].id));
   }
-
   function handleTypeChange(e) {
     // reset of other filters :
     const resets = document.querySelectorAll('.filters__list--items:not(.types-filters)');
@@ -170,6 +170,24 @@ function Filters() {
     );
     dispatch(orderGamesByType(e.target.options[e.target.selectedIndex].id));
   }
+  function handleLocationChange(e) {
+    // reset of other filters :
+    const resets = document.querySelectorAll('.filters__list--items:not(.locations-filters)');
+    const resetsArray = Array.from(resets);
+
+    resetsArray.forEach(
+      (reset) => {
+        try {
+          reset.selectedIndex = 0;
+        }
+        catch {
+          console.log('ca passe pas !');
+        }
+      },
+    );
+    dispatch(orderGamesByLocation(e.target.options[e.target.selectedIndex].id));
+  }
+
   const isFilterOpen = useSelector((state) => state.isFilterOpen);
 
   return (
@@ -264,6 +282,17 @@ function Filters() {
               (type) => <option className="filters__list--optionValue" key={type.id} id={type.id} value={type.name}>{type.name}</option>,
             )}
           </select>
+          {/* <select
+            name="locations"
+            id=""
+            className="filters__list--items locations-filters"
+            onChange={handleLocationChange}
+          >
+            <option value="">Départements</option>
+            {types.map(
+              (type) => <option className="filters__list--optionValue" key={type.id} id={type.id} value={type.name}>{type.name}</option>,
+            )}
+          </select> */}
         </section>
       </div>
     </section>

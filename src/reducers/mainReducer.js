@@ -22,6 +22,7 @@ const initialState = {
   clubs: [],
   arenas: [],
   types: [],
+  location: [],
   // Controlled inputs
   userFormInputPass: '',
   userFormInputFirstname: '',

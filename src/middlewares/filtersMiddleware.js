@@ -16,6 +16,7 @@ import {
   ORDER_GAMES_BY_CLUB,
   ORDER_GAMES_BY_ARENA,
   ORDER_GAMES_BY_TYPE,
+  ORDER_GAMES_BY_LOCATION,
 } from 'src/actions/filters';
 
 import { saveGames } from '../actions/games';
@@ -172,6 +173,20 @@ const filtersMiddleware = (store) => (next) => (action) => {
 
           // saving datas in the state
           store.dispatch(saveGames(response.data.games));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case ORDER_GAMES_BY_LOCATION:
+      axios.get(
+        `${process.env.API_URL}/api/v1/arenas/games/${action.departement}`,
+      )
+        .then((response) => {
+          console.log(response.data);
+
+          // saving datas in the state
+          // store.dispatch(saveGames(response.data.games));
         })
         .catch((error) => {
           console.log(error);
