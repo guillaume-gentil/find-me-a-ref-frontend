@@ -22,7 +22,23 @@ const initialState = {
   clubs: [],
   arenas: [],
   types: [],
-  location: [],
+  locations: [
+    {
+      id: 1,
+      name: 'Morbihan',
+      number: 56,
+    },
+    {
+      id: 2,
+      name: 'ille et vilaine',
+      number: 35,
+    },
+    {
+      id: 3,
+      name: 'finistère',
+      number: 29,
+    },
+  ],
   // Controlled inputs
   userFormInputPass: '',
   userFormInputFirstname: '',

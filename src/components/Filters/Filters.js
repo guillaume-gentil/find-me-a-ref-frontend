@@ -62,6 +62,9 @@ function Filters() {
   // fetching the data from state :
   const types = useSelector((state) => state.types);
 
+  // fetching the data from state :
+  const locations = useSelector((state) => state.locations);
+
   // create a toggle for emergencies (games without referee)
   const toggleEmergencies = useSelector((state) => state.uncommited);
   const emergencyAction = toggleEmergencies ? fetchGames : fetchUncommitedGames;
@@ -185,7 +188,7 @@ function Filters() {
         }
       },
     );
-    dispatch(orderGamesByLocation(e.target.options[e.target.selectedIndex].id));
+    dispatch(orderGamesByLocation(e.target.options[e.target.selectedIndex].value));
   }
 
   const isFilterOpen = useSelector((state) => state.isFilterOpen);
@@ -282,17 +285,17 @@ function Filters() {
               (type) => <option className="filters__list--optionValue" key={type.id} id={type.id} value={type.name}>{type.name}</option>,
             )}
           </select>
-          {/* <select
+          <select
             name="locations"
             id=""
             className="filters__list--items locations-filters"
             onChange={handleLocationChange}
           >
             <option value="">Départements</option>
-            {types.map(
-              (type) => <option className="filters__list--optionValue" key={type.id} id={type.id} value={type.name}>{type.name}</option>,
+            {locations.map(
+              (location) => <option className="filters__list--optionValue" key={location.id} id={location.id} value={location.number}>{location.name}</option>,
             )}
-          </select> */}
+          </select>
         </section>
       </div>
     </section>

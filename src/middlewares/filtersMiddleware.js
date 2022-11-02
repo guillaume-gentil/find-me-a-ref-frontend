@@ -180,7 +180,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
       break;
     case ORDER_GAMES_BY_LOCATION:
       axios.get(
-        `${process.env.API_URL}/api/v1/arenas/games/${action.departement}`,
+        `${process.env.API_URL}/api/v1/arenas/games/${action.locationId}`,
       )
         .then((response) => {
           console.log(response.data);
