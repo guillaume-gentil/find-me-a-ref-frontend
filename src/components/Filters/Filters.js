@@ -26,6 +26,7 @@ function Filters() {
   // create a const dispatch for easier useDispatch use :
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
+  const token = useSelector((state) => state.jwtToken);
 
   // fetch CATEGORIES from API :
   useEffect(() => {
@@ -177,7 +178,7 @@ function Filters() {
     // reset of other filters :
     const resets = document.querySelectorAll('.filters__list--items:not(.locations-filters)');
     const resetsArray = Array.from(resets);
-
+    const radius = parseInt(e.target.options[e.target.selectedIndex].value, 10);
     resetsArray.forEach(
       (reset) => {
         try {
@@ -188,7 +189,7 @@ function Filters() {
         }
       },
     );
-    dispatch(orderGamesByLocation(e.target.options[e.target.selectedIndex].value));
+    dispatch(orderGamesByLocation({ radius, token }));
   }
 
   const isFilterOpen = useSelector((state) => state.isFilterOpen);
@@ -291,9 +292,9 @@ function Filters() {
             className="filters__list--items locations-filters"
             onChange={handleLocationChange}
           >
-            <option value="">Départements</option>
+            <option value="">Rayon</option>
             {locations.map(
-              (location) => <option className="filters__list--optionValue" key={location.id} id={location.id} value={location.number}>{location.name}</option>,
+              (location) => <option className="filters__list--optionValue" key={location.id} id={location.id} value={location.radius}>{location.radius}</option>,
             )}
           </select>
         </section>

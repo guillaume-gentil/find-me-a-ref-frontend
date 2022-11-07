@@ -25,18 +25,19 @@ const initialState = {
   locations: [
     {
       id: 1,
-      name: 'Morbihan',
-      number: 56,
+      radius: 50,
     },
     {
       id: 2,
-      name: 'ille et vilaine',
-      number: 35,
+      radius: 100,
     },
     {
       id: 3,
-      name: 'finistère',
-      number: 29,
+      radius: 150,
+    },
+    {
+      id: 4,
+      radius: 200,
     },
   ],
   // Controlled inputs

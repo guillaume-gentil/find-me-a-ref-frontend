@@ -179,8 +179,18 @@ const filtersMiddleware = (store) => (next) => (action) => {
         });
       break;
     case ORDER_GAMES_BY_LOCATION:
+      console.log(action.radius);
+      console.log(action.token);
       axios.get(
-        `${process.env.API_URL}/api/v1/arenas/games/${action.locationId}`,
+        `${process.env.API_URL}/api/v1/distance/games`,
+        {
+          radius: action.radius,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${action.token}`,
+          },
+        },
       )
         .then((response) => {
           console.log(response.data);
