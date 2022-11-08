@@ -4,6 +4,7 @@ import Arnaud from 'src/assets/img/Arnaud.jpg';
 import Guillaume from 'src/assets/img/Guillaume.jpg';
 import Loic from 'src/assets/img/Loic.jpg';
 import Tomas from 'src/assets/img/Tomas.jpg';
+import { GitHub } from 'react-feather';
 
 // component :
 function Contact() {
@@ -18,10 +19,10 @@ function Contact() {
       <div className="contact__team">
         <h1 className="contact__title">Notre Equipe :</h1>
         <ul>
-          <li>Product Owner <br /><strong>Arnaud J</strong> <img src={Arnaud} alt="Arnaud" className="contact__img" /></li>
-          <li>Scrum Master <br /><strong>Loïc G</strong> <img src={Loic} alt="Loic" className="contact__img" /></li>
-          <li>Tech-Lead Back et GitMaster <br /><strong>Guillaume G</strong> <img src={Guillaume} alt="Guillaume" className="contact__img" /></li>
-          <li>Tech-Lead Front <br /><strong>Tomas C</strong> <img src={Tomas} alt="Tomas" className="contact__img" /></li>
+          <li>Product Owner <br /><strong>Arnaud J</strong> <a href="https://www.linkedin.com/in/arnaud-joguet/" target="_blank" rel="noreferrer"><img src={Arnaud} alt="Arnaud" className="contact__img" /></a><br /> <a href="https://github.com/Arnaud-Joguet" target="_blank" rel="noreferrer"><GitHub /></a></li>
+          <li>Scrum Master <br /><strong>Loïc G</strong> <a href="https://www.linkedin.com/in/lguegan-developpeur-frontend/" target="_blank" rel="noreferrer"><img src={Loic} alt="Loic" className="contact__img" /></a><br /> <a href="https://github.com/Runebearer" target="_blank" rel="noreferrer"><GitHub /></a></li>
+          <li>Tech-Lead Back et GitMaster <br /><strong>Guillaume G</strong><a href="https://www.linkedin.com/in/ggentil/" target="_blank" rel="noreferrer"> <img src={Guillaume} alt="Guillaume" className="contact__img" /></a><br /><a href="https://github.com/guillaume-gentil" target="_blank" rel="noreferrer"><GitHub /></a></li>
+          <li>Tech-Lead Front <br /><strong>Tomas C</strong><a href="https://www.linkedin.com/in/tomas-conan/" target="_blank" rel="noreferrer"> <img src={Tomas} alt="Tomas" className="contact__img" /></a><br /> <a href="https://github.com/TomasConan" target="_blank" rel="noreferrer"><GitHub /></a></li>
         </ul>
       </div>
     </section>
