@@ -12,7 +12,7 @@ function Contact() {
       <div className="contact__main">
         <h1 className="contact__title">Contact</h1>
         <p className="contact__text">En cas de problème, merci de bien vouloir contacter l'administrateur du site :
-          findmearef@gmail.com
+          contact@rollerhockey.fr
         </p>
       </div>
       <div className="contact__team">
