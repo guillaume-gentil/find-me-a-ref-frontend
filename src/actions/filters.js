@@ -91,8 +91,9 @@ export const orderGamesByType = (typeId) => ({
   type: 'ORDER_GAMES_BY_TYPE',
   typeId: typeId,
 });
-export const orderGamesByLocation = ({ radius, token }) => ({
+export const orderGamesByLocation = ({ radius, token, address }) => ({
   type: 'ORDER_GAMES_BY_LOCATION',
   radius: radius,
+  address: address,
   token: token,
 });

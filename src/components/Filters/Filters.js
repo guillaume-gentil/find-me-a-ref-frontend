@@ -27,6 +27,8 @@ function Filters() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
   const token = useSelector((state) => state.jwtToken);
+  const isLogged = useSelector((state) => state.isLogged);
+  const address = '147 rue de la chamberlière 26000 VALENCE';
 
   // fetch CATEGORIES from API :
   useEffect(() => {
@@ -189,7 +191,7 @@ function Filters() {
         }
       },
     );
-    dispatch(orderGamesByLocation({ radius, token }));
+    dispatch(orderGamesByLocation({ radius, token, address }));
   }
 
   const isFilterOpen = useSelector((state) => state.isFilterOpen);
@@ -286,6 +288,7 @@ function Filters() {
               (type) => <option className="filters__list--optionValue" key={type.id} id={type.id} value={type.name}>{type.name}</option>,
             )}
           </select>
+          {isLogged && (
           <select
             name="locations"
             id=""
@@ -297,6 +300,7 @@ function Filters() {
               (location) => <option className="filters__list--optionValue" key={location.id} id={location.id} value={location.radius}>{location.radius}</option>,
             )}
           </select>
+          )}
         </section>
       </div>
     </section>
