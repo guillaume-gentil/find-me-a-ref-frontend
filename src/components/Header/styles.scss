@@ -54,7 +54,10 @@
       // appearance :
       width: fit-content;
       text-align: right;
-      padding-bottom: 2.25rem;
+      padding-bottom: 1rem;
+    }
+    &__headerTitle--subtitle{
+      margin: 1rem;
     }
     &__buttons{
       // position :
