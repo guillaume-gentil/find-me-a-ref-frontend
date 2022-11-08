@@ -19,7 +19,7 @@ function Legals() {
         <p className="legals__text">Le Site est hébergé par la société OVH, situé 2 rue Kellermann – 59100 Roubaix – France, (contact téléphonique ou email : +33972101010).</p>
         <h3 className="legals__subtitle">Nous contacter</h3>
         <p className="legals__text">Par téléphone : +33556336565</p>
-        <p className="legals__text">Par email : findmearef@gmail.com</p>
+        <p className="legals__text">Par email : contact@rollerhockey.fr</p>
         <p className="legals__text">Par courrier : 6, Boulevard du Pdt Franklin Roosevelt CS11742 33080 Bordeaux Cedex France</p>
       </section>
       {!hidePartners
