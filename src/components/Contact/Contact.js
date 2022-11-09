@@ -24,6 +24,7 @@ function Contact() {
           <li>Tech-Lead Back et GitMaster <br /><strong>Guillaume G</strong><a href="https://www.linkedin.com/in/ggentil/" target="_blank" rel="noreferrer"> <img src={Guillaume} alt="Guillaume" className="contact__img" /></a><br /><a href="https://github.com/guillaume-gentil" target="_blank" rel="noreferrer"><GitHub /></a></li>
           <li>Tech-Lead Front <br /><strong>Tomas C</strong><a href="https://www.linkedin.com/in/tomas-conan/" target="_blank" rel="noreferrer"> <img src={Tomas} alt="Tomas" className="contact__img" /></a><br /> <a href="https://github.com/TomasConan" target="_blank" rel="noreferrer"><GitHub /></a></li>
         </ul>
+        <p className="contact__paragraph">Retrouvez L'équipe du Studio Cacahouète sur LinkedIn et Github</p>
       </div>
     </section>
   );
