@@ -182,11 +182,11 @@ const filtersMiddleware = (store) => (next) => (action) => {
       console.log(action.radius);
       console.log(action.token);
       console.log(action.address);
-      axios.get(
+      axios.post(
         `${process.env.API_URL}/api/v1/distance/games`,
         {
           radius: action.radius,
-          address: action.address,
+          // address: action.address,
         },
         {
           headers: {
