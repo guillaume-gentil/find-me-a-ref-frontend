@@ -179,14 +179,10 @@ const filtersMiddleware = (store) => (next) => (action) => {
         });
       break;
     case ORDER_GAMES_BY_LOCATION:
-      console.log(action.radius);
-      console.log(action.token);
-      console.log(action.address);
       axios.post(
         `${process.env.API_URL}/api/v1/distance/games`,
         {
           radius: action.radius,
-          // address: action.address,
         },
         {
           headers: {
@@ -198,7 +194,7 @@ const filtersMiddleware = (store) => (next) => (action) => {
           console.log(response.data);
 
           // saving datas in the state
-          // store.dispatch(saveGames(response.data.games));
+          store.dispatch(saveGames(response.data.games));
         })
         .catch((error) => {
           console.log(error);

@@ -191,7 +191,7 @@ function Filters() {
         }
       },
     );
-    dispatch(orderGamesByLocation({ radius, token, address }));
+    dispatch(orderGamesByLocation({ radius, token }));
   }
 
   const isFilterOpen = useSelector((state) => state.isFilterOpen);
@@ -295,9 +295,9 @@ function Filters() {
             className="filters__list--items locations-filters"
             onChange={handleLocationChange}
           >
-            <option value="">Rayon</option>
+            <option value="">Zone de Recherche</option>
             {locations.map(
-              (location) => <option className="filters__list--optionValue" key={location.id} id={location.id} value={location.radius}>{location.radius}</option>,
+              (location) => <option className="filters__list--optionValue" key={location.id} id={location.id} value={location.radius}>{location.radius} km</option>,
             )}
           </select>
           )}
