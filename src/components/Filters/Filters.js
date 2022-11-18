@@ -301,6 +301,17 @@ function Filters() {
             )}
           </select>
           )}
+
+          {/* <label htmlFor="location">
+            Rayon de recherche
+            <input type="range" list="tickmarks" />
+            <datalist id="tickmarks">
+              <option value="50" label="50 km">50 km</option>
+              <option value="100" label="100 km">100 km</option>
+              <option value="150" label="150 km">150 km</option>
+              <option value="200" label="200 km">200 km</option>
+            </datalist>
+          </label> */}
         </section>
       </div>
     </section>
